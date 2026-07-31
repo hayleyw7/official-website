@@ -124,6 +124,9 @@ describe('mobile and narrow layout', () => {
       })
 
       it('breaks the intro heading after reliable on mobile', () => {
+        cy.get('#profile .main-content h2 .heading-phrase')
+          .should('have.css', 'white-space', 'nowrap')
+          .and('contain.text', 'Building Reliable,')
         cy.get('#profile .main-content h2 .mobile-line-break')
           .should('have.css', 'display', 'block')
           .and('have.css', 'white-space', 'nowrap')

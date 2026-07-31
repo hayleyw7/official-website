@@ -9,7 +9,7 @@ export default function Introduction() {
             <div className="col-6 col-12-medium main-content-container">
               <header className="major main-content">
                 <h2>
-                  Building Reliable,
+                  <span className="heading-phrase">Building Reliable,</span>
                   <span className="mobile-line-break"> Usable Systems</span>
                 </h2>
               </header>
