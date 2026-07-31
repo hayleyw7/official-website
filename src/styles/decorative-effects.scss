@@ -236,7 +236,7 @@ body.is-preload #header .embark-btn::after {
 	}
 }
 
-@media screen and (max-width: v.$breakpoint-mobile) {
+@media screen and (max-width: 500px) {
 	.footer-text span {
 		display: none;
 	}

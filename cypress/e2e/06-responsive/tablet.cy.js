@@ -175,12 +175,12 @@ describe('tablet layout', () => {
     cy.assertNoHorizontalOverflow()
   })
 
-  it('keeps the complete footer invitation until the true mobile breakpoint', () => {
-    cy.viewport(481, 800)
+  it('shortens the footer invitation at 500px', () => {
+    cy.viewport(501, 800)
     cy.get('#contact .footer-text span').should('be.visible')
     cy.assertNoHorizontalOverflow()
 
-    cy.viewport(480, 800)
+    cy.viewport(500, 800)
     cy.get('#contact .footer-text span').should('not.be.visible')
     cy.get('#contact .footer-text').should('contain.text', 'Reach out to connect.')
     cy.assertNoHorizontalOverflow()
