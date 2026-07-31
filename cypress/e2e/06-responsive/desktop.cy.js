@@ -19,12 +19,25 @@ describe('desktop layout', () => {
     })
   })
 
-  it('uses two balanced rows of three impact icons in the side column', () => {
+  it('uses three balanced rows of two impact icons in the side column', () => {
     cy.get('#impact ul.major-icons li').then(($icons) => {
       const rows = [...$icons].map((icon) => Math.round(icon.getBoundingClientRect().top))
-      expect(new Set(rows.slice(0, 3)).size).to.equal(1)
-      expect(new Set(rows.slice(3)).size).to.equal(1)
-      expect(rows[3]).to.be.greaterThan(rows[0])
+      ;[[0, 1], [2, 3], [4, 5]].forEach((row) => {
+        expect(new Set(row.map((index) => rows[index])).size).to.equal(1)
+      })
+      expect(rows[2]).to.be.greaterThan(rows[0])
+      expect(rows[4]).to.be.greaterThan(rows[2])
+    })
+    cy.get('#impact ul.major-icons .icon').then(($icons) => {
+      const bounds = [...$icons].map((icon) => icon.getBoundingClientRect())
+      ;[[0, 1], [2, 3], [4, 5]].forEach(([left, right]) => {
+        expect(bounds[right].left - bounds[left].right).to.be.at.least(8)
+      })
+      ;[[0, 2, 4], [1, 3, 5]].forEach((column) => {
+        column.slice(1).forEach((index, position) => {
+          expect(bounds[index].top - bounds[column[position]].bottom).to.be.at.least(8)
+        })
+      })
     })
   })
 
@@ -139,6 +152,21 @@ describe('desktop layout', () => {
         })
       })
       cy.assertNoHorizontalOverflow()
+    })
+
+    it('keeps impact tiles separated near the desktop breakpoint', () => {
+      cy.viewport(983, 800)
+      cy.get('#impact ul.major-icons .icon').then(($icons) => {
+        const bounds = [...$icons].map((icon) => icon.getBoundingClientRect())
+        ;[[0, 1], [2, 3], [4, 5]].forEach(([left, right]) => {
+          expect(bounds[right].left - bounds[left].right).to.be.at.least(8)
+        })
+        ;[[0, 2, 4], [1, 3, 5]].forEach((column) => {
+          column.slice(1).forEach((index, position) => {
+            expect(bounds[index].top - bounds[column[position]].bottom).to.be.at.least(8)
+          })
+        })
+      })
     })
 
     it('keeps the section nav usable without horizontal overflow', () => {

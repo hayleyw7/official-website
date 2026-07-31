@@ -12,9 +12,27 @@
 	}
 }
 
+@media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) and (max-width: v.$breakpoint-wide) {
+	ul.major-icons li {
+		padding: 2em;
+	}
+
+	ul.major-icons li .icon {
+		height: 8em;
+		line-height: 8em;
+		width: 8em;
+	}
+}
+
 /* Large */
 
 @media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) {
+	#impact ul.major-icons {
+		column-gap: 1.5rem;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		row-gap: 2rem;
+	}
+
 	.skill-col {
 		box-sizing: border-box;
 		display: flex;
