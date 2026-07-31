@@ -4,7 +4,7 @@ describe('external links', () => {
   beforeEach(() => cy.visitHome())
 
   it('uses secure absolute destinations for every recognition action', () => {
-    cy.get('#recognition .content-group a').should('have.length', 8).each(($link) => {
+    cy.get('#recognition .content-group a').should('have.length', 10).each(($link) => {
       cy.wrap($link).assertExternalLinkIsSafe()
     })
   })

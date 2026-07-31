@@ -41,13 +41,15 @@ export const recommendations = {
 }
 
 export const recognition = {
-  'Awards and Honors': ['Volunteer of the Month', 'Arrows Making an Impact'],
-  'Panel Participation': ['Code The Dream', 'Turing Showcase'],
-  'Media Coverage': [
+  'Awards & Honors': ['Volunteer of the Month', 'Arrows Making an Impact'],
+  'Panels & Interviews': ['Code The Dream', 'Turing Showcase'],
+  'Media & Publications': [
     'Neurodiverse Hackers',
     'GEN & Biotech News',
     'Seed to Sound',
     'The Rooster',
+    'Wikipedia',
+    'Neurodiverse Hackers, The Cognitive Edge',
   ],
 }
 

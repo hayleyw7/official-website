@@ -1,6 +1,6 @@
 export const recognitionGroups = [
   {
-    title: 'Awards and Honors',
+    title: 'Awards & Honors',
     items: [
       {
         title: 'Volunteer of the Month',
@@ -17,11 +17,11 @@ export const recognitionGroups = [
     ],
   },
   {
-    title: 'Panel Participation',
+    title: 'Panels & Interviews',
     items: [
       {
         title: 'Code The Dream',
-        description: 'Discussion on mentoring and education',
+        description: 'Panel discussion on mentoring and education',
         url: 'https://www.linkedin.com/feed/update/urn:li:activity:7080232254467149824/',
         label: 'Post',
       },
@@ -34,7 +34,7 @@ export const recognitionGroups = [
     ],
   },
   {
-    title: 'Media Coverage',
+    title: 'Media & Publications',
     items: [
       {
         title: 'Neurodiverse Hackers',
@@ -59,6 +59,18 @@ export const recognitionGroups = [
         description: 'Article on an industry network I co-founded',
         url: 'https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
         label: 'Article',
+      },
+      {
+        title: 'Wikipedia',
+        description: 'Article recognizing my role as an organization co-founder',
+        url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
+        label: 'Article',
+      },
+      {
+        title: 'Neurodiverse Hackers, The Cognitive Edge',
+        description: 'Book featuring me and ND In Tech as resources',
+        url: 'https://www.amazon.com/dp/B0H8PL7BCT',
+        label: 'Book',
       },
     ],
   },
