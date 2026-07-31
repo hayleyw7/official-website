@@ -25,6 +25,16 @@ describe('mobile and narrow layout', () => {
         cy.get('.tagline-detail').should('not.be.visible')
       })
 
+      it('keeps the tagline background full width', () => {
+        cy.window().then((win) => {
+          cy.get('.tagline').then(($tagline) => {
+            const bounds = $tagline[0].getBoundingClientRect()
+            expect(bounds.left).to.be.at.most(0)
+            expect(bounds.right).to.be.at.least(win.document.documentElement.clientWidth)
+          })
+        })
+      })
+
       it('keeps all buttons inside the viewport', () => {
         cy.get('a.button').each(($button) => {
           const bounds = $button[0].getBoundingClientRect()

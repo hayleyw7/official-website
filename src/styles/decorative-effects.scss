@@ -35,11 +35,16 @@ button.button.primary.expand-btn.medium {
 
 p.tagline {
 	background: v.$color-white;
+	box-sizing: border-box;
+	left: 50%;
 	opacity: 0.8;
 	padding-top: 1.25rem;
 	padding-bottom: 1.25rem;
 	padding-left: 1.25rem;
 	padding-right: 1.25rem;
+	position: relative;
+	transform: translateX(-50%);
+	width: 100vw;
 	font-weight: 400;
 }
 
