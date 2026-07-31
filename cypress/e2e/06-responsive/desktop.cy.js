@@ -38,6 +38,33 @@ describe('desktop layout', () => {
     })
   })
 
+  it('uses equal visible gaps around and between skill labels', () => {
+    cy.get('.skill-col').then(($box) => {
+      cy.get('.skill').then(($skills) => {
+        const box = $box[0].getBoundingClientRect()
+        const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
+        const gaps = [
+          bounds[0].left - box.left,
+          ...bounds.slice(1).map((item, index) => item.left - bounds[index].right),
+          box.right - bounds.at(-1).right,
+        ]
+        gaps.forEach((gap) => expect(gap).to.be.at.least(20))
+        gaps.forEach((gap) => expect(gap).to.be.closeTo(gaps[0], 1))
+      })
+    })
+  })
+
+  it('aligns the skills box with the text column above', () => {
+    cy.get('#profile .main-content').then(($textColumn) => {
+      cy.get('.skill-col').then(($skills) => {
+        const textBounds = $textColumn[0].getBoundingClientRect()
+        const skillBounds = $skills[0].getBoundingClientRect()
+        expect(skillBounds.left).to.be.closeTo(textBounds.left, 1)
+        expect(skillBounds.width).to.be.closeTo(textBounds.width, 1)
+      })
+    })
+  })
+
   it('keeps heading phrases together when they wrap', () => {
     cy.get('#profile h2 .mobile-line-break, #impact h2 .mobile-line-break')
       .each(($line) => cy.wrap($line).should('have.css', 'white-space', 'nowrap'))
@@ -89,6 +116,29 @@ describe('desktop layout', () => {
     it('splits Community Impact onto a new line at 1140px', () => {
       cy.viewport(1140, 800)
       cy.get('#impact h2 .mobile-line-break').should('have.css', 'display', 'block')
+    })
+
+    it('uses a full-width skills box through the transition range', () => {
+      cy.viewport(983, 800)
+      cy.get('#skills .col-6').then(($column) => {
+        expect($column[0].getBoundingClientRect().width).to.be.closeTo(
+          $column[0].parentElement.getBoundingClientRect().width,
+          2,
+        )
+      })
+      cy.get('.skill-col').then(($box) => {
+        const box = $box[0].getBoundingClientRect()
+        cy.get('.skill').then(($skills) => {
+          const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
+          const gaps = [
+            bounds[0].left - box.left,
+            ...bounds.slice(1).map((item, index) => item.left - bounds[index].right),
+            box.right - bounds.at(-1).right,
+          ]
+          gaps.forEach((gap) => expect(gap).to.be.closeTo(gaps[0], 1))
+        })
+      })
+      cy.assertNoHorizontalOverflow()
     })
 
     it('keeps the section nav usable without horizontal overflow', () => {

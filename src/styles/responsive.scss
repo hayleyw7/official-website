@@ -15,6 +15,30 @@
 /* Large */
 
 @media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) {
+	.skill-col {
+		box-sizing: border-box;
+		display: flex;
+		column-gap: 0;
+		justify-content: space-evenly;
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 0;
+		padding-right: 0;
+		width: 100%;
+	}
+
+	.skill {
+		flex: 0 0 auto;
+	}
+}
+
+@media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) and (max-width: v.$breakpoint-desktop) {
+	#skills .row > .col-6 {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) {
 	.avatar-container.image.fit {
 		display: flex;
 		justify-content: flex-end;
