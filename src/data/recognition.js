@@ -49,6 +49,12 @@ export const recognitionGroups = [
         label: 'Article',
       },
       {
+        title: 'Sound Bytes',
+        description: 'Radio show recommendation for my Limerickster app',
+        url: 'https://www.youtube.com/watch?v=dBemPSROip8&t=2196s',
+        label: 'Listen',
+      },
+      {
         title: 'Wikipedia',
         description: 'Wikipedia article noting my role as a co-founder',
         url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',

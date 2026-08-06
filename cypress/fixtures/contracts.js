@@ -46,6 +46,7 @@ export const recognition = {
   'Media & Publications': [
     'The Cognitive Edge',
     'Neurodiverse Hackers',
+    'Sound Bytes',
     'Wikipedia',
     'GEN & Biotech News',
     'Seed to Sound',
