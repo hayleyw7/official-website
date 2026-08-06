@@ -82,12 +82,26 @@ describe('hover states', () => {
 
   it('defines a high-contrast hover response for recommendation actions', () => {
     cy.window().then((window) => {
-      const rule = findRule(window, '#recommendations .recommendations-source .button:hover')
-      expect(rule, 'recommendations button hover rule').to.exist
-      expect(rule.style.backgroundColor).to.equal(SLATE_BUTTON)
-      expect(rule.style.color).to.equal(WHITE)
+      const buttonRule = findRule(window, '.main.style2 .button:hover')
+      const linkRule = findRule(window, '.main.style2 a:hover')
+      expect(buttonRule, 'dark-section button hover rule').to.exist
+      expect(linkRule, 'dark-section link hover rule').to.exist
+      expect(buttonRule.style.backgroundColor).to.equal(BLUE_GRAY)
+      expect(linkRule.style.color).to.equal(WHITE)
     })
     cy.get('#recommendations .recommendations-source .button').trigger('mouseover').should('be.visible')
+  })
+
+  it('keeps the disabled project action visually distinct on hover', () => {
+    cy.window().then((window) => {
+      const rule = findRule(window, '#portfolio .content-group .button:disabled:hover')
+      expect(rule, 'disabled project button hover rule').to.exist
+      expect(rule.style.backgroundColor).to.equal('rgb(245, 247, 248)')
+      expect(rule.style.color).to.equal(BLUE_GRAY)
+    })
+    cy.get('#portfolio .content-group .button:disabled')
+      .trigger('mouseover', { force: true })
+      .should('be.disabled')
   })
 
   it('defines a visible footer-link hover color', () => {
