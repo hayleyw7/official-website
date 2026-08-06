@@ -10,7 +10,7 @@ export const recognitionGroups = [
       },
       {
         title: 'Arrows Making an Impact',
-        description: 'Recognition for supporting marginalized STEM communities',
+        description: 'Recognition for supporting marginalized STEM workers',
         url: 'https://www.toledosua.org/alumnae/news/post/~board/alumnae-news/post/making-an-impact-hayley-witherell',
         label: 'Article',
       },
@@ -37,20 +37,32 @@ export const recognitionGroups = [
     title: 'Media & Publications',
     items: [
       {
+        title: 'The Cognitive Edge',
+        description: 'Book featuring ND In Tech as a resource',
+        url: 'https://www.amazon.com/dp/B0H8PL7BCT',
+        label: 'Book',
+      },
+      {
         title: 'Neurodiverse Hackers',
-        description: 'Feature on building inclusive tech communities',
+        description: 'Article listing my ND In Tech work as a resource',
         url: 'https://web.archive.org/web/20260415043937/https://neurodiversehackers.com/building-an-inclusive-future-with-neurodiversity-in-tech/',
         label: 'Article',
       },
       {
+        title: 'Wikipedia',
+        description: 'Wikipedia article noting my role as a co-founder',
+        url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
+        label: 'Article',
+      },
+      {
         title: 'GEN & Biotech News',
-        description: 'Publication featuring my analytical chemistry insights',
+        description: 'Article featuring my analytical chemistry insights',
         url: 'https://www.genengnews.com/insights/medical-cannabi-poses-unique-testing-challenges/',
         label: 'Article',
       },
       {
         title: 'Seed to Sound',
-        description: 'Podcast on building a professional community',
+        description: 'Podcast on a community I co-founded',
         url: 'https://www.listennotes.com/podcasts/seed-to-sound/episode-2-colorado-badged-R6JEiGH-2SQ/',
         label: 'Episode',
       },
@@ -59,18 +71,6 @@ export const recognitionGroups = [
         description: 'Article on an industry network I co-founded',
         url: 'https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
         label: 'Article',
-      },
-      {
-        title: 'Wikipedia',
-        description: 'Article recognizing my role as an organization co-founder',
-        url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
-        label: 'Article',
-      },
-      {
-        title: 'Neurodiverse Hackers, The Cognitive Edge',
-        description: 'Book featuring me and ND In Tech as resources',
-        url: 'https://www.amazon.com/dp/B0H8PL7BCT',
-        label: 'Book',
       },
     ],
   },

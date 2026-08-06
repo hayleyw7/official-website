@@ -44,12 +44,12 @@ export const recognition = {
   'Awards & Honors': ['Volunteer of the Month', 'Arrows Making an Impact'],
   'Panels & Interviews': ['Code The Dream', 'Turing Showcase'],
   'Media & Publications': [
+    'The Cognitive Edge',
     'Neurodiverse Hackers',
+    'Wikipedia',
     'GEN & Biotech News',
     'Seed to Sound',
     'The Rooster',
-    'Wikipedia',
-    'Neurodiverse Hackers, The Cognitive Edge',
   ],
 }
 
