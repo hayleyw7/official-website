@@ -23,7 +23,7 @@ export const recommendationGroups = [
       },
       {
         quote: 'That kind of steadiness is easy to overlook and hard to replace.',
-        title: 'Co-Founder & Managing Director',
+        title: 'Cofounder & Managing Director',
       },
       {
         quote: 'They never limit themself to one area of software development and are always looking for ways to contribute more broadly.',

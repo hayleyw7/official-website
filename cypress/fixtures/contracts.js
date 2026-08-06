@@ -1,16 +1,16 @@
 export const sections = [
   { id: 'about', heading: 'Building Reliable, Usable Systems' },
   { id: 'impact', heading: 'Professional & Community Impact' },
-  { id: 'recommendations', heading: 'Recommendations' },
   { id: 'portfolio', heading: 'Project Portfolio' },
+  { id: 'recommendations', heading: 'Recommendations' },
   { id: 'recognition', heading: 'Public Recognition' },
 ]
 
 export const sectionNav = [
   { label: 'About', href: '#about' },
   { label: 'Impact', href: '#impact' },
-  { label: 'Recommendations', href: '#recommendations' },
   { label: 'Portfolio', href: '#portfolio' },
+  { label: 'Recommendations', href: '#recommendations' },
   { label: 'Recognition', href: '#recognition' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -31,7 +31,7 @@ export const recommendations = {
     'Director of Design',
     'Director of Marketing',
     'Senior Customer Success Manager',
-    'Co-Founder & Managing Director',
+    'Cofounder & Managing Director',
     'Software Developer',
   ],
   'ID Business Solutions': [
@@ -55,14 +55,12 @@ export const recognition = {
 }
 
 export const projects = {
-  'Video Games': ['Critterwave', 'Flickmoji'],
-  'Web Applications': [
-    'Affirming Access',
-    'Decisionator',
+  Games: ['Critterwave', 'Flickmoji'],
+  'Web Apps': [
     'Limerickster',
+    'Affirming Access',
     'Rancid Tomatillos',
-    'Type My Pet',
-    'Vibin Airline',
+    'Decisionator',
   ],
 }
 

@@ -12,6 +12,6 @@ export const impactAreas = [
   {
     title: 'Mentorship Through Advocacy',
     description:
-      'Founder of Neurodiversity In Tech (ND In Tech) and co-founder of Colorado Badged Network (CBN), building professional communities. Instructor and mentor at a nonprofit code school for underrepresented adults. Participates in panels, interviews, and discussions on accessibility and inclusion.',
+      'Founder of Neurodiversity In Tech (ND In Tech) and cofounder of Colorado Badged Network (CBN), building professional communities. Instructor and mentor at a nonprofit code school for underrepresented adults. Participates in panels, interviews, and discussions on accessibility and inclusion.',
   },
 ]

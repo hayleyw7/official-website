@@ -23,8 +23,8 @@ export default function App() {
       <main>
         <Introduction />
         <Impact />
-        <Recommendations />
         <Portfolio />
+        <Recommendations />
         <Recognition />
       </main>
       <Footer contactNavigation={contactNavigation} />

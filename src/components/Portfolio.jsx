@@ -3,7 +3,7 @@ import RecognitionCard from './RecognitionCard.jsx'
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="main style2 special">
+    <section id="portfolio" className="main style1 special">
       <div className="container">
         <header className="major"><h2>Project Portfolio</h2></header>
         {projectGroups.map((group) => (

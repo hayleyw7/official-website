@@ -4,7 +4,7 @@ export const recognitionGroups = [
     items: [
       {
         title: 'Volunteer of the Month',
-        description: 'Code the Dream recognition for teaching and mentoring',
+        description: 'Code The Dream recognition for teaching and mentoring',
         url: 'https://codethedream.org/meet-hayley-witherell-ctds-volunteer-of-the-month/',
         label: 'Article',
       },
@@ -56,7 +56,7 @@ export const recognitionGroups = [
       },
       {
         title: 'Wikipedia',
-        description: 'Wikipedia article noting my role as a CBN co-founder',
+        description: 'Wikipedia article noting my role as a CBN cofounder',
         url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
         label: 'Article',
       },

@@ -185,29 +185,25 @@ body.is-preload #header .embark-btn::after {
 }
 
 #profile h2,
-#recommendations h2,
+#portfolio h2,
 #recognition h2,
 .tagline {
 	color: v.$color-blue-gray;
 }
 
 #impact h2,
-#portfolio h2 {
+#recommendations h2 {
 	color: v.$color-nav-border;
 }
 
-#recommendations h3,
+#portfolio h3,
 #recognition h3 {
 	color: v.$color-slate;
 }
 
 #impact h3,
-#portfolio h3 {
+#recommendations h3 {
 	color: v.$color-nav-text;
-}
-
-#portfolio h4 {
-	color: v.$color-white;
 }
 
 @media screen and (max-width: v.$breakpoint-tablet) {

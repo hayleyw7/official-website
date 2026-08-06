@@ -22,9 +22,19 @@
 }
 
 #recognition .content-group .button,
-#recommendations .content-group .button,
-#recommendations .recommendations-source .button {
+#portfolio .content-group .button {
   color: v.$color-button;
+}
+
+#portfolio .content-group .button:disabled {
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+#portfolio .content-group .button:disabled:hover {
+  background-color: v.$color-surface;
+  box-shadow: inset 0 0 0 1px v.$color-nav-text;
+  color: v.$color-blue-gray;
 }
 
 .content-group .button:hover {
@@ -33,8 +43,7 @@
 }
 
 #recognition .content-group .button:hover,
-#recommendations .content-group .button:hover,
-#recommendations .recommendations-source .button:hover {
+#portfolio .content-group .button:hover {
   background-color: v.$color-button;
   color: v.$color-white;
 }

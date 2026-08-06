@@ -23,8 +23,8 @@ describe('initial rendering', () => {
       expect([...$sections].map((section) => section.id)).to.deep.equal([
         'about',
         'impact',
-        'recommendations',
         'portfolio',
+        'recommendations',
         'recognition',
       ])
     })
