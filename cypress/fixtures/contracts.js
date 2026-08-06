@@ -42,7 +42,7 @@ export const recommendations = {
 
 export const recognition = {
   'Awards & Honors': ['Volunteer of the Month', 'Arrows Making an Impact'],
-  'Panels & Interviews': ['Code The Dream', 'Turing Showcase'],
+  'Panels & Interviews': ['Code The Dream', 'Turing Alumni Showcase'],
   'Media & Publications': [
     'The Cognitive Edge',
     'Neurodiverse Hackers',

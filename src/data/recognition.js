@@ -4,13 +4,13 @@ export const recognitionGroups = [
     items: [
       {
         title: 'Volunteer of the Month',
-        description: 'Recognition for mentoring at a coding nonprofit',
+        description: 'Code the Dream recognition for teaching and mentoring',
         url: 'https://codethedream.org/meet-hayley-witherell-ctds-volunteer-of-the-month/',
         label: 'Article',
       },
       {
         title: 'Arrows Making an Impact',
-        description: 'Recognition for supporting marginalized STEM workers',
+        description: 'St. Ursula Academy recognition for founding ND In Tech',
         url: 'https://www.toledosua.org/alumnae/news/post/~board/alumnae-news/post/making-an-impact-hayley-witherell',
         label: 'Article',
       },
@@ -26,8 +26,8 @@ export const recognitionGroups = [
         label: 'Post',
       },
       {
-        title: 'Turing Showcase',
-        description: 'Interview about founding a tech community',
+        title: 'Turing Alumni Showcase',
+        description: 'Interview about founding ND In Tech',
         url: 'https://www.youtube.com/watch?v=EStNdU5JQo4',
         label: 'Video',
       },
@@ -56,25 +56,25 @@ export const recognitionGroups = [
       },
       {
         title: 'Wikipedia',
-        description: 'Wikipedia article noting my role as a co-founder',
+        description: 'Wikipedia article noting my role as a CBN co-founder',
         url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
         label: 'Article',
       },
       {
         title: 'GEN & Biotech News',
-        description: 'Article featuring my analytical chemistry insights',
+        description: 'Article quoting my insight on pesticide testing',
         url: 'https://www.genengnews.com/insights/medical-cannabi-poses-unique-testing-challenges/',
         label: 'Article',
       },
       {
         title: 'Seed to Sound',
-        description: 'Podcast on a community I co-founded',
+        description: 'Podcast on running CBN while working full-time',
         url: 'https://www.listennotes.com/podcasts/seed-to-sound/episode-2-colorado-badged-R6JEiGH-2SQ/',
         label: 'Episode',
       },
       {
         title: 'The Rooster',
-        description: 'Article on an industry network I co-founded',
+        description: "Article on CBN's growth and impact on industry workers",
         url: 'https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
         label: 'Article',
       },
