@@ -4,16 +4,16 @@ import RecommendationCard from './RecommendationCard.jsx'
 
 export default function Recommendations() {
   return (
-    <section id="recommendations" className="main style2 special">
+    <section id="reviews" className="main style2 special">
       <div className="container">
         <header className="major">
-          <h2>Recommendations</h2>
-          <ul className="actions special recommendations-source">
+          <h2>Reviews</h2>
+          <ul className="actions special reviews-source">
             <li>
               <ExternalLink
                 url={recommendationsUrl}
                 className="button"
-                label="View recommendations on LinkedIn"
+                label="View reviews on LinkedIn"
               >
                 View on LinkedIn
               </ExternalLink>

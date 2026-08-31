@@ -118,8 +118,8 @@ describe('mobile and narrow layout', () => {
       })
 
       it('left-aligns recommendation quotes on mobile', () => {
-        cy.get('#recommendations .content-group article').each(($article) => {
-          cy.wrap($article).find('.recommendation-quote').should('have.css', 'text-align', 'left')
+        cy.get('#reviews .content-group article').each(($article) => {
+          cy.wrap($article).find('.review-quote').should('have.css', 'text-align', 'left')
         })
       })
 
@@ -148,7 +148,7 @@ describe('mobile and narrow layout', () => {
       })
 
       it('uses matching vertical padding across main sections', () => {
-        const sectionSelectors = ['#impact', '#recommendations', '#portfolio', '#recognition']
+        const sectionSelectors = ['#impact', '#reviews', '#portfolio', '#recognition']
         cy.get('#impact').invoke('css', 'padding-top').then((paddingTop) => {
           cy.get('#impact').invoke('css', 'padding-bottom').then((paddingBottom) => {
             sectionSelectors.forEach((selector) => {

@@ -2,7 +2,7 @@ export const sections = [
   { id: 'about', heading: 'Building Reliable, Usable Systems' },
   { id: 'impact', heading: 'Professional & Community Impact' },
   { id: 'portfolio', heading: 'Project Portfolio' },
-  { id: 'recommendations', heading: 'Recommendations' },
+  { id: 'reviews', heading: 'Reviews' },
   { id: 'recognition', heading: 'Public Recognition' },
 ]
 
@@ -10,7 +10,7 @@ export const sectionNav = [
   { label: 'About', href: '#about' },
   { label: 'Impact', href: '#impact' },
   { label: 'Portfolio', href: '#portfolio' },
-  { label: 'Recommendations', href: '#recommendations' },
+  { label: 'Reviews', href: '#reviews' },
   { label: 'Recognition', href: '#recognition' },
   { label: 'Contact', href: '#contact' },
 ]

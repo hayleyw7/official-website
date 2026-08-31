@@ -11,7 +11,7 @@
 
 #portfolio .content-group > .media-title,
 #recognition .content-group > .media-title,
-#recommendations .content-group > .media-title {
+#reviews .content-group > .media-title {
   text-align: left;
 }
 
@@ -50,7 +50,7 @@
 
 @media screen and (min-width: 851px) and (max-width: v.$breakpoint-tablet) {
   #portfolio .content-group article,
-  #recommendations .content-group article,
+  #reviews .content-group article,
   #recognition .content-group article {
     width: 50%;
   }
@@ -59,6 +59,10 @@
 @media screen and (max-width: v.$breakpoint-mobile) {
   .content-group:not(:first-of-type) {
     margin-top: 0.75em;
+  }
+
+  #reviews .content-group:not(:first-of-type) {
+    margin-top: 1.2em;
   }
 
   .content-group article h4 {

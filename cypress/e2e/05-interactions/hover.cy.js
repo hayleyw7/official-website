@@ -89,7 +89,7 @@ describe('hover states', () => {
       expect(buttonRule.style.backgroundColor).to.equal(BLUE_GRAY)
       expect(linkRule.style.color).to.equal(WHITE)
     })
-    cy.get('#recommendations .recommendations-source .button').trigger('mouseover').should('be.visible')
+    cy.get('#reviews .reviews-source .button').trigger('mouseover').should('be.visible')
   })
 
   it('keeps the disabled project action visually distinct on hover', () => {

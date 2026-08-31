@@ -86,7 +86,7 @@ describe('desktop layout', () => {
   it('has no horizontal page overflow', () => cy.assertNoHorizontalOverflow())
 
   it('left-aligns project and recognition card contents', () => {
-    cy.get('#portfolio .content-group > .media-title, #recognition .content-group > .media-title, #recommendations .content-group > .media-title')
+    cy.get('#portfolio .content-group > .media-title, #recognition .content-group > .media-title, #reviews .content-group > .media-title')
       .each(($heading) => cy.wrap($heading).should('have.css', 'text-align', 'left'))
     cy.get('#portfolio .content-group article, #recognition .content-group article').each(($card) => {
       cy.wrap($card).should('have.css', 'text-align', 'left')
@@ -210,7 +210,7 @@ describe('desktop layout', () => {
         expect(firstRow.length).to.equal(6)
       })
 
-      cy.get('#portfolio article, #recommendations article, #recognition article').each(($card) => {
+      cy.get('#portfolio article, #reviews article, #recognition article').each(($card) => {
         expect($card[0].getBoundingClientRect().width).to.be.closeTo(
           $card[0].parentElement.getBoundingClientRect().width / 2,
           2,
@@ -232,7 +232,7 @@ describe('desktop layout', () => {
       cy.get('.skill-col').should(($skills) => {
         expect(Number.parseFloat(getComputedStyle($skills[0]).paddingTop)).to.be.lessThan(8)
       })
-      cy.get('#contact .footer-text span').should('be.visible')
+      cy.get('#contact .footer-text').should('be.visible')
     })
 
     it('stacks sections at 850px without applying the two-column heading split', () => {
@@ -254,9 +254,9 @@ describe('desktop layout', () => {
 
       cy.get('#profile h2 .mobile-line-break').should('have.css', 'display', 'inline')
       cy.get('#impact h2 .mobile-line-break').should('have.css', 'display', 'block')
-      cy.get('#contact .footer-text span').should('be.visible')
+      cy.get('#contact .footer-text').should('be.visible')
 
-      cy.get('#portfolio article, #recommendations article, #recognition article').each(($card) => {
+      cy.get('#portfolio article, #reviews article, #recognition article').each(($card) => {
         expect($card[0].getBoundingClientRect().width).to.be.closeTo(
           $card[0].parentElement.getBoundingClientRect().width,
           2,

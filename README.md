@@ -19,7 +19,7 @@ The page is a single scrolling portfolio with alternating light and dark section
 | **Hero** | `#header` | Gradient header, cloud animation, Embark CTA |
 | **About** | `#about` | Bio (`#profile`), portrait, and tech stack (`#skills`) |
 | **Impact** | `#impact` | Professional and community impact |
-| **Recommendations** | `#recommendations` | Quotes grouped by company |
+| **Reviews** | `#reviews` | Quotes grouped by company |
 | **Portfolio** | `#portfolio` | Video games and web applications |
 | **Recognition** | `#recognition` | Awards, panels, and media coverage |
 | **Contact** | `#contact` | Invitation text, social links, and email |

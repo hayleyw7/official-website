@@ -175,14 +175,13 @@ describe('tablet layout', () => {
     cy.assertNoHorizontalOverflow()
   })
 
-  it('shortens the footer invitation at 500px', () => {
+  it('keeps the footer invitation visible around 500px', () => {
     cy.viewport(501, 800)
-    cy.get('#contact .footer-text span').should('be.visible')
+    cy.get('#contact .footer-text').should('be.visible').and('contain.text', 'Reach out to connect.')
     cy.assertNoHorizontalOverflow()
 
     cy.viewport(500, 800)
-    cy.get('#contact .footer-text span').should('not.be.visible')
-    cy.get('#contact .footer-text').should('contain.text', 'Reach out to connect.')
+    cy.get('#contact .footer-text').should('be.visible').and('contain.text', 'Reach out to connect.')
     cy.assertNoHorizontalOverflow()
   })
 })

@@ -1,5 +1,5 @@
 describe('document metadata', () => {
-  const previewDescription = 'Full-stack software engineer specializing in Ruby on Rails and JavaScript. Featured projects, professional recommendations, community leadership, and recognition.'
+  const previewDescription = 'Full-stack software engineer specializing in Ruby on Rails and JavaScript. Featured projects, professional reviews, community leadership, and recognition.'
 
   beforeEach(() => cy.visitHome())
 

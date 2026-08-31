@@ -45,7 +45,7 @@ describe('scroll behavior', () => {
   })
 
   it('can scroll through each major section and reach the footer', () => {
-    ;['#about', '#impact', '#portfolio', '#recommendations', '#recognition', '#contact'].forEach((selector) => {
+    ;['#about', '#impact', '#portfolio', '#reviews', '#recognition', '#contact'].forEach((selector) => {
       cy.get(selector).scrollIntoView().should('be.visible')
     })
     cy.window().its('scrollY').should('be.greaterThan', 0)
@@ -162,7 +162,7 @@ describe('scroll behavior', () => {
     const destinations = [
       ['#about', '#about'],
       ['#impact', '#impact'],
-      ['#recommendations', '#recommendations'],
+      ['#reviews', '#reviews'],
       ['#portfolio', '#portfolio'],
       ['#recognition', '#recognition'],
     ]

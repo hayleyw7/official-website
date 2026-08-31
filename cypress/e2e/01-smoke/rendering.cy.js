@@ -24,7 +24,7 @@ describe('initial rendering', () => {
         'about',
         'impact',
         'portfolio',
-        'recommendations',
+        'reviews',
         'recognition',
       ])
     })
