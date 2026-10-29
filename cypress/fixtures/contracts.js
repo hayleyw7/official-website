@@ -62,7 +62,7 @@ export const projects = {
     'Rancid Tomatillos',
     'Decisionator',
   ],
-  'Desktop Apps': ['Frankesso'],
+  'Desktop Apps': ['Frankesso', 'Digital Bug-Out Kit'],
 }
 
 export const recommendationsUrl =

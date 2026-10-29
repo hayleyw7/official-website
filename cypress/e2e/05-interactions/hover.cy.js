@@ -92,6 +92,12 @@ describe('hover states', () => {
     cy.get('#reviews .reviews-source .button').trigger('mouseover').should('be.visible')
   })
 
+  it('keeps the Digital Bug-Out Kit action disabled on hover', () => {
+    cy.contains('#portfolio article h4', 'Digital Bug-Out Kit').closest('article').find('button.button')
+      .trigger('mouseover', { force: true })
+      .should('be.disabled')
+  })
+
   it('defines a visible footer-link hover color', () => {
     cy.window().then((window) => {
       const rule = findRule(window, '#contact a:hover')
