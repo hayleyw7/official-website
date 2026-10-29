@@ -45,7 +45,7 @@ export const recognitionGroups = [
       {
         title: 'Neurodiverse Hackers',
         description: 'Article listing my ND In Tech work as a resource',
-        url: 'https://web.archive.org/web/20260415043937/https://neurodiversehackers.com/building-an-inclusive-future-with-neurodiversity-in-tech/',
+        url: 'https://ndhack.org/articles/building-an-inclusive-future',
         label: 'Article',
       },
       {

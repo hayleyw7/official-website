@@ -8,6 +8,7 @@ describe('keyboard accessibility', () => {
       'Affirming Access',
       'Rancid Tomatillos',
       'Decisionator',
+      'Frankesso',
     ]
     const recognitionTitles = [
       'Volunteer of the Month',

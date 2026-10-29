@@ -55,13 +55,14 @@ export const recognition = {
 }
 
 export const projects = {
-  Games: ['Critterwave', 'Flickmoji'],
+  Games: ['Critterwave'],
   'Web Apps': [
     'Limerickster',
     'Affirming Access',
     'Rancid Tomatillos',
     'Decisionator',
   ],
+  'Offline Tools': ['Frankesso', 'Digital Bug-Out Bag'],
 }
 
 export const recommendationsUrl =

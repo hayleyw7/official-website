@@ -18,7 +18,7 @@ describe('projects content', () => {
   })
 
   it('pairs every project card with descriptive copy and one action', () => {
-    cy.get('#portfolio .content-group article').should('have.length', 6).each(($article) => {
+    cy.get('#portfolio .content-group article').should('have.length', 7).each(($article) => {
       cy.wrap($article).within(() => {
         cy.get('h4').invoke('text').should('not.be.empty')
         cy.get('p').invoke('text').should('have.length.greaterThan', 10)
@@ -27,9 +27,13 @@ describe('projects content', () => {
     })
   })
 
-  it('shows Flickmoji as coming soon with a disabled action', () => {
-    cy.contains('#portfolio article h4', 'Flickmoji').closest('article').within(() => {
-      cy.get('p').should('contain.text', 'Movie trivia aficionado? Prove it!')
+  it('keeps Flickmoji commented out of the rendered portfolio', () => {
+    cy.contains('#portfolio article h4', 'Flickmoji').should('not.exist')
+  })
+
+  it('shows Digital Bug-Out Bag as coming soon with a disabled action', () => {
+    cy.contains('#portfolio article h4', 'Digital Bug-Out Bag').closest('article').within(() => {
+      cy.get('p').should('contain.text', 'Outage ahead? Pack your essentials!')
       cy.get('button.button')
         .should('be.disabled')
         .and('have.text', 'Soon')
@@ -40,7 +44,7 @@ describe('projects content', () => {
     })
 
     cy.get('#portfolio a.button').first().then(($activeButton) => {
-      cy.contains('#portfolio article h4', 'Flickmoji').closest('article').find('button.button')
+      cy.contains('#portfolio article h4', 'Digital Bug-Out Bag').closest('article').find('button.button')
         .should('have.css', 'font-family', $activeButton.css('font-family'))
         .and('have.css', 'font-size', $activeButton.css('font-size'))
         .and('have.css', 'height', $activeButton.css('height'))
