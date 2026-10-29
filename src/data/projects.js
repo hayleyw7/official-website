@@ -54,7 +54,7 @@ export const projectGroups = [
     ],
   },
   {
-    title: 'Desktop Apps',
+    title: 'Offline Tools',
     items: [
       {
         title: 'Frankesso',
