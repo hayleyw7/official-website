@@ -8,12 +8,6 @@ export const projectGroups = [
         url: 'https://bunhouse.itch.io/critterwave',
         label: 'Play',
       },
-      {
-        title: 'Whimsy Grove',
-        description: 'Feeling whimsical? Create your own grove art!',
-        url: 'https://bunhouse.itch.io/whimsy-grove/',
-        label: 'Play',
-      },
       /*
       {
         title: 'Flickmoji',

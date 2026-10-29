@@ -55,7 +55,7 @@ export const recognition = {
 }
 
 export const projects = {
-  Games: ['Critterwave', 'Whimsy Grove'],
+  Games: ['Critterwave'],
   'Web Apps': [
     'Limerickster',
     'Affirming Access',
