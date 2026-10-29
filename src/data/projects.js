@@ -58,12 +58,12 @@ export const projectGroups = [
     items: [
       {
         title: 'Frankesso',
-        description: 'Offline but still need AI? Meet your new agent!',
+        description: 'Need AI when offline? Meet your new agent!',
         url: 'https://github.com/hayleyw7/frankesso-ai',
         label: 'Explore',
       },
       {
-        title: 'Digital Bug-Out Kit',
+        title: 'Digital Bug-Out Bag',
         description: 'Preparing for an outage? Keep your digital essentials close!',
         label: 'Soon',
         comingSoon: true,

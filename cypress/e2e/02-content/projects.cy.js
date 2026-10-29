@@ -31,8 +31,8 @@ describe('projects content', () => {
     cy.contains('#portfolio article h4', 'Flickmoji').should('not.exist')
   })
 
-  it('shows Digital Bug-Out Kit as coming soon with a disabled action', () => {
-    cy.contains('#portfolio article h4', 'Digital Bug-Out Kit').closest('article').within(() => {
+  it('shows Digital Bug-Out Bag as coming soon with a disabled action', () => {
+    cy.contains('#portfolio article h4', 'Digital Bug-Out Bag').closest('article').within(() => {
       cy.get('p').should('contain.text', 'Preparing for an outage? Keep your digital essentials close!')
       cy.get('button.button')
         .should('be.disabled')
@@ -44,7 +44,7 @@ describe('projects content', () => {
     })
 
     cy.get('#portfolio a.button').first().then(($activeButton) => {
-      cy.contains('#portfolio article h4', 'Digital Bug-Out Kit').closest('article').find('button.button')
+      cy.contains('#portfolio article h4', 'Digital Bug-Out Bag').closest('article').find('button.button')
         .should('have.css', 'font-family', $activeButton.css('font-family'))
         .and('have.css', 'font-size', $activeButton.css('font-size'))
         .and('have.css', 'height', $activeButton.css('height'))
