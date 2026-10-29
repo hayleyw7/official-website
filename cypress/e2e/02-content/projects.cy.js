@@ -33,7 +33,7 @@ describe('projects content', () => {
 
   it('shows Digital Bug-Out Bag as coming soon with a disabled action', () => {
     cy.contains('#portfolio article h4', 'Digital Bug-Out Bag').closest('article').within(() => {
-      cy.get('p').should('contain.text', 'Preparing for an outage? Keep your digital essentials close!')
+      cy.get('p').should('contain.text', 'Outage ahead? Pack your essentials!')
       cy.get('button.button')
         .should('be.disabled')
         .and('have.text', 'Soon')

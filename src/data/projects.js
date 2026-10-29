@@ -64,7 +64,7 @@ export const projectGroups = [
       },
       {
         title: 'Digital Bug-Out Bag',
-        description: 'Preparing for an outage? Keep your digital essentials close!',
+        description: 'Outage ahead? Pack your essentials!',
         label: 'Soon',
         comingSoon: true,
       },
