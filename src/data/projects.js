@@ -9,17 +9,19 @@ export const projectGroups = [
         label: 'Play',
       },
       {
+        title: 'Whimsy Grove',
+        description: 'Feeling whimsical? Create your own grove art!',
+        url: 'https://bunhouse.itch.io/whimsy-grove/',
+        label: 'Play',
+      },
+      /*
+      {
         title: 'Flickmoji',
         description: 'Movie trivia aficionado? Prove it!',
         label: 'Soon',
         comingSoon: true,
       },
-      {
-        title: 'Whimsy Grove',
-        description: 'Inspired by a prompt? Build a scene and unlock achievements!',
-        url: 'https://bunhouse.itch.io/whimsy-grove/',
-        label: 'Play',
-      },
+      */
     ],
   },
   {

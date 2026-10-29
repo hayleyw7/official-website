@@ -92,18 +92,6 @@ describe('hover states', () => {
     cy.get('#reviews .reviews-source .button').trigger('mouseover').should('be.visible')
   })
 
-  it('keeps the disabled project action visually distinct on hover', () => {
-    cy.window().then((window) => {
-      const rule = findRule(window, '#portfolio .content-group .button:disabled:hover')
-      expect(rule, 'disabled project button hover rule').to.exist
-      expect(rule.style.backgroundColor).to.equal('rgb(245, 247, 248)')
-      expect(rule.style.color).to.equal(BLUE_GRAY)
-    })
-    cy.get('#portfolio .content-group .button:disabled')
-      .trigger('mouseover', { force: true })
-      .should('be.disabled')
-  })
-
   it('defines a visible footer-link hover color', () => {
     cy.window().then((window) => {
       const rule = findRule(window, '#contact a:hover')
