@@ -14,6 +14,12 @@ export const projectGroups = [
         label: 'Soon',
         comingSoon: true,
       },
+      {
+        title: 'Whimsy Grove',
+        description: 'Inspired by a prompt? Build a scene and unlock achievements!',
+        url: 'https://bunhouse.itch.io/whimsy-grove/',
+        label: 'Play',
+      },
     ],
   },
   {
@@ -33,15 +39,26 @@ export const projectGroups = [
       },
       {
         title: 'Rancid Tomatillos',
-        description: "Want to watch a film? We'll help you pick!",
+        description: 'Movie night? Find your next favorite!',
         url: 'https://hayleyw7.github.io/rancid-tomatillos/',
         label: 'Browse',
       },
       {
         title: 'Decisionator',
-        description: "Can't make a decision? We can help!",
+        description: 'Can’t make a decision? Get an answer!',
         url: 'https://decisionator.surge.sh/',
         label: 'Decide',
+      },
+    ],
+  },
+  {
+    title: 'Desktop Apps',
+    items: [
+      {
+        title: 'Frankesso',
+        description: 'Offline but still need AI? Meet your new agent!',
+        url: 'https://github.com/hayleyw7/frankesso-ai',
+        label: 'Explore',
       },
     ],
   },

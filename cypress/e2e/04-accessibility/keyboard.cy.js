@@ -4,10 +4,12 @@ describe('keyboard accessibility', () => {
   it('reaches interactive elements in visual document order', () => {
     const projectTitles = [
       'Critterwave',
+      'Whimsy Grove',
       'Limerickster',
       'Affirming Access',
       'Rancid Tomatillos',
       'Decisionator',
+      'Frankesso',
     ]
     const recognitionTitles = [
       'Volunteer of the Month',
