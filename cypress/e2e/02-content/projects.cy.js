@@ -34,7 +34,20 @@ describe('projects content', () => {
   it('shows Digital Bug-Out Kit as coming soon with a disabled action', () => {
     cy.contains('#portfolio article h4', 'Digital Bug-Out Kit').closest('article').within(() => {
       cy.get('p').should('contain.text', 'Preparing for an outage? Keep your digital essentials close!')
-      cy.get('button.button').should('be.disabled').and('have.text', 'Soon')
+      cy.get('button.button')
+        .should('be.disabled')
+        .and('have.text', 'Soon')
+        .and('have.css', 'color', 'rgb(95, 113, 132)')
+        .and('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+        .and('have.css', 'cursor', 'not-allowed')
+        .and('have.css', 'opacity', '1')
+    })
+
+    cy.get('#portfolio a.button').first().then(($activeButton) => {
+      cy.contains('#portfolio article h4', 'Digital Bug-Out Kit').closest('article').find('button.button')
+        .should('have.css', 'font-family', $activeButton.css('font-family'))
+        .and('have.css', 'font-size', $activeButton.css('font-size'))
+        .and('have.css', 'height', $activeButton.css('height'))
     })
   })
 })

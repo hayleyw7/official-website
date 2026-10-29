@@ -93,6 +93,12 @@ describe('hover states', () => {
   })
 
   it('keeps the Digital Bug-Out Kit action disabled on hover', () => {
+    cy.window().then((window) => {
+      const rule = findRule(window, '#portfolio .content-group .button:disabled:hover')
+      expect(rule, 'disabled project button hover rule').to.exist
+      expect(rule.style.backgroundColor).to.equal('rgb(245, 247, 248)')
+      expect(rule.style.color).to.equal(BLUE_GRAY)
+    })
     cy.contains('#portfolio article h4', 'Digital Bug-Out Kit').closest('article').find('button.button')
       .trigger('mouseover', { force: true })
       .should('be.disabled')

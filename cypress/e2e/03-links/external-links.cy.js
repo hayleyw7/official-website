@@ -24,7 +24,7 @@ describe('external links', () => {
     })
   })
 
-  it('uses the deployed Decisionator URL and archived Neurodiverse Hackers article', () => {
+  it('uses the deployed Decisionator URL and current Neurodiverse Hackers article', () => {
     cy.contains('#portfolio article h4', 'Decisionator').closest('article').find('a.button')
       .should('have.attr', 'href', 'https://decisionator.surge.sh/')
 
@@ -32,7 +32,7 @@ describe('external links', () => {
       .should(
         'have.attr',
         'href',
-        'https://web.archive.org/web/20260415043937/https://neurodiversehackers.com/building-an-inclusive-future-with-neurodiversity-in-tech/',
+        'https://ndhack.org/articles/building-an-inclusive-future',
       )
   })
 
