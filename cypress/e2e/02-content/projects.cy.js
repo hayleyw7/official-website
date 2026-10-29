@@ -18,7 +18,7 @@ describe('projects content', () => {
   })
 
   it('pairs every project card with descriptive copy and one action', () => {
-    cy.get('#portfolio .content-group article').should('have.length', 7).each(($article) => {
+    cy.get('#portfolio .content-group article').should('have.length', 8).each(($article) => {
       cy.wrap($article).within(() => {
         cy.get('h4').invoke('text').should('not.be.empty')
         cy.get('p').invoke('text').should('have.length.greaterThan', 10)
