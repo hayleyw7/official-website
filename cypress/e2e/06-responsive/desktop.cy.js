@@ -51,18 +51,16 @@ describe('desktop layout', () => {
     })
   })
 
-  it('renders individually separated skill chips', () => {
-    cy.get('.skill-col').then(() => {
+  it('keeps the skill labels separated inside their panel', () => {
+    cy.get('.skill-col').then(($box) => {
       cy.get('.skill').then(($skills) => {
         const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
         expect($skills).to.have.length(4)
-        bounds.forEach((bound, index) => {
-          expect(bound.width).to.be.greaterThan(0)
-          expect(getComputedStyle($skills[index]).borderStyle).to.equal('solid')
-          expect(getComputedStyle($skills[index]).backgroundColor).to.not.equal('rgba(0, 0, 0, 0)')
-          if (index > 0) {
-            expect(bound.left - bounds[index - 1].right).to.be.at.least(0)
-          }
+        expect(getComputedStyle($box[0]).borderStyle).to.equal('solid')
+        expect(getComputedStyle($box[0]).backgroundColor).to.equal('rgb(245, 247, 248)')
+        bounds.forEach((bound) => expect(bound.width).to.be.greaterThan(0))
+        bounds.slice(1).forEach((bound, index) => {
+          expect(bound.left - bounds[index].right).to.be.at.least(0)
         })
       })
     })

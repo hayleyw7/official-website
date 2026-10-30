@@ -25,7 +25,7 @@ describe('color and typography contracts', () => {
   })
 
   it('uses the intended skill panel palette and monospace type', () => {
-    cy.get('.skill').first()
+    cy.get('.skill-col')
       .should('have.css', 'background-color', 'rgb(245, 247, 248)')
       .and('have.css', 'color', 'rgb(38, 53, 71)')
       .and('have.css', 'border-top-color', 'rgb(109, 127, 146)')
