@@ -133,6 +133,12 @@ describe('mobile and narrow layout', () => {
           .and('contain.text', 'Community Impact')
       })
 
+      it('matches organization card heading size to recognition cards', () => {
+        cy.get('#organizations article h4').first().invoke('css', 'font-size').then((organizationSize) => {
+          cy.get('#recognition article h4').first().should('have.css', 'font-size', organizationSize)
+        })
+      })
+
       it('uses compact spacing between recognition groups', () => {
         cy.get('#recognition .content-group:first-of-type')
           .should('have.css', 'margin-top', '0px')

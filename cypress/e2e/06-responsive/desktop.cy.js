@@ -94,6 +94,12 @@ describe('desktop layout', () => {
         .should('have.css', 'justify-content', 'flex-start')
         .and('have.css', 'text-align', 'left')
     })
+
+    it('matches organization card heading size to recognition cards', () => {
+      cy.get('#organizations article h4').first().invoke('css', 'font-size').then((organizationSize) => {
+        cy.get('#recognition article h4').first().should('have.css', 'font-size', organizationSize)
+      })
+    })
   })
 
   it('places the single Critterwave card in the left project column', () => {
