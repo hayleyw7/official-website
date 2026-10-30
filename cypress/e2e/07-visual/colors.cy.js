@@ -19,6 +19,8 @@ describe('color and typography contracts', () => {
     cy.get('#recognition').should('have.css', 'background-color', 'rgb(255, 255, 255)')
     cy.get('#recognition h2').should('have.css', 'color', 'rgb(109, 127, 146)')
     cy.get('#recognition h3').should('have.css', 'color', 'rgb(51, 60, 68)')
+    cy.get('#organizations').should('have.css', 'background-color', 'rgb(51, 60, 68)')
+    cy.get('#organizations h2').should('have.css', 'color', 'rgb(255, 255, 255)')
   })
 
   it('uses the intended skill panel palette and monospace type', () => {

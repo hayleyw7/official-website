@@ -22,6 +22,8 @@ describe('keyboard accessibility', () => {
       'GEN & Biotech News',
       'Seed to Sound',
       'The Rooster',
+      'Neurodiversity In Tech (ND In Tech)',
+      'Colorado Badged Network (CBN)',
     ]
     const expectedOrder = [
       'Embark',

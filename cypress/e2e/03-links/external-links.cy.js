@@ -9,6 +9,15 @@ describe('external links', () => {
     })
   })
 
+  it('renders the community organization website actions', () => {
+    cy.contains('#organizations article h4', 'Neurodiversity In Tech (ND In Tech)')
+      .closest('article').find('a.button')
+      .should('have.attr', 'href', 'https://nd-in-tech.org/')
+    cy.contains('#organizations article h4', 'Colorado Badged Network (CBN)')
+      .closest('article').find('a.button')
+      .should('have.attr', 'href', 'https://www.coloradobadgednetwork.com/')
+  })
+
   it('uses secure absolute destinations for every project action', () => {
     cy.get('#portfolio .content-group a').should('have.length', 6).each(($link) => {
       cy.wrap($link).assertExternalLinkIsSafe()
