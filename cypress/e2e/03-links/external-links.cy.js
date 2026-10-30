@@ -10,7 +10,7 @@ describe('external links', () => {
   })
 
   it('uses secure absolute destinations for every project action', () => {
-    cy.get('#portfolio .content-group a').should('have.length', 7).each(($link) => {
+    cy.get('#portfolio .content-group a').should('have.length', 6).each(($link) => {
       cy.wrap($link).assertExternalLinkIsSafe()
     })
   })

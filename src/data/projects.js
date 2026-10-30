@@ -11,8 +11,8 @@ export const projectGroups = [
       {
         title: 'Whimsy Grove',
         description: 'Feeling whimsical? Create your own grove art!',
-        url: 'https://bunhouse.itch.io/whimsy-grove/',
-        label: 'Play',
+        label: 'Soon',
+        comingSoon: true,
       },
       /*
       {
