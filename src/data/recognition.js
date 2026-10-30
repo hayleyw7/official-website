@@ -4,13 +4,13 @@ export const recognitionGroups = [
     items: [
       {
         title: 'Volunteer of the Month',
-        description: 'Code The Dream recognition for teaching and mentoring',
+        description: 'Recognition for educational service',
         url: 'https://codethedream.org/meet-hayley-witherell-ctds-volunteer-of-the-month/',
         label: 'Article',
       },
       {
         title: 'Arrows Making an Impact',
-        description: 'St. Ursula Academy recognition for founding ND In Tech',
+        description: 'Recognition for founding ND In Tech',
         url: 'https://www.toledosua.org/alumnae/news/post/~board/alumnae-news/post/making-an-impact-hayley-witherell',
         label: 'Article',
       },
@@ -21,7 +21,7 @@ export const recognitionGroups = [
     items: [
       {
         title: 'Code The Dream',
-        description: 'Panel discussion on mentoring and education',
+        description: 'Panel discussion on mentoring and teaching',
         url: 'https://www.linkedin.com/feed/update/urn:li:activity:7080232254467149824/',
         label: 'Post',
       },
@@ -50,13 +50,13 @@ export const recognitionGroups = [
       },
       {
         title: 'Sound Bytes',
-        description: 'Radio show recommendation for my Limerickster app',
+        description: 'Radio recommendation for Limerickster',
         url: 'https://www.youtube.com/watch?v=dBemPSROip8&t=2196s',
         label: 'Listen',
       },
       {
         title: 'Wikipedia',
-        description: 'Wikipedia article noting my role as a CBN cofounder',
+        description: 'Article noting my role as a CBN cofounder',
         url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
         label: 'Article',
       },
