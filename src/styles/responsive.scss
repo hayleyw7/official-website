@@ -332,6 +332,11 @@
 /* XSmall */
 
 @media screen and (max-width: v.$breakpoint-mobile) {
+	.main > .container,
+	#contact > .container {
+		max-width: 100%;
+	}
+
 	.skill-col {
 		gap: 0.15rem 0.15rem;
 		padding-block: 0.35rem;
