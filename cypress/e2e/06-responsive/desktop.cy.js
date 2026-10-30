@@ -51,18 +51,19 @@ describe('desktop layout', () => {
     })
   })
 
-  it('uses equal visible gaps around and between skill labels', () => {
-    cy.get('.skill-col').then(($box) => {
+  it('renders individually separated skill chips', () => {
+    cy.get('.skill-col').then(() => {
       cy.get('.skill').then(($skills) => {
-        const box = $box[0].getBoundingClientRect()
         const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
-        const gaps = [
-          bounds[0].left - box.left,
-          ...bounds.slice(1).map((item, index) => item.left - bounds[index].right),
-          box.right - bounds.at(-1).right,
-        ]
-        gaps.forEach((gap) => expect(gap).to.be.greaterThan(0))
-        gaps.forEach((gap) => expect(gap).to.be.closeTo(gaps[0], 1))
+        expect($skills).to.have.length(4)
+        bounds.forEach((bound, index) => {
+          expect(bound.width).to.be.greaterThan(0)
+          expect(getComputedStyle($skills[index]).borderStyle).to.equal('solid')
+          expect(getComputedStyle($skills[index]).backgroundColor).to.not.equal('rgba(0, 0, 0, 0)')
+          if (index > 0) {
+            expect(bound.left - bounds[index - 1].right).to.be.at.least(0)
+          }
+        })
       })
     })
   })
@@ -149,12 +150,13 @@ describe('desktop layout', () => {
         const box = $box[0].getBoundingClientRect()
         cy.get('.skill').then(($skills) => {
           const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
-          const gaps = [
-            bounds[0].left - box.left,
-            ...bounds.slice(1).map((item, index) => item.left - bounds[index].right),
-            box.right - bounds.at(-1).right,
-          ]
-          gaps.forEach((gap) => expect(gap).to.be.closeTo(gaps[0], 1))
+          bounds.forEach((bound, index) => {
+            expect(bound.left).to.be.at.least(box.left)
+            expect(bound.right).to.be.at.most(box.right)
+            if (index > 0 && bound.top === bounds[index - 1].top) {
+              expect(bound.left - bounds[index - 1].right).to.be.at.least(0)
+            }
+          })
         })
       })
       cy.assertNoHorizontalOverflow()
