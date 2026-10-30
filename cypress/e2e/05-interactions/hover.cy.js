@@ -113,13 +113,13 @@ describe('hover states', () => {
     cy.get('#contact a').first().trigger('mouseover').should('be.visible')
   })
 
-  it('defines a visible footer invitation hover color', () => {
+  it('defines a visible Connect action hover color', () => {
     cy.window().then((window) => {
-      const rule = findRule(window, '.footer-text:hover')
-      expect(rule, 'footer invitation hover rule').to.exist
-      expect(rule.style.color).to.equal(WHITE)
+      const rule = findRule(window, '#connect a:hover')
+      expect(rule, 'Connect action hover rule').to.exist
+      expect(rule.style.color).to.equal('rgb(18, 59, 76)')
     })
-    cy.get('#contact .footer-text').trigger('mouseover').should('be.visible')
+    cy.get('#connect a').trigger('mouseover').should('be.visible')
   })
 
   it('defines a visible section nav hover color', () => {
@@ -134,14 +134,6 @@ describe('hover states', () => {
     })
     cy.get('#section-nav').should('be.visible')
     cy.get('#section-nav a[href="#impact"]').trigger('mouseover').should('be.visible')
-  })
-
-  it('defines a footer invitation icon wiggle on hover', () => {
-    cy.window().then((window) => {
-      const rule = findRule(window, '.footer-text:hover + .icons li')
-      expect(rule, 'footer invitation icon hover rule').to.exist
-      expect(rule.style.animation).to.include('contact-icon-wiggle')
-    })
   })
 
   it('defines cloud raindrop animation on hover', () => {

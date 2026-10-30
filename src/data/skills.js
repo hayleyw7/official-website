@@ -1,1 +1,1 @@
-export const skills = ['JavaScript', 'Ruby on Rails', 'React', 'HTML/CSS']
+export const skills = ['JavaScript', 'Ruby on Rails', 'AI Automation', 'Accessible UX']

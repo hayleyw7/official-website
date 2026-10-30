@@ -143,9 +143,9 @@ describe('tablet layout', () => {
     })
 
     revealSectionNav()
-    cy.get('#section-nav a[href="#contact"]').click({ scrollBehavior: false })
-    cy.get('#contact').should('be.visible')
-    cy.get('#contact .icons').should('have.class', 'contact-arrival')
+    cy.get('#section-nav a[href="#connect"]').click({ scrollBehavior: false })
+    cy.get('#connect').should('be.visible')
+    cy.get('#connect a[href^="mailto:"]').should('be.visible')
     cy.assertNoHorizontalOverflow()
 
     cy.then(() => Cypress.automation('remote:debugger:protocol', {
@@ -156,8 +156,8 @@ describe('tablet layout', () => {
 
   it('has no horizontal page overflow', () => cy.assertNoHorizontalOverflow())
 
-  it('switches directly from six links in one row to two rows of three', () => {
-    cy.viewport(737, 800)
+  it('switches to four links then three links below the mobile breakpoint', () => {
+    cy.viewport(851, 800)
     cy.visitHome()
     revealSectionNav()
     cy.get('#section-nav li').then(($items) => {
@@ -165,23 +165,23 @@ describe('tablet layout', () => {
       expect(new Set(rows).size).to.equal(1)
     })
 
-    cy.viewport(736, 800)
+    cy.viewport(850, 800)
     cy.get('#section-nav li').then(($items) => {
       const rows = [...$items].map((item) => item.getBoundingClientRect().top)
-      expect(new Set(rows.slice(0, 3)).size).to.equal(1)
-      expect(new Set(rows.slice(3)).size).to.equal(1)
-      expect(rows[3]).to.be.greaterThan(rows[0])
+      expect(new Set(rows.slice(0, 4)).size).to.equal(1)
+      expect(new Set(rows.slice(4)).size).to.equal(1)
+      expect(rows[4]).to.be.greaterThan(rows[0])
     })
     cy.assertNoHorizontalOverflow()
   })
 
-  it('keeps the footer invitation visible around 500px', () => {
+  it('keeps the footer visible around 500px', () => {
     cy.viewport(501, 800)
-    cy.get('#contact .footer-text').should('be.visible').and('contain.text', 'Reach out to connect.')
+    cy.get('#contact').should('be.visible')
     cy.assertNoHorizontalOverflow()
 
     cy.viewport(500, 800)
-    cy.get('#contact .footer-text').should('be.visible').and('contain.text', 'Reach out to connect.')
+    cy.get('#contact').should('be.visible')
     cy.assertNoHorizontalOverflow()
   })
 })

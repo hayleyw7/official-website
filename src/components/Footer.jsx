@@ -22,15 +22,12 @@ export default function Footer({ contactNavigation }) {
 
   return (
     <footer id="contact" aria-label="Contact">
-      <p className="footer-text">
-        Reach out to connect.
-      </p>
       <ul
         key={animationRun}
         ref={iconsRef}
         className={`icons${animationRun ? ' contact-arrival' : ''}`}
       >
-        {socialLinks.map((link) => (
+        {socialLinks.filter((link) => link.label !== 'Email').map((link) => (
           <li key={link.label}>
             <ExternalLink
               url={link.url}

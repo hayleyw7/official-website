@@ -27,6 +27,7 @@ describe('initial rendering', () => {
         'reviews',
         'recognition',
         'organizations',
+        'connect',
       ])
     })
   })

@@ -56,7 +56,7 @@ export default function SectionNav({ onContactNavigate }) {
       }
 
       scrollToSection(hash, { behavior: 'auto', updateHistory: false, focusTarget: true })
-      if (hash === '#contact') onContactNavigateRef.current?.()
+      if (hash === '#connect') onContactNavigateRef.current?.()
       updateActiveSection()
     }
 
@@ -65,7 +65,7 @@ export default function SectionNav({ onContactNavigate }) {
       if (!hash) return
 
       scrollToSection(hash, { behavior: 'auto', updateHistory: false, focusTarget: true })
-      if (hash === '#contact') onContactNavigateRef.current?.()
+      if (hash === '#connect') onContactNavigateRef.current?.()
       updateActiveSection()
     }
 
@@ -96,7 +96,7 @@ export default function SectionNav({ onContactNavigate }) {
     event.preventDefault()
     scrollToSection(href, { focusTarget: true })
     setActiveHref(href)
-    if (href === '#contact') onContactNavigateRef.current?.()
+    if (href === '#connect') onContactNavigateRef.current?.()
   }
 
   return (

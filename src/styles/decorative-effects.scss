@@ -187,12 +187,14 @@ body.is-preload #header .embark-btn::after {
 #profile h2,
 #portfolio h2,
 #recognition h2,
+#connect h2,
 .tagline {
 	color: v.$color-blue-gray;
 }
 
 #impact h2,
-#reviews h2 {
+#reviews h2,
+#organizations h2 {
 	color: v.$color-nav-border;
 }
 

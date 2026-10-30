@@ -19,10 +19,8 @@ export default function Header() {
 
       <h1>Hayley Witherell</h1>
       <p className="tagline">
-        Software Engineer
-        <span className="tagline-detail">
-          &nbsp;&nbsp;|&nbsp;&nbsp; Organization Founder &nbsp;&nbsp;|&nbsp;&nbsp; Educational Volunteer
-        </span>
+        <span className="tagline-prefix">Full-Stack</span>{' '}
+        <span className="tagline-role">Software Engineer</span>
       </p>
       <ul className="actions special embark-container">
         <li>
