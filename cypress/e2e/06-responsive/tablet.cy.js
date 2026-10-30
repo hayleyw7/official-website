@@ -70,6 +70,18 @@ describe('tablet layout', () => {
     })
   })
 
+  it('keeps tablet impact icons centered inside the content column', () => {
+    cy.viewport(792, 1024)
+    cy.visitHome()
+    cy.get('#impact ul.major-icons').then(($icons) => {
+      const bounds = $icons[0].getBoundingClientRect()
+      const first = $icons[0].querySelector('li').getBoundingClientRect()
+      const last = $icons[0].querySelector('li:last-child').getBoundingClientRect()
+      expect(first.left).to.be.greaterThan(bounds.left)
+      expect(last.right).to.be.lessThan(bounds.right)
+    })
+  })
+
   it('matches organization card columns to recognition at the breakpoint', () => {
     cy.viewport(851, 1024)
     cy.visitHome()
