@@ -12,9 +12,11 @@ describe('external links', () => {
   it('renders the community organization website actions', () => {
     cy.contains('#organizations article h4', 'Neurodiversity In Tech')
       .closest('article').find('a.button')
+      .should('contain.text', 'Visit')
       .should('have.attr', 'href', 'https://nd-in-tech.org/')
     cy.contains('#organizations article h4', 'Colorado Badged Network')
       .closest('article').find('a.button')
+      .should('contain.text', 'Visit')
       .should('have.attr', 'href', 'https://www.coloradobadgednetwork.com/')
   })
 

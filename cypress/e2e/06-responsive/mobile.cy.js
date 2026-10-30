@@ -71,6 +71,16 @@ describe('mobile and narrow layout', () => {
         })
       })
 
+      it('aligns the right edges of Reviews and Connect', () => {
+        revealSectionNav()
+        cy.get('#section-nav a[href="#reviews"]').then(($reviews) => {
+          cy.get('#section-nav a[href="#connect"]').then(($connect) => {
+            expect($reviews[0].getBoundingClientRect().right)
+              .to.be.closeTo($connect[0].getBoundingClientRect().right, 1)
+          })
+        })
+      })
+
       it('subtracts the navbar height from the About minimum height', () => {
         revealSectionNav()
         cy.get('#section-nav').then(($nav) => {

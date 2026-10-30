@@ -70,6 +70,22 @@ describe('tablet layout', () => {
     })
   })
 
+  it('matches organization card columns to recognition at the breakpoint', () => {
+    cy.viewport(851, 1024)
+    cy.visitHome()
+    cy.get('#organizations article, #recognition .content-group article').then(($cards) => {
+      const widths = [...$cards].map((card) => card.getBoundingClientRect().width)
+      expect(widths[0]).to.be.closeTo(widths.at(-1), 2)
+      expect(widths[0]).to.be.greaterThan(0)
+    })
+    cy.viewport(850, 1024)
+    cy.visitHome()
+    cy.get('#organizations article').then(($cards) => {
+      expect($cards[0].getBoundingClientRect().width)
+        .to.be.closeTo($cards[0].parentElement.getBoundingClientRect().width, 2)
+    })
+  })
+
   it('keeps the skills outline compact', () => {
     cy.get('.skill-col').should(($skills) => {
       const style = getComputedStyle($skills[0])

@@ -53,7 +53,8 @@
 @media screen and (min-width: 851px) and (max-width: v.$breakpoint-tablet) {
   #portfolio .content-group article,
   #reviews .content-group article,
-  #recognition .content-group article {
+  #recognition .content-group article,
+  #organizations article {
     width: 50%;
   }
 }
