@@ -5,7 +5,8 @@
 }
 
 #portfolio .content-group article,
-#recognition .content-group article {
+#recognition .content-group article,
+#organizations article {
   text-align: left;
 }
 
@@ -16,7 +17,8 @@
 }
 
 #portfolio .content-group article .actions.special,
-#recognition .content-group article .actions.special {
+#recognition .content-group article .actions.special,
+#organizations article .actions.special {
   justify-content: flex-start;
   text-align: left;
 }

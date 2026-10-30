@@ -8,10 +8,7 @@ export default function Introduction() {
           <div className="row gtr-150 main-content-container-parent">
             <div className="col-6 col-12-medium main-content-container">
               <header className="major main-content">
-                <h2>
-                  <span className="heading-phrase">Building Reliable,</span>
-                  <span className="mobile-line-break"> Usable Systems</span>
-                </h2>
+                <h2>Full-Stack Software Engineer</h2>
               </header>
               <p>Full-stack software engineer with 5+ years building features in Ruby on Rails and JavaScript across frontend and backend systems. Focuses on usability, accessibility, and reliable systems.</p>
               <p>Works across feature development, internal tools, and production debugging, including resolving issues that impact real users. Breaks down complex problems into clear, maintainable solutions.</p>
