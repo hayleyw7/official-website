@@ -31,10 +31,12 @@ describe('projects content', () => {
     cy.contains('#portfolio article h4', 'Flickmoji').should('not.exist')
   })
 
-  it('shows Whimsy Grove as coming soon with a disabled action', () => {
+  it('links Whimsy Grove to its Play destination', () => {
     cy.contains('#portfolio article h4', 'Whimsy Grove').closest('article').within(() => {
       cy.get('p').should('contain.text', 'Feeling whimsical? Create your own grove art!')
-      cy.get('button.button').should('be.disabled').and('have.text', 'Soon')
+      cy.get('a.button')
+        .should('contain.text', 'Play')
+        .and('have.attr', 'href', 'https://bunhouse.itch.io/whimsy-grove/')
     })
   })
 

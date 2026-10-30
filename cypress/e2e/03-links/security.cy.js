@@ -5,7 +5,7 @@ describe('browser-facing security contracts', () => {
     cy.get('a[target="_blank"]').each(($link) => {
       cy.wrap($link).should('have.attr', 'rel').and('match', /\bnoopener\b/).and('match', /\bnoreferrer\b/)
     })
-    cy.get('a[target="_blank"]').should('have.length', 22)
+    cy.get('a[target="_blank"]').should('have.length', 23)
   })
 
   it('does not inject inline event handlers or executable URLs', () => {
