@@ -32,14 +32,15 @@ describe('keyboard accessibility', () => {
       'Portfolio',
       'Reviews',
       'Recognition',
-      'Contact',
+      'Organizations',
+      'Connect',
       ...projectTitles,
       'View reviews on LinkedIn (opens in new tab)',
       ...recognitionTitles,
+      'Email',
       'Twitter profile (opens in new tab)',
       'GitHub profile (opens in new tab)',
       'LinkedIn profile (opens in new tab)',
-      'Send email',
     ]
 
     cy.get('a[href]').then(($links) => {

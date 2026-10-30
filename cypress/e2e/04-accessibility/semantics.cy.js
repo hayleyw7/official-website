@@ -34,13 +34,9 @@ describe('semantic accessibility', () => {
     cy.get('footer#contact').should('have.attr', 'aria-label', 'Contact')
   })
 
-  it('keeps the footer invitation as decorative text, not a link', () => {
-    cy.get('#contact .footer-text')
-      .should('be.visible')
-      .and('contain.text', 'Reach out to connect')
-    cy.get('#contact .footer-text').should('have.prop', 'tagName', 'P')
-    cy.get('#contact .footer-text a').should('not.exist')
-    cy.get('#contact .footer-text').should('have.css', 'cursor', 'default')
+  it('keeps the footer focused on social links after moving email to Connect', () => {
+    cy.get('#contact .footer-text').should('not.exist')
+    cy.get('#contact a').should('have.length', 3)
   })
 
   it('marks the active section in the page navigation', () => {

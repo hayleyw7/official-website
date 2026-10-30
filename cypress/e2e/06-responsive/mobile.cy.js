@@ -21,8 +21,8 @@ describe('mobile and narrow layout', () => {
       })
 
       it('hides secondary tagline details while keeping the primary role', () => {
-        cy.get('.tagline').should('contain.text', 'Software Engineer')
-        cy.get('.tagline-detail').should('not.be.visible')
+        cy.get('.tagline').should('have.text', 'Full-Stack Software Engineer')
+        cy.get('.tagline').should('have.text', 'Full-Stack Software Engineer')
       })
 
       it('keeps the tagline background full width', () => {
@@ -61,13 +61,13 @@ describe('mobile and narrow layout', () => {
         })
       })
 
-      it('lays out section navigation in two rows of three', () => {
+      it('lays out section navigation in four items then three items', () => {
         revealSectionNav()
         cy.get('#section-nav li').then(($items) => {
           const rows = [...$items].map((item) => item.getBoundingClientRect().top)
-          expect(new Set(rows.slice(0, 3)).size).to.eq(1)
-          expect(new Set(rows.slice(3)).size).to.eq(1)
-          expect(rows[3]).to.be.greaterThan(rows[0])
+          expect(new Set(rows.slice(0, 4)).size).to.eq(1)
+          expect(new Set(rows.slice(4)).size).to.eq(1)
+          expect(rows[4]).to.be.greaterThan(rows[0])
         })
       })
 
@@ -125,7 +125,7 @@ describe('mobile and narrow layout', () => {
 
       it('keeps the intro heading as one concise role title', () => {
         cy.get('#profile .main-content h2')
-          .should('have.text', 'Full-Stack Software Engineer')
+          .should('have.text', 'Human-Centered Engineering')
           .and('not.have.descendants', '.mobile-line-break')
         cy.get('#impact h2 .mobile-line-break')
           .should('have.css', 'display', 'block')

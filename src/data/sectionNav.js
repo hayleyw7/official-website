@@ -4,6 +4,7 @@ export const sectionNavItems = [
   { label: 'Portfolio', href: '#portfolio', target: '#portfolio' },
   { label: 'Reviews', href: '#reviews', target: '#reviews' },
   { label: 'Recognition', href: '#recognition', target: '#recognition' },
+  { label: 'Organizations', href: '#organizations', target: '#organizations' },
   { label: 'Connect', href: '#connect', target: '#connect' },
 ]
 

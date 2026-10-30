@@ -27,7 +27,7 @@ export default function Footer({ contactNavigation }) {
         ref={iconsRef}
         className={`icons${animationRun ? ' contact-arrival' : ''}`}
       >
-        {socialLinks.map((link) => (
+        {socialLinks.filter((link) => link.label !== 'Email').map((link) => (
           <li key={link.label}>
             <ExternalLink
               url={link.url}

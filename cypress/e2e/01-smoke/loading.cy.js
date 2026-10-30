@@ -14,7 +14,7 @@ describe('loading behavior', () => {
 
     cy.visit('/')
     cy.contains('h1', 'Hayley Witherell').should('be.visible')
-    cy.contains('h2', 'Full-Stack Software Engineer').should('be.visible')
+    cy.contains('h2', 'Human-Centered Engineering').should('be.visible')
     cy.wait('@portrait').its('response.statusCode').should('be.oneOf', [200, 304])
   })
 
