@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Connect from './components/Connect.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
@@ -11,6 +11,8 @@ import Recommendations from './components/Recommendations.jsx'
 import SectionNav from './components/SectionNav.jsx'
 
 export default function App() {
+  const [contactNavigation, setContactNavigation] = useState(0)
+
   useEffect(() => {
     const timer = window.setTimeout(() => document.body.classList.remove('is-preload'), 100)
     return () => window.clearTimeout(timer)
@@ -19,7 +21,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <SectionNav />
+      <SectionNav onContactNavigate={() => setContactNavigation((value) => value + 1)} />
       <main>
         <Introduction />
         <Impact />
@@ -29,7 +31,7 @@ export default function App() {
         <Organizations />
         <Connect />
       </main>
-      <Footer />
+      <Footer contactNavigation={contactNavigation} />
     </>
   )
 }
