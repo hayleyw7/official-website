@@ -77,6 +77,19 @@
     grid-column: span 4;
   }
 
+  .section-nav li:nth-child(n + 5) a {
+    min-height: 2.45rem;
+    transform: translateY(-0.2rem);
+  }
+
+  .section-nav li:nth-child(5) a {
+    transform: translate(0.3em, -0.2rem);
+  }
+
+  .section-nav li:nth-child(7) a {
+    transform: translate(-0.3em, -0.2rem);
+  }
+
   .section-nav a {
     align-items: center;
     display: flex;
