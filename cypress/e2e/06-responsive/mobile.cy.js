@@ -69,6 +69,11 @@ describe('mobile and narrow layout', () => {
           expect(new Set(rows.slice(4)).size).to.eq(1)
           expect(rows[4]).to.be.greaterThan(rows[0])
         })
+        cy.get('#section-nav ul').should(($nav) => {
+          const styles = getComputedStyle($nav[0])
+          expect(styles.rowGap).to.equal('0px')
+          expect(Number.parseFloat(styles.columnGap)).to.be.greaterThan(0)
+        })
       })
 
       it('subtracts the navbar height from the About minimum height', () => {

@@ -60,7 +60,8 @@
   .section-nav ul {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 0 0.3em;
+    row-gap: 0;
+    column-gap: 0.45em;
     padding: 0.65em 0.85em;
   }
 
