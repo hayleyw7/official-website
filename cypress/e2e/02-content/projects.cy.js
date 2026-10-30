@@ -18,7 +18,7 @@ describe('projects content', () => {
   })
 
   it('pairs every project card with descriptive copy and one action', () => {
-    cy.get('#portfolio .content-group article').should('have.length', 7).each(($article) => {
+    cy.get('#portfolio .content-group article').should('have.length', 8).each(($article) => {
       cy.wrap($article).within(() => {
         cy.get('h4').invoke('text').should('not.be.empty')
         cy.get('p').invoke('text').should('have.length.greaterThan', 10)
@@ -29,6 +29,13 @@ describe('projects content', () => {
 
   it('keeps Flickmoji commented out of the rendered portfolio', () => {
     cy.contains('#portfolio article h4', 'Flickmoji').should('not.exist')
+  })
+
+  it('shows Whimsy Grove as coming soon with a disabled action', () => {
+    cy.contains('#portfolio article h4', 'Whimsy Grove').closest('article').within(() => {
+      cy.get('p').should('contain.text', 'Feeling whimsical? Create your own grove art!')
+      cy.get('button.button').should('be.disabled').and('have.text', 'Soon')
+    })
   })
 
   it('shows Digital Bug-Out Bag as coming soon with a disabled action', () => {
