@@ -249,6 +249,14 @@
 	}
 }
 
+@media screen and (max-width: 850px) {
+	#impact ul.major-icons {
+		column-gap: 0;
+		grid-template-columns: repeat(3, 5.25rem);
+		justify-content: space-between;
+	}
+}
+
 /* Small */
 
 @media screen and (max-width: v.$breakpoint-small) {
