@@ -79,7 +79,7 @@ describe('desktop layout', () => {
   })
 
   it('keeps heading phrases together when they wrap', () => {
-    cy.get('#profile h2 .mobile-line-break, #impact h2 .mobile-line-break')
+    cy.get('#impact h2 .mobile-line-break')
       .each(($line) => cy.wrap($line).should('have.css', 'white-space', 'nowrap'))
   })
 
@@ -227,7 +227,6 @@ describe('desktop layout', () => {
         expect(Number.parseFloat(getComputedStyle($paragraph[0]).marginBottom)).to.be.lessThan(8)
       })
 
-      cy.get('#profile h2 .mobile-line-break').should('have.css', 'display', 'block')
       cy.get('#impact h2 .mobile-line-break').should('have.css', 'display', 'block')
       cy.get('.skill-col').should(($skills) => {
         expect(Number.parseFloat(getComputedStyle($skills[0]).paddingTop)).to.be.lessThan(8)
@@ -252,7 +251,6 @@ describe('desktop layout', () => {
         )
       })
 
-      cy.get('#profile h2 .mobile-line-break').should('have.css', 'display', 'inline')
       cy.get('#impact h2 .mobile-line-break').should('have.css', 'display', 'block')
       cy.get('#contact .footer-text').should('be.visible')
 

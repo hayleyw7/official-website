@@ -1,5 +1,5 @@
 export const sections = [
-  { id: 'about', heading: 'Building Reliable, Usable Systems' },
+  { id: 'about', heading: 'Full-Stack Software Engineer' },
   { id: 'impact', heading: 'Professional & Community Impact' },
   { id: 'portfolio', heading: 'Project Portfolio' },
   { id: 'reviews', heading: 'Reviews' },

@@ -24,7 +24,7 @@ describe('sad paths and runtime resilience', () => {
     cy.intercept('GET', '/images/me.png', { statusCode: 404 }).as('missingPortrait')
     cy.visit('/')
     cy.wait('@missingPortrait')
-    cy.contains('h2', 'Building Reliable, Usable Systems').should('be.visible')
+    cy.contains('h2', 'Full-Stack Software Engineer').should('be.visible')
     cy.get('.embark-btn').should('be.visible')
     cy.get('#contact a').should('have.length', 4)
   })

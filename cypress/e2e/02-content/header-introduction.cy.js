@@ -25,6 +25,10 @@ describe('header and introduction content', () => {
     cy.get('#profile').should('contain.text', 'automation and AI tools')
   })
 
+  it('shows the concise professional heading', () => {
+    cy.get('#profile h2').should('have.text', 'Full-Stack Software Engineer')
+  })
+
   it('renders the exact skill set once and in its intended order', () => {
     cy.get('#skills').should('have.attr', 'aria-label', 'Technical skills')
     cy.get('.skill').should('have.length', skills.length)
