@@ -82,6 +82,17 @@ describe('tablet layout', () => {
     })
   })
 
+  it('centers the Impact icon grid at the 855px transition', () => {
+    cy.viewport(855, 800)
+    cy.get('#impact .major-icons-container').then(($container) => {
+      const container = $container[0].getBoundingClientRect()
+      cy.wrap($container).find('ul.major-icons').should(($icons) => {
+        const grid = $icons[0].getBoundingClientRect()
+        expect(Math.abs((grid.left + grid.right) / 2 - (container.left + container.right) / 2)).to.be.lessThan(1)
+      })
+    })
+  })
+
   it('matches organization card columns to recognition at the breakpoint', () => {
     cy.viewport(751, 1024)
     cy.visitHome()
