@@ -27,8 +27,8 @@ describe('external links', () => {
       .and('contain.text', 'Connecting neurodivergent tech industry professionals through peer support, career resources, and advocacy.')
     cy.contains('#organizations article h4', 'Colorado Badged Network')
       .closest('article')
-      .should('contain.text', 'Co-founder')
-      .and('contain.text', 'Connecting Colorado cannabis industry professionals through job opportunities, resources, and events.')
+      .should('contain.text', 'Co-founder & Marketing Director')
+      .and('contain.text', 'Connected Colorado cannabis industry professionals through job opportunities, resources, and events.')
       .find('.organization-role').should(($role) => {
         expect(parseFloat(getComputedStyle($role[0]).marginBottom)).to.be.lessThan(8)
       })

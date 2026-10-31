@@ -8,8 +8,8 @@ export const organizations = [
   },
   {
     title: 'Colorado Badged Network',
-    role: 'Co-founder',
-    description: 'Connecting Colorado cannabis industry professionals through job opportunities, resources, and events.',
+    role: 'Co-founder & Marketing Director',
+    description: 'Connected Colorado cannabis industry professionals through job opportunities, resources, and events.',
     url: 'https://www.coloradobadgednetwork.com/',
     label: 'Visit',
   },
