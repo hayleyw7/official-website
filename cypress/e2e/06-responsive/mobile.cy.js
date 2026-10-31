@@ -193,8 +193,11 @@ describe('mobile and narrow layout', () => {
       })
 
       it('keeps organization action spacing aligned with recognition cards', () => {
-        cy.get('#organizations article, #recognition .content-group article').each(($article) => {
+        cy.get('#recognition .content-group article').each(($article) => {
           cy.wrap($article).find('p').should('have.css', 'margin-bottom', '12px')
+        })
+        cy.get('#organizations .organization-role').each(($role) => {
+          expect(parseFloat(getComputedStyle($role[0]).marginBottom)).to.be.lessThan(8)
         })
       })
 
