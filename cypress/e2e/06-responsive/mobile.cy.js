@@ -171,6 +171,14 @@ describe('mobile and narrow layout', () => {
         })
       })
 
+      it('keeps mobile Impact diamonds visually separated', () => {
+        cy.get('#impact ul.major-icons li .icon').then(($icons) => {
+          const firstRow = [...$icons].slice(0, 3).map((icon) => icon.getBoundingClientRect())
+          expect(firstRow[1].left).to.be.greaterThan(firstRow[0].right)
+          expect(firstRow[2].left).to.be.greaterThan(firstRow[1].right)
+        })
+      })
+
       it('keeps Impact icons grouped at the 506px layout transition', () => {
         cy.viewport(506, 844)
         cy.visitHome()
