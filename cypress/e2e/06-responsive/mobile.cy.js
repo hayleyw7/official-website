@@ -167,7 +167,7 @@ describe('mobile and narrow layout', () => {
           const glyph = getComputedStyle($icon[0], '::before')
       expect(bounds.width).to.be.closeTo(90.5, 1)
       expect(bounds.height).to.be.closeTo(90.5, 1)
-          expect(glyph.fontSize).to.equal('30px')
+          expect(glyph.fontSize).to.equal('26px')
         })
       })
 
