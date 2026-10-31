@@ -191,7 +191,10 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
     cy.get('#section-nav a[href="#about"]').should('not.have.attr', 'aria-current')
 
-    cy.window().then((win) => win.scrollTo(0, win.document.querySelector('#reviews').offsetTop))
+    cy.window().then((win) => {
+      win.dispatchEvent(new Event('wheel'))
+      win.scrollTo(0, win.document.querySelector('#reviews').offsetTop)
+    })
     cy.get('#section-nav a[href="#reviews"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
@@ -199,7 +202,10 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
     cy.get('#section-nav a[href="#portfolio"]').should('not.have.attr', 'aria-current')
 
-    cy.window().then((win) => win.scrollTo(0, win.document.querySelector('#about').offsetTop))
+    cy.window().then((win) => {
+      win.dispatchEvent(new Event('wheel'))
+      win.scrollTo(0, win.document.querySelector('#about').offsetTop)
+    })
     cy.get('#section-nav a[href="#about"]').should('have.attr', 'aria-current', 'page')
     cy.get('#section-nav a[href="#reviews"]').should('not.have.attr', 'aria-current')
   })
@@ -221,13 +227,17 @@ describe('scroll behavior', () => {
 
     cy.window().then((win) => {
       const footer = win.document.querySelector('#contact')
+      win.dispatchEvent(new Event('wheel'))
       win.scrollTo(0, footer.offsetTop - win.innerHeight + 1)
     })
     cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
     cy.get('#section-nav a[href="#connect"]').should('not.have.attr', 'aria-current')
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
 
-    cy.window().then((win) => win.scrollTo(0, win.document.documentElement.scrollHeight))
+    cy.window().then((win) => {
+      win.dispatchEvent(new Event('wheel'))
+      win.scrollTo(0, win.document.documentElement.scrollHeight)
+    })
     cy.get('#section-nav a[href="#connect"]').should('have.attr', 'aria-current', 'page')
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
 
@@ -237,6 +247,33 @@ describe('scroll behavior', () => {
     })
     cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
     cy.get('#section-nav a[href="#connect"]').should('not.have.attr', 'aria-current')
+  })
+
+  it('preserves Organizations after top and bottom clicks until manual scrolling', () => {
+    ;[390, 1280].forEach((width) => {
+      cy.viewport(width, 844)
+      cy.visit('/')
+      cy.get('#header').then(($header) => {
+        cy.window().then((win) => win.scrollTo(0, $header.outerHeight()))
+      })
+      cy.get('#section-nav').should('be.visible')
+
+      cy.get('#section-nav a[href="#organizations"]').click({ scrollBehavior: false })
+      cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
+      cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
+
+      cy.window().then((win) => win.scrollTo(0, win.document.documentElement.scrollHeight))
+      cy.get('#section-nav a[href="#organizations"]').click({ scrollBehavior: false })
+      cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
+      cy.get('#section-nav a[href="#connect"]').should('not.have.attr', 'aria-current')
+
+      cy.window().then((win) => {
+        win.dispatchEvent(new Event('wheel'))
+        win.scrollTo(0, win.document.querySelector('#reviews').offsetTop)
+      })
+      cy.get('#section-nav a[href="#reviews"]').should('have.attr', 'aria-current', 'page')
+      cy.get('#section-nav a[href="#organizations"]').should('not.have.attr', 'aria-current')
+    })
   })
 
   it('visually marks the selected desktop section after click and scroll', () => {
@@ -254,7 +291,10 @@ describe('scroll behavior', () => {
       .and('have.css', 'font-weight', '300')
       .and('have.css', 'font-weight', '300')
 
-    cy.window().then((win) => win.scrollTo(0, win.document.querySelector('#reviews').offsetTop))
+    cy.window().then((win) => {
+      win.dispatchEvent(new Event('wheel'))
+      win.scrollTo(0, win.document.querySelector('#reviews').offsetTop)
+    })
     cy.get('#section-nav a[href="#reviews"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
