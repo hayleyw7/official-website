@@ -141,12 +141,23 @@ describe('hover states', () => {
       const overlay = findRule(window, '#connect .connect-action .contact-arrival::after')
       expect(overlay, 'Connect Email sweep overlay').to.exist
       expect(overlay.style.animation).to.include('connect-email-sweep')
-      expect(overlay.style.animation).to.include('9600ms')
+      expect(overlay.style.animation).to.include('4800ms')
       expect(overlay.style.background).to.include('linear-gradient')
       expect(overlay.style.background).to.include('45deg')
       expect(overlay.style.background).to.include('rgba(255, 255, 255, 0.8)')
-      expect(overlay.style.backgroundPosition).to.equal('0% 100%')
+      expect(overlay.style.backgroundPosition).to.equal('100% 0%')
     })
+  })
+
+  it('moves the Connect Email sweep from bottom-left toward top-right', () => {
+    cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+    cy.wait(250).then(() => cy.window().then((window) => {
+      const link = window.document.querySelector('#connect .contact-arrival')
+      const position = window.getComputedStyle(link, '::after').backgroundPosition
+      const [x, y] = position.split(' ').map((value) => Number.parseFloat(value))
+      expect(x).to.be.lessThan(100)
+      expect(y).to.be.greaterThan(0)
+    }))
   })
 
   it('defines a visible section nav hover color', () => {

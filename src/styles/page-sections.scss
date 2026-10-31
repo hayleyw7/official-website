@@ -508,9 +508,9 @@ body.is-preload #header:after {
 }
 
 #connect .connect-action .contact-arrival::after {
-	animation: connect-email-sweep 9600ms ease-out both;
+	animation: connect-email-sweep 4800ms ease-out both;
 	background: linear-gradient(45deg, transparent 25%, rgba(255, 255, 255, 0.8) 50%, transparent 75%);
-	background-position: 0% 100%;
+	background-position: 100% 0%;
 	background-size: 300% 300%;
 	content: '';
 	inset: 0;
@@ -520,9 +520,9 @@ body.is-preload #header:after {
 }
 
 @keyframes connect-email-sweep {
-	0% { background-position: 0% 100%; opacity: 1; }
-	85% { background-position: 100% 0%; opacity: 1; }
-	100% { background-position: 100% 0%; opacity: 0; }
+	0% { background-position: 100% 0%; opacity: 1; }
+	85% { background-position: 0% 100%; opacity: 1; }
+	100% { background-position: 0% 100%; opacity: 0; }
 }
 
 @keyframes contact-icon-wiggle {
