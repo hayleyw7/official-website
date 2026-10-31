@@ -101,8 +101,32 @@ describe('tablet layout', () => {
   it('keeps organization actions at the shared desktop width', () => {
     cy.viewport(1024, 900)
     cy.visitHome()
-    cy.get('#organizations .button, #portfolio .button, #recognition .button').each(($button) => {
+    cy.get('#portfolio .button, #recognition .button, #organizations .button').each(($button) => {
       expect($button[0].getBoundingClientRect().width).to.be.closeTo(155, 1)
+    })
+  })
+
+  it('renders Media and Organization actions at equal fixed widths', () => {
+    cy.viewport(1024, 900)
+    cy.visitHome()
+    cy.get('#portfolio .button').first().then(($portfolioButton) => {
+      cy.get('#organizations .button').first().should(($organizationButton) => {
+        expect($organizationButton[0].getBoundingClientRect().width)
+          .to.equal($portfolioButton[0].getBoundingClientRect().width)
+      })
+    })
+
+    cy.viewport(390, 844)
+    cy.get('#portfolio .button').first().then(($portfolioButton) => {
+      cy.get('#organizations .button').first().should(($organizationButton) => {
+        const portfolioBounds = $portfolioButton[0].getBoundingClientRect()
+        const organizationBounds = $organizationButton[0].getBoundingClientRect()
+        expect(organizationBounds.width).to.be.closeTo(portfolioBounds.width, 1)
+        expect(portfolioBounds.width)
+          .to.be.closeTo($portfolioButton[0].closest('li').getBoundingClientRect().width, 1)
+        expect(organizationBounds.width)
+          .to.be.closeTo($organizationButton[0].closest('li').getBoundingClientRect().width, 1)
+      })
     })
   })
 
