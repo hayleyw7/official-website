@@ -165,9 +165,18 @@ describe('mobile and narrow layout', () => {
         cy.get('#impact ul.major-icons li .icon').first().then(($icon) => {
           const bounds = $icon[0].getBoundingClientRect()
           const glyph = getComputedStyle($icon[0], '::before')
-      expect(bounds.width).to.be.closeTo(90.5, 1)
-      expect(bounds.height).to.be.closeTo(90.5, 1)
-          expect(glyph.fontSize).to.equal('30px')
+      const expectedDiamond = width <= 360 ? 76.9 : 90.5
+      expect(bounds.width).to.be.closeTo(expectedDiamond, 1)
+      expect(bounds.height).to.be.closeTo(expectedDiamond, 1)
+          expect(glyph.fontSize).to.equal(width <= 360 ? '24px' : '26px')
+        })
+      })
+
+      it('keeps mobile Impact diamonds visually separated', () => {
+        cy.get('#impact ul.major-icons li .icon').then(($icons) => {
+          const firstRow = [...$icons].slice(0, 3).map((icon) => icon.getBoundingClientRect())
+          expect(firstRow[1].left).to.be.greaterThan(firstRow[0].right)
+          expect(firstRow[2].left).to.be.greaterThan(firstRow[1].right)
         })
       })
 
