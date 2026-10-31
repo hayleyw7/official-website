@@ -151,13 +151,19 @@ describe('hover states', () => {
 
   it('moves the Connect Email sweep from bottom-left toward top-right', () => {
     cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
-    cy.wait(250).then(() => cy.window().then((window) => {
-      const link = window.document.querySelector('#connect .contact-arrival')
-      const position = window.getComputedStyle(link, '::after').backgroundPosition
-      const [x, y] = position.split(' ').map((value) => Number.parseFloat(value))
-      expect(x).to.be.lessThan(100)
-      expect(y).to.be.greaterThan(0)
-    }))
+    cy.get('#connect .contact-arrival').then(($link) => {
+      const initialBorder = $link.css('box-shadow')
+      cy.wait(250).then(() => {
+        cy.window().then((window) => {
+          const link = window.document.querySelector('#connect .contact-arrival')
+          const position = window.getComputedStyle(link, '::after').backgroundPosition
+          const [x, y] = position.split(' ').map((value) => Number.parseFloat(value))
+          expect(x).to.be.lessThan(100)
+          expect(y).to.be.greaterThan(0)
+          expect(window.getComputedStyle(link).boxShadow).to.equal(initialBorder)
+        })
+      })
+    })
   })
 
   it('defines a visible section nav hover color', () => {
