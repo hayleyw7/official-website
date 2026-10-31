@@ -40,7 +40,7 @@ describe('projects content', () => {
 
   it('shows Whimsy Grove as coming soon with a disabled action', () => {
     cy.contains('#portfolio article h4', 'Whimsy Grove').closest('article').within(() => {
-      cy.get('p').should('contain.text', 'Feeling whimsical? Create a magical grove!')
+      cy.get('p').should('contain.text', 'Feeling whimsical? Create your own grove!')
       cy.get('button.button').should('be.disabled').and('have.text', 'Soon')
     })
   })
