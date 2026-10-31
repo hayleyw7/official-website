@@ -165,7 +165,7 @@ describe('mobile and narrow layout', () => {
 
       it('keeps the intro heading as one concise role title', () => {
         cy.get('#profile .main-content h2')
-          .should('have.text', 'Human-Centered Engineering')
+          .should('have.text', 'Usability-Centered Engineering')
           .and('not.have.descendants', '.mobile-line-break')
         cy.get('#impact h2 .mobile-line-break')
           .should('have.css', 'display', 'block')

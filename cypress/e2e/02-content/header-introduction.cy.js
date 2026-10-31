@@ -23,7 +23,7 @@ describe('header and introduction content', () => {
   })
 
   it('shows the concise professional heading', () => {
-    cy.get('#profile h2').should('have.text', 'Human-Centered Engineering')
+    cy.get('#profile h2').should('have.text', 'Usability-Centered Engineering')
   })
 
   it('renders the exact skill set once and in its intended order', () => {
