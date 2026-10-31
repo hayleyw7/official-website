@@ -122,6 +122,16 @@ describe('hover states', () => {
     cy.get('#connect a').trigger('mouseover').should('be.visible')
   })
 
+  it('defines the Connect Email diagonal sweep animation', () => {
+    cy.window().then((window) => {
+      const rule = findRule(window, '#connect .connect-action .contact-arrival')
+      expect(rule, 'Connect Email animation rule').to.exist
+      expect(rule.style.animation).to.include('connect-email-sweep')
+      expect(rule.style.background).to.include('linear-gradient')
+      expect(rule.style.backgroundSize).to.equal('250% 250%')
+    })
+  })
+
   it('defines a visible section nav hover color', () => {
     cy.window().then((window) => {
       const rule = findRule(window, '.section-nav a:hover')
