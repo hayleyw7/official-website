@@ -72,7 +72,7 @@ export default function SectionNav({ onContactNavigate }) {
     updateVisibility()
     updateNavHeight()
     updateActiveSection()
-    requestAnimationFrame(restoreInitialHash)
+    requestAnimationFrame(() => requestAnimationFrame(restoreInitialHash))
 
     const navResizeObserver = new ResizeObserver(() => {
       updateNavHeight()

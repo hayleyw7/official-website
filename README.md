@@ -68,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
+Open [http://localhost:3000](http://localhost:3000). `npm start` is an equivalent alias.
 
 To preview the production build locally:
 
@@ -82,10 +82,11 @@ npm run preview
 ```bash
 npm run lint
 npm run build
+npm test
 npm run test:e2e
 ```
 
-`test:e2e` starts the Vite dev server and runs the full Cypress suite. Use `npm run cypress:open` for interactive debugging while the dev server is running.
+`npm test` runs lint, build, and the full Cypress suite. `test:e2e` starts the Vite dev server on port 3000 and runs Cypress. Use `npm run cypress:open` for interactive debugging while the dev server is running.
 
 The Cypress suite has **21 spec files** and **148 tests** covering:
 

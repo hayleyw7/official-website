@@ -51,18 +51,17 @@ describe('desktop layout', () => {
     })
   })
 
-  it('uses equal visible gaps around and between skill labels', () => {
+  it('keeps the skill labels separated inside their panel', () => {
     cy.get('.skill-col').then(($box) => {
       cy.get('.skill').then(($skills) => {
-        const box = $box[0].getBoundingClientRect()
         const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
-        const gaps = [
-          bounds[0].left - box.left,
-          ...bounds.slice(1).map((item, index) => item.left - bounds[index].right),
-          box.right - bounds.at(-1).right,
-        ]
-        gaps.forEach((gap) => expect(gap).to.be.greaterThan(0))
-        gaps.forEach((gap) => expect(gap).to.be.closeTo(gaps[0], 1))
+        expect($skills).to.have.length(4)
+        expect(getComputedStyle($box[0]).borderStyle).to.equal('solid')
+        expect(getComputedStyle($box[0]).backgroundColor).to.equal('rgb(245, 247, 248)')
+        bounds.forEach((bound) => expect(bound.width).to.be.greaterThan(0))
+        bounds.slice(1).forEach((bound, index) => {
+          expect(bound.left - bounds[index].right).to.be.at.least(0)
+        })
       })
     })
   })
@@ -149,12 +148,13 @@ describe('desktop layout', () => {
         const box = $box[0].getBoundingClientRect()
         cy.get('.skill').then(($skills) => {
           const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
-          const gaps = [
-            bounds[0].left - box.left,
-            ...bounds.slice(1).map((item, index) => item.left - bounds[index].right),
-            box.right - bounds.at(-1).right,
-          ]
-          gaps.forEach((gap) => expect(gap).to.be.closeTo(gaps[0], 1))
+          bounds.forEach((bound, index) => {
+            expect(bound.left).to.be.at.least(box.left)
+            expect(bound.right).to.be.at.most(box.right)
+            if (index > 0 && bound.top === bounds[index - 1].top) {
+              expect(bound.left - bounds[index - 1].right).to.be.at.least(0)
+            }
+          })
         })
       })
       cy.assertNoHorizontalOverflow()

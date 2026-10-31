@@ -28,6 +28,14 @@
   color: v.$color-button;
 }
 
+@media screen and (min-width: 851px) {
+  #portfolio .button,
+  #recognition .button,
+  #organizations .button {
+    width: 155px;
+  }
+}
+
 #portfolio .content-group .button:disabled {
   cursor: not-allowed;
   opacity: 1;
@@ -53,7 +61,8 @@
 @media screen and (min-width: 851px) and (max-width: v.$breakpoint-tablet) {
   #portfolio .content-group article,
   #reviews .content-group article,
-  #recognition .content-group article {
+  #recognition .content-group article,
+  #organizations article {
     width: 50%;
   }
 }
