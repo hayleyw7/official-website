@@ -85,8 +85,10 @@ describe('hover states', () => {
   it('defines a high-contrast hover response for recommendation actions', () => {
     cy.window().then((window) => {
       const buttonRule = findRule(window, '.main.style2 .button:hover')
+      const normalButtonRule = findRule(window, '.main.style2 .button')
       const linkRule = findRule(window, '.main.style2 a:hover')
       expect(buttonRule, 'dark-section button hover rule').to.exist
+      expect(normalButtonRule.style.color).to.equal(DARK_BUTTON_BORDER)
       expect(linkRule, 'dark-section link hover rule').to.exist
       expect(buttonRule.style.backgroundColor).to.equal(DARK_BUTTON_BORDER)
       expect(buttonRule.style.color).to.equal(DARK_BUTTON_TEXT)
