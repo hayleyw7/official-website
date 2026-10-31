@@ -25,4 +25,9 @@ describe('recognition content', () => {
       })
     })
   })
+
+  it('uses the approved podcast description', () => {
+    cy.contains('#recognition article h4', 'Seed to Sound').closest('article')
+      .find('p').should('have.text', 'Podcast on running CBN while working')
+  })
 })

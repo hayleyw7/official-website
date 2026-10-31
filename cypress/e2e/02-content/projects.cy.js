@@ -27,6 +27,13 @@ describe('projects content', () => {
     })
   })
 
+  it('uses the approved Affirming Access and Frankesso taglines', () => {
+    cy.contains('#portfolio article h4', 'Affirming Access').closest('article')
+      .find('p').should('have.text', 'Gotta go? Find safe restrooms near you!')
+    cy.contains('#portfolio article h4', 'Frankesso').closest('article')
+      .find('p').should('have.text', 'Need AI when offline? Meet this agent!')
+  })
+
   it('keeps Flickmoji commented out of the rendered portfolio', () => {
     cy.contains('#portfolio article h4', 'Flickmoji').should('not.exist')
   })

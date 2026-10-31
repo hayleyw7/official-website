@@ -35,7 +35,7 @@ export const projectGroups = [
       },
       {
         title: 'Affirming Access',
-        description: 'Gotta go? Find safe restrooms near you ASAP!',
+        description: 'Gotta go? Find safe restrooms near you!',
         url: 'https://affirming-access.surge.sh/',
         label: 'Search',
       },
@@ -58,7 +58,7 @@ export const projectGroups = [
     items: [
       {
         title: 'Frankesso',
-        description: 'Need AI when offline? Meet your new agent!',
+        description: 'Need AI when offline? Meet this agent!',
         url: 'https://github.com/hayleyw7/frankesso-ai',
         label: 'Explore',
       },
