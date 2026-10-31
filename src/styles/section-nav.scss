@@ -52,12 +52,12 @@
 }
 
 .section-nav a:hover {
-  color: v.$color-teal;
+  color: v.$color-nav-text;
 }
 
 .section-nav a:focus-visible {
   color: v.$color-nav-text;
-  outline: 2px solid v.$color-teal;
+  outline: 2px solid v.$color-nav-text;
   outline-offset: 3px;
 }
 
