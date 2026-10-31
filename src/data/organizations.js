@@ -2,7 +2,7 @@ export const organizations = [
   {
     title: 'Neurodiversity In Tech',
     role: 'Founder & Executive Director',
-    description: 'Connecting neurodivergent tech industry professionals through peer support, career resources, and advocacy.',
+    description: 'Connects neurodivergent tech industry professionals through peer support, career resources, and advocacy.',
     url: 'https://nd-in-tech.org/',
     label: 'Visit',
   },

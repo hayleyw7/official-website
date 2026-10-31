@@ -24,7 +24,7 @@ describe('external links', () => {
     cy.contains('#organizations article h4', 'Neurodiversity In Tech')
       .closest('article')
       .should('contain.text', 'Founder & Executive Director')
-      .and('contain.text', 'Connecting neurodivergent tech industry professionals through peer support, career resources, and advocacy.')
+      .and('contain.text', 'Connects neurodivergent tech industry professionals through peer support, career resources, and advocacy.')
     cy.contains('#organizations article h4', 'Colorado Badged Network')
       .closest('article')
       .should('contain.text', 'Co-founder & Marketing Director')
