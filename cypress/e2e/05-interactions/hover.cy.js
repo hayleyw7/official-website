@@ -128,7 +128,9 @@ describe('hover states', () => {
       expect(rule, 'Connect Email animation rule').to.exist
       expect(rule.style.animation).to.include('connect-email-sweep')
       expect(rule.style.backgroundImage).to.include('linear-gradient')
+      expect(rule.style.backgroundImage).to.include('45deg')
       expect(rule.style.backgroundSize).to.equal('300% 300%')
+      expect(rule.style.backgroundPosition).to.equal('0% 100%')
     })
   })
 
