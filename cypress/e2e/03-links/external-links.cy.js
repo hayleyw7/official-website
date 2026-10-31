@@ -29,9 +29,12 @@ describe('external links', () => {
       .closest('article')
       .should('contain.text', 'Co-founder & Marketing Director')
       .and('contain.text', 'Connected Colorado cannabis industry professionals through job opportunities, resources, and events.')
-      .find('.organization-role').should(($role) => {
-        expect(parseFloat(getComputedStyle($role[0]).marginBottom)).to.be.lessThan(8)
-      })
+    cy.get('#organizations .organization-role').each(($role) => {
+      expect(parseFloat(getComputedStyle($role[0]).marginBottom)).to.be.lessThan(8)
+    })
+    cy.get('#organizations .organization-description').each(($description) => {
+      expect(parseFloat(getComputedStyle($description[0]).marginTop)).to.equal(0)
+    })
   })
 
   it('uses secure absolute destinations for every project action', () => {
