@@ -3,12 +3,21 @@ import { getNavInset } from './scrollToSection.js'
 
 export function getActiveSectionHref() {
   const activationLine = getNavInset() + 8
-  const footer = document.querySelector('#contact')
+  const organizations = document.querySelector('#organizations')
   const atPageBottom = window.scrollY + window.innerHeight
     >= document.documentElement.scrollHeight - 2
+  const organizationsBottomReached = organizations
+    && organizations.getBoundingClientRect().bottom <= window.innerHeight
 
   if (atPageBottom) return '#connect'
-  if (footer && footer.getBoundingClientRect().top <= window.innerHeight) return '#organizations'
+  if (organizationsBottomReached) return '#connect'
+
+  if (
+    organizations
+    && organizations.getBoundingClientRect().top <= activationLine
+  ) {
+    return '#organizations'
+  }
 
   let activeHref = sectionNavItems[0].href
 

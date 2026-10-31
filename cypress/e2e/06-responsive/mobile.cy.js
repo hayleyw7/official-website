@@ -140,6 +140,16 @@ describe('mobile and narrow layout', () => {
         })
       })
 
+      it('keeps mobile Impact diamonds intact while reducing their glyphs', () => {
+        cy.get('#impact ul.major-icons li .icon').first().then(($icon) => {
+          const bounds = $icon[0].getBoundingClientRect()
+          const glyph = getComputedStyle($icon[0], '::before')
+      expect(bounds.width).to.be.closeTo(90.5, 1)
+      expect(bounds.height).to.be.closeTo(90.5, 1)
+          expect(glyph.fontSize).to.equal('30px')
+        })
+      })
+
       it('left-aligns recognition titles with their descriptions', () => {
         cy.get('#recognition .content-group article').each(($article) => {
           cy.wrap($article).find('h4').should('have.css', 'text-align', 'left')
