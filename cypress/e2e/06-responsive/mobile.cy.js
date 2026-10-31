@@ -76,6 +76,27 @@ describe('mobile and narrow layout', () => {
         })
       })
 
+      it('slightly emphasizes the active mobile navigation link', () => {
+        cy.get('#section-nav a[href="#about"]').invoke('attr', 'aria-current', 'page')
+          .should('have.css', 'font-weight', '600')
+      })
+
+      it('fits the 11px small-screen navigation across supported phone widths', () => {
+        for (const width of [320, 360, 384, 412, 480]) {
+          cy.viewport(width, 844)
+          cy.visitHome()
+          cy.window().then((window) => window.scrollTo(0, window.innerHeight))
+          cy.get('#section-nav').should('be.visible')
+          cy.get('#section-nav a').each(($link) => {
+            const bounds = $link[0].getBoundingClientRect()
+            expect(bounds.left).to.be.at.least(0)
+            expect(bounds.right).to.be.at.most(width)
+            expect(bounds.width).to.be.greaterThan(0)
+          })
+          cy.assertNoHorizontalOverflow()
+        }
+      })
+
       it('keeps the second navigation row centered with balanced visible gaps', () => {
         revealSectionNav()
         cy.get('#section-nav li:nth-child(5) a, #section-nav li:nth-child(6) a, #section-nav li:nth-child(7) a')

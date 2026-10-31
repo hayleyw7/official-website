@@ -63,6 +63,7 @@
 
 .section-nav a[aria-current="page"] {
   color: v.$color-white;
+  font-weight: 600;
 }
 
 @media screen and (max-width: 850px) {
@@ -113,7 +114,7 @@
 
 @media screen and (max-width: v.$breakpoint-mobile) {
   .section-nav a {
-    font-size: 0.6em;
+    font-size: 11px;
   }
 }
 
