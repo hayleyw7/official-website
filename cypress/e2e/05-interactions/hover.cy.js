@@ -1,7 +1,7 @@
 const WHITE = 'rgb(255, 255, 255)'
 const SLATE_BUTTON = 'rgb(95, 113, 132)'
 const BLUE_GRAY = 'rgb(109, 127, 146)'
-const DARK_BUTTON_BORDER = 'rgb(157, 177, 192)'
+const DARK_BUTTON_BORDER = 'rgb(255, 255, 255)'
 const DARK_BUTTON_TEXT = 'rgb(51, 60, 68)'
 
 const findRule = (window, matchingSelector) => {
@@ -88,7 +88,7 @@ describe('hover states', () => {
       const normalButtonRule = findRule(window, '.main.style2 .button')
       const linkRule = findRule(window, '.main.style2 a:hover')
       expect(buttonRule, 'dark-section button hover rule').to.exist
-      expect(normalButtonRule.style.color).to.equal(DARK_BUTTON_BORDER)
+      expect(normalButtonRule.style.color).to.equal(WHITE)
       expect(linkRule, 'dark-section link hover rule').to.exist
       expect(buttonRule.style.backgroundColor).to.equal(DARK_BUTTON_BORDER)
       expect(buttonRule.style.color).to.equal(DARK_BUTTON_TEXT)
