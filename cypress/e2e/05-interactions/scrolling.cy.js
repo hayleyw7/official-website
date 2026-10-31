@@ -149,6 +149,41 @@ describe('scroll behavior', () => {
     })
   })
 
+  ;[['desktop', 1280, 844], ['mobile', 390, 844]].forEach(([label, width, height]) => {
+    it(`plays the Connect arrival animation on the first click from page bottom (${label})`, () => {
+      cy.viewport(width, height)
+      cy.visit('/#recognition')
+      cy.get('#section-nav').should('be.visible')
+      cy.scrollTo('bottom')
+      cy.location('hash').should('eq', '#recognition')
+      cy.get('#connect').then(($connect) => {
+        const beforeHeight = $connect.outerHeight()
+        cy.get('#section-nav a[href="#connect"]').click({ scrollBehavior: false })
+        cy.get('#connect .contact-arrival').should('exist')
+        cy.get('#connect').should(($updatedConnect) => {
+          expect($updatedConnect.outerHeight()).to.equal(beforeHeight)
+        })
+      })
+    })
+  })
+
+  it('replays the Connect arrival animation on repeated clicks from page bottom', () => {
+    cy.viewport(390, 844)
+    cy.visit('/#recognition')
+    cy.get('#section-nav').should('be.visible')
+    cy.scrollTo('bottom')
+    cy.get('#section-nav a[href="#connect"]').click({ scrollBehavior: false })
+    cy.get('#connect .contact-arrival').should('exist')
+    cy.get('#connect').then(($connect) => {
+      const beforeHeight = $connect.outerHeight()
+      cy.get('#section-nav a[href="#connect"]').click({ scrollBehavior: false })
+      cy.get('#connect .contact-arrival').should('exist')
+      cy.get('#connect').should(($updatedConnect) => {
+        expect($updatedConnect.outerHeight()).to.equal(beforeHeight)
+      })
+    })
+  })
+
   it('keeps a refreshed Impact fragment aligned beneath the navbar', () => {
     cy.visit('/#impact')
     cy.reload()
@@ -218,7 +253,7 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#portfolio"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'font-weight', '300')
+      .and('have.css', 'font-weight', '600')
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
     cy.get('#section-nav a[href="#about"]').should('not.have.attr', 'aria-current')
 
@@ -229,7 +264,7 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#reviews"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'font-weight', '300')
+      .and('have.css', 'font-weight', '600')
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
     cy.get('#section-nav a[href="#portfolio"]').should('not.have.attr', 'aria-current')
 
@@ -323,8 +358,8 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#portfolio"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'font-weight', '300')
-      .and('have.css', 'font-weight', '300')
+      .and('have.css', 'font-weight', '600')
+      .and('have.css', 'font-weight', '600')
 
     cy.window().then((win) => {
       win.dispatchEvent(new Event('wheel'))
@@ -333,8 +368,8 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#reviews"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'font-weight', '300')
-      .and('have.css', 'font-weight', '300')
+      .and('have.css', 'font-weight', '600')
+      .and('have.css', 'font-weight', '600')
     cy.get('#section-nav a[href="#portfolio"]').should('not.have.attr', 'aria-current')
   })
 

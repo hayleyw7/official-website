@@ -143,6 +143,8 @@ export default function SectionNav({ onContactNavigate }) {
     const alreadyAtTarget = target
       && Math.abs(target.getBoundingClientRect().top - getNavInset()) <= 2
     const alreadyAtDestination = window.location.hash === href
+    const alreadyAtPageBottom = window.scrollY + window.innerHeight
+      >= document.documentElement.scrollHeight - 2
     explicitSelectionRef.current = { href, settled: false, scrollY: window.scrollY }
     scrollToSection(href, { focusTarget: true })
     setActiveHref(href)
@@ -157,7 +159,9 @@ export default function SectionNav({ onContactNavigate }) {
 
     if ('onscrollend' in window) {
       window.addEventListener('scrollend', settleSelection, { once: true })
-      if (alreadyAtTarget || alreadyAtDestination) window.requestAnimationFrame(settleSelection)
+      if (alreadyAtTarget || alreadyAtDestination || alreadyAtPageBottom) {
+        window.requestAnimationFrame(settleSelection)
+      }
     } else {
       window.setTimeout(settleSelection, 1000)
     }
