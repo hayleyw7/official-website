@@ -175,7 +175,7 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#about"]').should('have.attr', 'aria-current', 'page')
   })
 
-  it('highlights Organizations when scrolling upward into it from Connect on desktop', () => {
+  it('hands desktop highlighting to Recognition as its lower edge re-enters view', () => {
     cy.viewport(1280, 844)
     cy.visit('/')
     cy.get('#header').then(($header) => {
@@ -183,16 +183,11 @@ describe('scroll behavior', () => {
     })
     cy.get('#section-nav').should('be.visible')
     cy.window().then((win) => {
-      win.scrollTo(0, win.document.documentElement.scrollHeight)
-    })
-    cy.get('#section-nav a[href="#connect"]').should('have.attr', 'aria-current', 'page')
-    cy.window().then((win) => {
-      const organizations = win.document.querySelector('#organizations')
+      const recognition = win.document.querySelector('#recognition')
       win.dispatchEvent(new Event('wheel'))
-      win.scrollTo(0, organizations.offsetTop - win.innerHeight / 2)
+      win.scrollTo(0, recognition.offsetTop + recognition.offsetHeight - win.innerHeight / 4)
     })
-    cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
-    cy.get('#section-nav a[href="#connect"]').should('not.have.attr', 'aria-current')
+    cy.get('#section-nav a[href="#recognition"]').should('have.attr', 'aria-current', 'page')
   })
 
   it('updates the highlighted mobile link after click navigation and manual scrolling', () => {
