@@ -190,6 +190,22 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#recognition"]').should('have.attr', 'aria-current', 'page')
   })
 
+  it('keeps Organizations active while its lower half is visible on desktop reverse-scroll', () => {
+    cy.viewport(1280, 844)
+    cy.visit('/')
+    cy.get('#header').then(($header) => {
+      cy.window().then((win) => win.scrollTo(0, $header.outerHeight()))
+    })
+    cy.get('#section-nav').should('be.visible')
+    cy.window().then((win) => {
+      const organizations = win.document.querySelector('#organizations')
+      win.dispatchEvent(new Event('wheel'))
+      win.scrollTo(0, organizations.offsetTop - win.innerHeight / 2)
+    })
+    cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
+    cy.get('#section-nav a[href="#recognition"]').should('not.have.attr', 'aria-current')
+  })
+
   it('updates the highlighted mobile link after click navigation and manual scrolling', () => {
     cy.viewport(390, 844)
     cy.visit('/')

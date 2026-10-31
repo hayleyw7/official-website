@@ -26,7 +26,9 @@ export function getActiveSectionHref() {
 
   if (atPageBottom) return '#connect'
   if (organizationsBottomReached) return '#connect'
-  if (recognitionDominatesMobile || recognitionDominatesDesktop) return '#recognition'
+  if (recognitionDominatesMobile || (recognitionDominatesDesktop && !organizationsVisible)) {
+    return '#recognition'
+  }
 
   if (organizationsVisible
     && (!isMobileViewport || organizationsRect.bottom > window.innerHeight - activationLine)) {
