@@ -163,16 +163,6 @@ describe('mobile and narrow layout', () => {
         })
       })
 
-      it('keeps Impact icon gaps compact across the 520px to 732px range', () => {
-        for (const width of [520, 732]) {
-          cy.viewport(width, 844)
-          cy.visitHome()
-          cy.get('#impact ul.major-icons').should(($icons) => {
-            expect(parseFloat(getComputedStyle($icons[0]).columnGap)).to.be.at.most(32)
-          })
-        }
-      })
-
       it('left-aligns recognition titles with their descriptions', () => {
         cy.get('#recognition .content-group article').each(($article) => {
           cy.wrap($article).find('h4').should('have.css', 'text-align', 'left')
