@@ -1,7 +1,7 @@
 const WHITE = 'rgb(255, 255, 255)'
 const SLATE_BUTTON = 'rgb(95, 113, 132)'
 const BLUE_GRAY = 'rgb(109, 127, 146)'
-const DARK_BUTTON_BORDER = 'rgb(197, 211, 222)'
+const DARK_BUTTON_BORDER = 'rgb(157, 177, 192)'
 const DARK_BUTTON_TEXT = 'rgb(51, 60, 68)'
 
 const findRule = (window, matchingSelector) => {
@@ -144,7 +144,7 @@ describe('hover states', () => {
       expect(overlay.style.animation).to.include('4800ms')
       expect(overlay.style.background).to.include('linear-gradient')
       expect(overlay.style.background).to.include('45deg')
-      expect(overlay.style.background).to.include('rgba(255, 255, 255, 0.8)')
+      expect(overlay.style.background).to.include('rgba(157, 177, 192, 0.8)')
       expect(overlay.style.backgroundPosition).to.equal('100% 0%')
     })
   })

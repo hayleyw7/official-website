@@ -49,7 +49,7 @@
 .main.style2 input[type="button"],
 .main.style2 button,
 .main.style2 .button {
-	box-shadow: inset 0 0 0 1px #c5d3de;
+	box-shadow: inset 0 0 0 1px #9db1c0;
 	color: #ffffff;
 }
 
@@ -58,7 +58,7 @@
 .main.style2 input[type="button"]:hover,
 .main.style2 button:hover,
 .main.style2 .button:hover {
-	background-color: #c5d3de;
+	background-color: #9db1c0;
 	color: v.$color-slate;
 }
 
@@ -509,7 +509,7 @@ body.is-preload #header:after {
 
 #connect .connect-action .contact-arrival::after {
 	animation: connect-email-sweep 4800ms ease-out both;
-	background: linear-gradient(45deg, transparent 25%, rgba(255, 255, 255, 0.8) 50%, transparent 75%);
+	background: linear-gradient(45deg, transparent 25%, rgba(157, 177, 192, 0.8) 50%, transparent 75%);
 	background-position: 100% 0%;
 	background-size: 300% 300%;
 	content: '';
