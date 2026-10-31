@@ -509,7 +509,7 @@ body.is-preload #header:after {
 
 #connect .connect-action .contact-arrival::after {
 	animation: connect-email-sweep 2400ms ease-out both;
-	background: linear-gradient(45deg, transparent 25%, rgba(109, 127, 146, 1) 50%, transparent 75%);
+	background: linear-gradient(45deg, transparent 25%, rgba(197, 211, 222, 1) 50%, transparent 75%);
 	background-position: 100% 0%;
 	background-size: 300% 300%;
 	content: '';
@@ -519,34 +519,10 @@ body.is-preload #header:after {
 	z-index: 0;
 }
 
-#connect .connect-action .contact-arrival::before {
-	animation: connect-email-sweep-text 2400ms ease-out both;
-	color: #ffffff;
-	content: 'Email';
-	display: grid;
-	inset: 0;
-	place-items: center;
-	pointer-events: none;
-	position: absolute;
-	z-index: 1;
-	-webkit-mask-image: linear-gradient(45deg, transparent 25%, #000 50%, transparent 75%);
-	-webkit-mask-position: 100% 0%;
-	-webkit-mask-size: 300% 300%;
-	mask-image: linear-gradient(45deg, transparent 25%, #000 50%, transparent 75%);
-	mask-position: 100% 0%;
-	mask-size: 300% 300%;
-}
-
 @keyframes connect-email-sweep {
 	0% { background-position: 100% 0%; opacity: 1; }
 	85% { background-position: 0% 100%; opacity: 1; }
 	100% { background-position: 0% 100%; opacity: 0; }
-}
-
-@keyframes connect-email-sweep-text {
-	0% { mask-position: 100% 0%; -webkit-mask-position: 100% 0%; }
-	85% { mask-position: 0% 100%; -webkit-mask-position: 0% 100%; }
-	100% { mask-position: 0% 100%; -webkit-mask-position: 0% 100%; opacity: 0; }
 }
 
 @keyframes contact-icon-wiggle {
