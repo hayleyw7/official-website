@@ -28,7 +28,7 @@ After scrolling past the hero, a **sticky section nav** appears with links to ea
 
 Responsive layouts use explicit boundaries rather than natural wrapping: profile and card columns stack at 850px, the section nav switches to intentional four-over-three rows at 850px while retaining normal nav text until the phone breakpoint, and impact icons render as either one row of six or two balanced rows of three.
 
-The social-link footer keeps its short icon animation when you navigate to Connect from the section nav.
+Selecting Connect starts a diagonal sweep inside the Email button after scrolling settles. Selecting it again replays the sweep without changing the Connect section or document height. The footer is not animated by this navigation.
 
 ## Project layout
 
@@ -108,3 +108,4 @@ Pushes to `main` trigger the GitHub Pages workflow in `.github/workflows/deploy.
 ## Credits
 
 The original visual design is based on Photon by [HTML5 UP](https://html5up.net), licensed under Creative Commons Attribution 3.0. See `LICENSE.txt`.
+
