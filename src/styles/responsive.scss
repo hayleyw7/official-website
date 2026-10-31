@@ -356,9 +356,15 @@
 	ul.major-icons {
 		row-gap: 2.25rem;
 		column-gap: 2.25rem;
+		margin-top: 1.5rem;
 		grid-template-columns: repeat(3, 4rem);
 		justify-content: center;
 		padding-inline: 0;
+		box-sizing: border-box;
+	}
+
+	.major-icons-container {
+		padding-top: 1.5rem;
 		box-sizing: border-box;
 	}
 
