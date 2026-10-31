@@ -175,6 +175,19 @@ describe('hover states', () => {
     cy.get('#connect .contact-arrival').should('exist')
   })
 
+  it('replays the Email sweep when Connect is pressed again at the destination', () => {
+    cy.visit('/')
+    cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+    cy.wait(1100)
+    cy.get('#connect .contact-arrival').then(($firstLink) => {
+      cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+      cy.wait(1100)
+      cy.get('#connect .contact-arrival').should(($secondLink) => {
+        expect($secondLink[0]).not.to.equal($firstLink[0])
+      })
+    })
+  })
+
   it('defines a visible section nav hover color', () => {
     cy.window().then((window) => {
       const rule = findRule(window, '.section-nav a:hover')
