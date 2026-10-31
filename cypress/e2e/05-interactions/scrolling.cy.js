@@ -230,6 +230,25 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#reviews"]').should('not.have.attr', 'aria-current')
   })
 
+  it('hands mobile highlighting back to Recognition when it fills the viewport while scrolling upward', () => {
+    cy.viewport(390, 844)
+    cy.visit('/')
+    cy.get('#header').then(($header) => {
+      cy.window().then((win) => win.scrollTo(0, $header.outerHeight()))
+    })
+    cy.get('#section-nav').should('be.visible')
+    cy.window().then((win) => {
+      win.scrollTo(0, win.document.documentElement.scrollHeight)
+    })
+    cy.window().then((win) => {
+      const recognition = win.document.querySelector('#recognition')
+      win.dispatchEvent(new Event('wheel'))
+      win.scrollTo(0, recognition.offsetTop + recognition.offsetHeight - win.innerHeight / 2)
+    })
+    cy.get('#section-nav a[href="#recognition"]').should('have.attr', 'aria-current', 'page')
+    cy.get('#section-nav a[href="#organizations"]').should('not.have.attr', 'aria-current')
+  })
+
   it('keeps explicit Organizations and Connect selections while allowing later scroll updates', () => {
     cy.viewport(390, 844)
     cy.visit('/')

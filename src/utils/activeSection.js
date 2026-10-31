@@ -14,9 +14,15 @@ export function getActiveSectionHref() {
   const organizationsVisible = organizationsRect
     && organizationsRect.top < window.innerHeight
     && organizationsRect.bottom > 0
+  const recognitionRect = document.querySelector('#recognition')?.getBoundingClientRect()
+  const recognitionDominatesMobile = isMobileViewport
+    && recognitionRect
+    && recognitionRect.top < window.innerHeight
+    && recognitionRect.bottom > window.innerHeight / 2
 
   if (atPageBottom) return '#connect'
   if (organizationsBottomReached) return '#connect'
+  if (recognitionDominatesMobile) return '#recognition'
 
   if (organizationsVisible
     && (!isMobileViewport || organizationsRect.bottom > window.innerHeight - activationLine)) {
