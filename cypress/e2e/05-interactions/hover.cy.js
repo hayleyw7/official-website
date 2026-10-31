@@ -126,12 +126,13 @@ describe('hover states', () => {
     cy.window().then((window) => {
       const rule = findRule(window, '#connect .connect-action .contact-arrival')
       expect(rule, 'Connect Email animation rule').to.exist
-      expect(rule.style.animation).to.include('connect-email-sweep')
-      expect(rule.style.backgroundImage).to.include('linear-gradient')
-      expect(rule.style.backgroundImage).to.include('45deg')
-      expect(rule.style.backgroundImage).to.include('rgba(70, 134, 160, 0.8)')
-      expect(rule.style.backgroundSize).to.equal('300% 300%')
-      expect(rule.style.backgroundPosition).to.equal('0% 100%')
+      const overlay = findRule(window, '#connect .connect-action .contact-arrival::after')
+      expect(overlay, 'Connect Email sweep overlay').to.exist
+      expect(overlay.style.animation).to.include('connect-email-sweep')
+      expect(overlay.style.background).to.include('linear-gradient')
+      expect(overlay.style.background).to.include('45deg')
+      expect(overlay.style.background).to.include('rgba(70, 134, 160, 0.8)')
+      expect(overlay.style.transform).to.include('translate(-100%, 100%)')
     })
   })
 

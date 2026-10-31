@@ -499,15 +499,27 @@ body.is-preload #header:after {
 }
 
 #connect .connect-action .contact-arrival {
+	animation: none;
+	overflow: hidden;
+	position: relative;
+	isolation: isolate;
+}
+
+#connect .connect-action .contact-arrival::after {
 	animation: connect-email-sweep 1200ms ease-out both;
-	background-image: linear-gradient(45deg, transparent 25%, rgba(70, 134, 160, 0.8) 50%, transparent 75%);
-	background-size: 300% 300%;
-	background-position: 0% 100%;
+	background: linear-gradient(45deg, transparent 25%, rgba(70, 134, 160, 0.8) 50%, transparent 75%);
+	content: '';
+	inset: 0;
+	pointer-events: none;
+	position: absolute;
+	transform: translate(-100%, 100%);
+	z-index: 0;
 }
 
 @keyframes connect-email-sweep {
-	0% { background-position: 0% 100%; }
-	100% { background-position: 100% 0%; }
+	0% { opacity: 1; transform: translate(-100%, 100%); }
+	85% { opacity: 1; transform: translate(100%, -100%); }
+	100% { opacity: 0; transform: translate(100%, -100%); }
 }
 
 @keyframes contact-icon-wiggle {
