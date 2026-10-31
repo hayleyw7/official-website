@@ -72,23 +72,21 @@ describe('hover states', () => {
   })
 
   it('defines a high-contrast hover response for recognition actions', () => {
+    cy.get('#recognition .content-group .button').first().should('have.css', 'color', SLATE_BUTTON)
     cy.window().then((window) => {
-      const rule = findRule(window, '#recognition .content-group .button:hover')
-      expect(rule, 'recognition button hover rule').to.exist
+      const rule = findRule(window, '.button:hover')
       expect(rule.style.backgroundColor).to.equal(SLATE_BUTTON)
       expect(rule.style.color).to.equal(WHITE)
     })
-    cy.get('#recognition .content-group .button').first().trigger('mouseover').should('be.visible')
   })
 
   it('defines a high-contrast hover response for project actions', () => {
+    cy.get('#portfolio .content-group .button').first().should('have.css', 'color', SLATE_BUTTON)
     cy.window().then((window) => {
-      const rule = findRule(window, '.content-group .button:hover')
-      expect(rule, 'project button hover rule').to.exist
+      const rule = findRule(window, '.button:hover')
       expect(rule.style.backgroundColor).to.equal(SLATE_BUTTON)
       expect(rule.style.color).to.equal(WHITE)
     })
-    cy.get('#portfolio .content-group .button').first().trigger('mouseover').should('be.visible')
   })
 
   it('defines a high-contrast hover response for recommendation actions', () => {
@@ -147,10 +145,9 @@ describe('hover states', () => {
   })
 
   it('keeps the light Connect button on the shared button palette', () => {
+    cy.get('#connect .connect-action .button').should('have.css', 'color', SLATE_BUTTON)
     cy.window().then((window) => {
-      const normalRule = findRule(window, '#connect .connect-action .button')
-      const hoverRule = findRule(window, '#connect .connect-action .button:hover')
-      expect(normalRule.style.color).to.equal(SLATE_BUTTON)
+      const hoverRule = findRule(window, '.button:hover')
       expect(hoverRule.style.backgroundColor).to.equal(SLATE_BUTTON)
       expect(hoverRule.style.color).to.equal(WHITE)
     })
