@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { sectionNavItems } from '../data/sectionNav.js'
 import { getActiveSectionHref } from '../utils/activeSection.js'
-import { scrollToSection, setSectionNavHeight, measureSectionNavHeight } from '../utils/scrollToSection.js'
+import {
+  scrollToSection,
+  setSectionNavHeight,
+  measureSectionNavHeight,
+  getNavInset,
+} from '../utils/scrollToSection.js'
 
 export default function SectionNav({ onContactNavigate }) {
   const [visible, setVisible] = useState(false)
@@ -134,6 +139,9 @@ export default function SectionNav({ onContactNavigate }) {
 
   const handleSectionClick = (event, href) => {
     event.preventDefault()
+    const target = document.querySelector(href)
+    const alreadyAtTarget = target
+      && Math.abs(target.getBoundingClientRect().top - getNavInset()) <= 2
     explicitSelectionRef.current = { href, settled: false, scrollY: window.scrollY }
     scrollToSection(href, { focusTarget: true })
     setActiveHref(href)
@@ -148,6 +156,7 @@ export default function SectionNav({ onContactNavigate }) {
 
     if ('onscrollend' in window) {
       window.addEventListener('scrollend', settleSelection, { once: true })
+      if (alreadyAtTarget) window.requestAnimationFrame(settleSelection)
     } else {
       window.setTimeout(settleSelection, 1000)
     }
