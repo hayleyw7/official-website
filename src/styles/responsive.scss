@@ -136,7 +136,6 @@
 	#impact ul.major-icons {
 		grid-template-columns: repeat(6, minmax(0, 1fr));
 		row-gap: 0;
-		transform: translateX(-1.5em);
 	}
 
 	#impact ul.major-icons li {
@@ -356,15 +355,15 @@
 
 	ul.major-icons {
 		row-gap: 1.5rem;
-		column-gap: 0;
+		column-gap: 1.75rem;
 		grid-template-columns: repeat(3, 4rem);
-		justify-content: space-between;
-		padding-inline: 0.6rem;
+		justify-content: center;
+		padding-inline: 0;
 		box-sizing: border-box;
 	}
 
 	ul.major-icons li {
-		padding: 0.55rem 0.1rem;
+		padding: 0;
 		box-sizing: border-box;
 	}
 
@@ -436,6 +435,10 @@
 }
 
 @media screen and (max-width: 360px) {
+	ul.major-icons {
+		grid-template-columns: repeat(3, 3.4rem);
+	}
+
 	ul.major-icons li .icon {
 		height: 3.4rem;
 		line-height: 3.4rem;

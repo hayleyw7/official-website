@@ -180,17 +180,6 @@ describe('mobile and narrow layout', () => {
         })
       })
 
-      it('aligns the outer mobile Impact diamonds with the content margins', () => {
-        cy.get('#impact ul.major-icons').then(($icons) => {
-          const bounds = $icons[0].getBoundingClientRect()
-          const diamonds = [...$icons[0].querySelectorAll('li .icon')]
-            .slice(0, 3)
-            .map((icon) => icon.getBoundingClientRect())
-          expect(diamonds[0].left).to.be.closeTo(bounds.left, 4)
-          expect(diamonds[2].right).to.be.closeTo(bounds.right, 3)
-        })
-      })
-
       it('keeps Impact icons grouped at the 506px layout transition', () => {
         cy.viewport(506, 844)
         cy.visitHome()
