@@ -11,13 +11,15 @@ export function getActiveSectionHref() {
     && organizations.getBoundingClientRect().bottom
       <= window.innerHeight - (isMobileViewport ? activationLine : 0)
   const organizationsRect = organizations?.getBoundingClientRect()
+  const organizationsVisible = organizationsRect
+    && organizationsRect.top < window.innerHeight
+    && organizationsRect.bottom > 0
 
   if (atPageBottom) return '#connect'
   if (organizationsBottomReached) return '#connect'
 
-  if (organizationsRect
-    && organizationsRect.top < window.innerHeight
-    && organizationsRect.bottom > window.innerHeight - (isMobileViewport ? activationLine : 0)) {
+  if (organizationsVisible
+    && (!isMobileViewport || organizationsRect.bottom > window.innerHeight - activationLine)) {
     return '#organizations'
   }
 
