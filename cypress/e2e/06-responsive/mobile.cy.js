@@ -150,6 +150,19 @@ describe('mobile and narrow layout', () => {
         })
       })
 
+      it('keeps Impact icons grouped at the 506px layout transition', () => {
+        cy.viewport(506, 844)
+        cy.visitHome()
+        cy.get('#impact ul.major-icons').should(($icons) => {
+          expect(getComputedStyle($icons[0]).justifyContent).to.equal('center')
+          const bounds = $icons[0].getBoundingClientRect()
+          const first = $icons[0].querySelector('li').getBoundingClientRect()
+          const last = $icons[0].querySelector('li:last-child').getBoundingClientRect()
+          expect(first.left).to.be.greaterThan(bounds.left)
+          expect(last.right).to.be.lessThan(bounds.right)
+        })
+      })
+
       it('left-aligns recognition titles with their descriptions', () => {
         cy.get('#recognition .content-group article').each(($article) => {
           cy.wrap($article).find('h4').should('have.css', 'text-align', 'left')

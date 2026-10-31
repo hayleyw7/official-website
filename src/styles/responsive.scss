@@ -275,9 +275,10 @@
 	/* List */
 
 	ul.major-icons {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(3, auto);
+		justify-content: center;
 		row-gap: 1.35rem;
-		column-gap: 0.2rem;
+		column-gap: min(3.35rem, 8vw);
 		height: auto;
 		align-content: start;
 		width: 100%;
