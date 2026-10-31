@@ -7,6 +7,7 @@ export default function SectionNav({ onContactNavigate }) {
   const [visible, setVisible] = useState(false)
   const [activeHref, setActiveHref] = useState('#about')
   const onContactNavigateRef = useRef(onContactNavigate)
+  const explicitSelectionRef = useRef(null)
 
   useEffect(() => {
     onContactNavigateRef.current = onContactNavigate
@@ -44,7 +45,22 @@ export default function SectionNav({ onContactNavigate }) {
 
     const onScroll = () => {
       updateVisibility()
+
+      const explicitSelection = explicitSelectionRef.current
+      if (explicitSelection) {
+        if (!explicitSelection.settled) return
+        if (Math.abs(window.scrollY - explicitSelection.scrollY) > 1) {
+          explicitSelectionRef.current = null
+        } else {
+          return
+        }
+      }
+
       updateActiveSection()
+    }
+
+    const onManualScrollIntent = () => {
+      explicitSelectionRef.current = null
     }
 
     const onPopState = () => {
@@ -80,11 +96,19 @@ export default function SectionNav({ onContactNavigate }) {
     })
     navResizeObserver.observe(nav)
     window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('wheel', onManualScrollIntent, { passive: true })
+    window.addEventListener('touchstart', onManualScrollIntent, { passive: true })
+    window.addEventListener('pointerdown', onManualScrollIntent, { passive: true })
+    window.addEventListener('keydown', onManualScrollIntent)
     window.addEventListener('resize', onResize)
     window.addEventListener('popstate', onPopState)
 
     return () => {
       window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('wheel', onManualScrollIntent)
+      window.removeEventListener('touchstart', onManualScrollIntent)
+      window.removeEventListener('pointerdown', onManualScrollIntent)
+      window.removeEventListener('keydown', onManualScrollIntent)
       window.removeEventListener('resize', onResize)
       window.removeEventListener('popstate', onPopState)
       navResizeObserver.disconnect()
@@ -94,8 +118,23 @@ export default function SectionNav({ onContactNavigate }) {
 
   const handleSectionClick = (event, href) => {
     event.preventDefault()
+    explicitSelectionRef.current = { href, settled: false, scrollY: window.scrollY }
     scrollToSection(href, { focusTarget: true })
     setActiveHref(href)
+
+    const settleSelection = () => {
+      const selection = explicitSelectionRef.current
+      if (!selection || selection.href !== href) return
+      explicitSelectionRef.current = { ...selection, settled: true, scrollY: window.scrollY }
+      setActiveHref(href)
+    }
+
+    if ('onscrollend' in window) {
+      window.addEventListener('scrollend', settleSelection, { once: true })
+    } else {
+      window.setTimeout(settleSelection, 1000)
+    }
+
     if (href === '#connect') onContactNavigateRef.current?.()
   }
 
