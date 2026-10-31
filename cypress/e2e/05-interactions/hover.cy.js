@@ -2,6 +2,7 @@ const WHITE = 'rgb(255, 255, 255)'
 const SLATE_BUTTON = 'rgb(95, 113, 132)'
 const BLUE_GRAY = 'rgb(109, 127, 146)'
 const DARK_BUTTON_BORDER = 'rgb(197, 211, 222)'
+const DARK_BUTTON_TEXT_NORMAL = 'rgb(157, 177, 192)'
 const DARK_BUTTON_TEXT = 'rgb(51, 60, 68)'
 
 const findRule = (window, matchingSelector) => {
@@ -96,7 +97,7 @@ describe('hover states', () => {
       const normalButtonRule = findRule(window, '.main.style2 .button')
       const linkRule = findRule(window, '.main.style2 a:hover')
       expect(buttonRule, 'dark-section button hover rule').to.exist
-      expect(normalButtonRule.style.color).to.equal(DARK_BUTTON_BORDER)
+      expect(normalButtonRule.style.color).to.equal(DARK_BUTTON_TEXT_NORMAL)
       expect(normalButtonRule.style.boxShadow).to.include('197, 211, 222')
       expect(linkRule, 'dark-section link hover rule').to.exist
       expect(buttonRule.style.backgroundColor).to.equal(DARK_BUTTON_BORDER)
@@ -167,6 +168,10 @@ describe('hover states', () => {
       expect(overlay.style.background).to.include('45deg')
       expect(overlay.style.background).to.include('rgb(250, 251, 251)')
       expect(overlay.style.backgroundPosition).to.equal('100% 0%')
+      expect(overlay.style.inset).to.equal('1px')
+      expect(overlay.style.zIndex).to.equal('0')
+      const textRule = findRule(window, '#connect .connect-action .contact-arrival .email-label')
+      expect(textRule.style.zIndex).to.equal('1')
     })
   })
 

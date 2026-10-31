@@ -10,7 +10,7 @@ export default function Connect({ contactNavigation }) {
         <header className="major">
           <h2>Connect</h2>
           <ul className="actions special connect-action">
-            <li><ExternalLink key={contactNavigation} url={emailLink.url} className={`button${contactNavigation ? ' contact-arrival' : ''}`}>Email</ExternalLink></li>
+            <li><ExternalLink key={contactNavigation} url={emailLink.url} className={`button${contactNavigation ? ' contact-arrival' : ''}`}><span className="email-label">Email</span></ExternalLink></li>
           </ul>
         </header>
       </div>
