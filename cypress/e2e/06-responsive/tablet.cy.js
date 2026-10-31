@@ -98,6 +98,20 @@ describe('tablet layout', () => {
     })
   })
 
+  it('centers medium-width second-row navigation links between top-row centers', () => {
+    cy.viewport(600, 900)
+    cy.visitHome()
+    cy.get('#section-nav li a').then(($links) => {
+      const centers = [...$links].map((link) => {
+        const bounds = link.getBoundingClientRect()
+        return (bounds.left + bounds.right) / 2
+      })
+      expect(centers[4]).to.be.closeTo((centers[0] + centers[1]) / 2, 2)
+      expect(centers[5]).to.be.closeTo((centers[1] + centers[2]) / 2, 2)
+      expect(centers[6]).to.be.closeTo((centers[2] + centers[3]) / 2, 2)
+    })
+  })
+
   it('keeps organization actions at the shared desktop width', () => {
     cy.viewport(1024, 900)
     cy.visitHome()
