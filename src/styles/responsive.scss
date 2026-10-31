@@ -356,11 +356,16 @@
 
 	ul.major-icons {
 		row-gap: 1.5rem;
-		column-gap: 1.75rem;
+		column-gap: 0;
+		grid-template-columns: repeat(3, 4rem);
+		justify-content: space-between;
+		padding-inline: 0.6rem;
+		box-sizing: border-box;
 	}
 
 	ul.major-icons li {
 		padding: 0.55rem 0.1rem;
+		box-sizing: border-box;
 	}
 
 	ul.major-icons li .icon {
@@ -427,6 +432,18 @@
 
 	#contact .copyright li:first-child {
 		margin-top: 0;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	ul.major-icons li .icon {
+		height: 3.4rem;
+		line-height: 3.4rem;
+		width: 3.4rem;
+	}
+
+	ul.major-icons li .icon:before {
+		font-size: 24px;
 	}
 }
 

@@ -165,9 +165,10 @@ describe('mobile and narrow layout', () => {
         cy.get('#impact ul.major-icons li .icon').first().then(($icon) => {
           const bounds = $icon[0].getBoundingClientRect()
           const glyph = getComputedStyle($icon[0], '::before')
-      expect(bounds.width).to.be.closeTo(90.5, 1)
-      expect(bounds.height).to.be.closeTo(90.5, 1)
-          expect(glyph.fontSize).to.equal('26px')
+      const expectedDiamond = width <= 360 ? 76.9 : 90.5
+      expect(bounds.width).to.be.closeTo(expectedDiamond, 1)
+      expect(bounds.height).to.be.closeTo(expectedDiamond, 1)
+          expect(glyph.fontSize).to.equal(width <= 360 ? '24px' : '26px')
         })
       })
 
@@ -176,6 +177,17 @@ describe('mobile and narrow layout', () => {
           const firstRow = [...$icons].slice(0, 3).map((icon) => icon.getBoundingClientRect())
           expect(firstRow[1].left).to.be.greaterThan(firstRow[0].right)
           expect(firstRow[2].left).to.be.greaterThan(firstRow[1].right)
+        })
+      })
+
+      it('aligns the outer mobile Impact diamonds with the content margins', () => {
+        cy.get('#impact ul.major-icons').then(($icons) => {
+          const bounds = $icons[0].getBoundingClientRect()
+          const diamonds = [...$icons[0].querySelectorAll('li .icon')]
+            .slice(0, 3)
+            .map((icon) => icon.getBoundingClientRect())
+          expect(diamonds[0].left).to.be.closeTo(bounds.left, 4)
+          expect(diamonds[2].right).to.be.closeTo(bounds.right, 3)
         })
       })
 
