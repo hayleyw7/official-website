@@ -196,7 +196,7 @@
 		grid-template-columns: repeat(3, auto);
 		justify-content: center;
 		row-gap: 3rem;
-		column-gap: min(3.35rem, 8vw);
+		column-gap: clamp(0.75rem, 4vw, 2rem);
 		height: auto;
 		align-content: start;
 		width: 100%;
@@ -278,7 +278,7 @@
 		grid-template-columns: repeat(3, auto);
 		justify-content: center;
 		row-gap: 1.35rem;
-		column-gap: min(3.35rem, 8vw);
+		column-gap: clamp(0.75rem, 4vw, 2rem);
 		height: auto;
 		align-content: start;
 		width: 100%;
