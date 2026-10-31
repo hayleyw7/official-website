@@ -498,6 +498,11 @@ body.is-preload #header:after {
 	animation-delay: v.$duration-contact-step * 3;
 }
 
+#connect .connect-action .contact-arrival {
+	animation: contact-icon-wiggle v.$duration-contact-step ease-in-out both;
+	transform-origin: center bottom;
+}
+
 @keyframes contact-icon-wiggle {
 	0%, 100% { transform: rotate(0deg); }
 	30% { transform: rotate(10deg); }
