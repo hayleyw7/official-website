@@ -100,7 +100,7 @@ describe('hover states', () => {
       expect(normalButtonRule.style.color).to.equal(DARK_BUTTON_TEXT_NORMAL)
       expect(normalButtonRule.style.boxShadow).to.include('157, 177, 192')
       expect(linkRule, 'dark-section link hover rule').to.exist
-      expect(buttonRule.style.backgroundColor).to.equal(DARK_BUTTON_TEXT_NORMAL)
+      expect(buttonRule.style.backgroundColor).to.equal(DARK_BUTTON_BORDER)
       expect(buttonRule.style.color).to.equal(DARK_BUTTON_TEXT)
       expect(linkRule.style.color).to.equal(WHITE)
     })
