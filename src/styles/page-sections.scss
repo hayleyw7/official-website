@@ -500,11 +500,16 @@ body.is-preload #header:after {
 	animation-delay: v.$duration-contact-step * 3;
 }
 
-#connect .connect-action .contact-arrival {
-	animation: none;
+#connect .connect-action .button {
+	/* Keep clipping and the inline-block baseline stable before and during replay. */
 	overflow: hidden;
 	position: relative;
 	isolation: isolate;
+	vertical-align: top;
+}
+
+#connect .connect-action .contact-arrival {
+	animation: none;
 }
 
 #connect .connect-action .contact-arrival::after {
@@ -562,3 +567,4 @@ body.is-preload #header:after {
 	margin-left: 0;
 	padding: 0;
 }
+
