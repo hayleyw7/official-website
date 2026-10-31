@@ -10,7 +10,7 @@ export const projectGroups = [
       },
       {
         title: 'Whimsy Grove',
-        description: 'Feeling whimsical? Create your own grove art!',
+        description: 'Feeling whimsical? Create a magical grove!',
         label: 'Soon',
         comingSoon: true,
       },
