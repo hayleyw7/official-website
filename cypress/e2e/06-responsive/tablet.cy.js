@@ -62,7 +62,7 @@ describe('tablet layout', () => {
   })
 
   it('keeps impact icons in one row at the narrow two-column breakpoint', () => {
-    cy.viewport(851, 1024)
+    cy.viewport(751, 1024)
     cy.visitHome()
     cy.get('#impact ul.major-icons li').then(($icons) => {
       const rows = [...$icons].map((icon) => Math.round(icon.getBoundingClientRect().top))
@@ -90,7 +90,7 @@ describe('tablet layout', () => {
       expect(widths[0]).to.be.closeTo(widths.at(-1), 2)
       expect(widths[0]).to.be.greaterThan(0)
     })
-    cy.viewport(850, 1024)
+    cy.viewport(750, 1024)
     cy.visitHome()
     cy.get('#organizations article').then(($cards) => {
       expect($cards[0].getBoundingClientRect().width)
