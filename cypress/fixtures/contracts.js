@@ -1,5 +1,5 @@
 export const sections = [
-  { id: 'about', heading: 'Human-Centered Engineering' },
+  { id: 'about', heading: 'Usability-Centered Engineering' },
   { id: 'impact', heading: 'Professional & Community Impact' },
   { id: 'portfolio', heading: 'Project Portfolio' },
   { id: 'reviews', heading: 'Reviews' },

@@ -50,7 +50,11 @@
 	}
 }
 
-@media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) and (max-width: v.$breakpoint-desktop) {
+@media screen and (min-width: 990px) and (max-width: v.$breakpoint-desktop) {
+	html {
+		--section-padding-x: 3em;
+	}
+
 	#skills .row > .col-6 {
 		width: 100%;
 	}
@@ -132,6 +136,7 @@
 	#impact ul.major-icons {
 		grid-template-columns: repeat(6, minmax(0, 1fr));
 		row-gap: 0;
+		transform: translateX(-1.5em);
 	}
 
 	#impact ul.major-icons li {
@@ -275,9 +280,10 @@
 	/* List */
 
 	ul.major-icons {
-		grid-template-columns: repeat(3, minmax(0, 1fr));
+		grid-template-columns: repeat(3, auto);
+		justify-content: center;
 		row-gap: 1.35rem;
-		column-gap: 0.2rem;
+		column-gap: min(3.35rem, 8vw);
 		height: auto;
 		align-content: start;
 		width: 100%;
@@ -294,7 +300,7 @@
 	}
 
 	ul.major-icons li .icon:before {
-		font-size: 38px;
+		font-size: 30px;
 	}
 
 	/* Icon */
@@ -364,7 +370,7 @@
 	}
 
 	ul.major-icons li .icon:before {
-		font-size: 40px;
+		font-size: 30px;
 	}
 
 	#portfolio p,

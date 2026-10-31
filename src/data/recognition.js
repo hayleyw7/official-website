@@ -11,7 +11,7 @@ export const recognitionGroups = [
       {
         title: 'Arrows Making an Impact',
         description: 'Recognition for founding ND In Tech',
-        url: 'https://www.toledosua.org/alumnae/news/post/~board/alumnae-news/post/making-an-impact-hayley-witherell',
+        url: 'https://www.toledosua.org/community/alumnae/news/post/~board/alumnae-news/post/making-an-impact-hayley-witherell',
         label: 'Article',
       },
     ],
@@ -21,7 +21,7 @@ export const recognitionGroups = [
     items: [
       {
         title: 'Code The Dream',
-        description: 'Panel discussion on mentoring and teaching',
+        description: 'Panel discussion on representation',
         url: 'https://www.linkedin.com/feed/update/urn:li:activity:7080232254467149824/',
         label: 'Post',
       },
@@ -62,20 +62,20 @@ export const recognitionGroups = [
       },
       {
         title: 'GEN & Biotech News',
-        description: 'Article quoting my insight on pesticide testing',
+        description: 'Article quoting my industry insight',
         url: 'https://www.genengnews.com/insights/medical-cannabi-poses-unique-testing-challenges/',
         label: 'Article',
       },
       {
         title: 'Seed to Sound',
-        description: 'Podcast on running CBN while working full-time',
+        description: 'Podcast on running CBN while working',
         url: 'https://www.listennotes.com/podcasts/seed-to-sound/episode-2-colorado-badged-R6JEiGH-2SQ/',
         label: 'Episode',
       },
       {
         title: 'The Rooster',
-        description: "Article on CBN's impact on industry workers",
-        url: 'https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
+        description: "Article on CBN's impact on industry",
+        url: 'https://web.archive.org/web/20260307182938/https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
         label: 'Article',
       },
     ],

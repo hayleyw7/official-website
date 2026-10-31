@@ -14,12 +14,10 @@
   margin: 0.35em 0 0.5em 0;
 }
 
-#connect .connect-action .button {
-  color: #24566b;
-}
-
-#connect a:hover {
-  color: #123b4c;
+@media screen and (min-width: 737px) {
+  #connect .connect-action .button {
+    width: 136px;
+  }
 }
 
 #connect header.major:after {

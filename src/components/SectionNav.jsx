@@ -1,12 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 import { sectionNavItems } from '../data/sectionNav.js'
 import { getActiveSectionHref } from '../utils/activeSection.js'
-import { scrollToSection, setSectionNavHeight, measureSectionNavHeight } from '../utils/scrollToSection.js'
+import {
+  scrollToSection,
+  setSectionNavHeight,
+  measureSectionNavHeight,
+  getNavInset,
+} from '../utils/scrollToSection.js'
 
 export default function SectionNav({ onContactNavigate }) {
   const [visible, setVisible] = useState(false)
   const [activeHref, setActiveHref] = useState('#about')
   const onContactNavigateRef = useRef(onContactNavigate)
+  const explicitSelectionRef = useRef(null)
+  const scrollDirectionRef = useRef('down')
+  const previousScrollYRef = useRef(0)
+  const wasAtPageBottomRef = useRef(false)
 
   useEffect(() => {
     onContactNavigateRef.current = onContactNavigate
@@ -28,8 +37,8 @@ export default function SectionNav({ onContactNavigate }) {
       setVisible(bottom <= Math.ceil(navHeight) + 1)
     }
 
-    const updateActiveSection = () => {
-      setActiveHref(getActiveSectionHref())
+    const updateActiveSection = (scrollDirection = 'down', justLeftPageBottom = false) => {
+      setActiveHref(getActiveSectionHref(scrollDirection, justLeftPageBottom))
     }
 
     const updateNavHeight = () => {
@@ -44,7 +53,35 @@ export default function SectionNav({ onContactNavigate }) {
 
     const onScroll = () => {
       updateVisibility()
-      updateActiveSection()
+
+      const currentScrollY = window.scrollY
+      const atPageBottom = currentScrollY + window.innerHeight
+        >= document.documentElement.scrollHeight - 2
+      const justLeftPageBottom = wasAtPageBottomRef.current && !atPageBottom
+      if (currentScrollY !== previousScrollYRef.current) {
+        scrollDirectionRef.current = currentScrollY < previousScrollYRef.current ? 'up' : 'down'
+        previousScrollYRef.current = currentScrollY
+      }
+      wasAtPageBottomRef.current = atPageBottom
+
+      const explicitSelection = explicitSelectionRef.current
+      if (explicitSelection) {
+        if (!explicitSelection.settled) return
+        if (Math.abs(window.scrollY - explicitSelection.scrollY) > 1) {
+          explicitSelectionRef.current = null
+        } else {
+          return
+        }
+      }
+
+      updateActiveSection(scrollDirectionRef.current, justLeftPageBottom)
+    }
+
+    const onManualScrollIntent = (event) => {
+      if (event.type === 'wheel' && event.deltaY) {
+        scrollDirectionRef.current = event.deltaY < 0 ? 'up' : 'down'
+      }
+      explicitSelectionRef.current = null
     }
 
     const onPopState = () => {
@@ -80,11 +117,19 @@ export default function SectionNav({ onContactNavigate }) {
     })
     navResizeObserver.observe(nav)
     window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('wheel', onManualScrollIntent, { passive: true })
+    window.addEventListener('touchstart', onManualScrollIntent, { passive: true })
+    window.addEventListener('pointerdown', onManualScrollIntent, { passive: true })
+    window.addEventListener('keydown', onManualScrollIntent)
     window.addEventListener('resize', onResize)
     window.addEventListener('popstate', onPopState)
 
     return () => {
       window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('wheel', onManualScrollIntent)
+      window.removeEventListener('touchstart', onManualScrollIntent)
+      window.removeEventListener('pointerdown', onManualScrollIntent)
+      window.removeEventListener('keydown', onManualScrollIntent)
       window.removeEventListener('resize', onResize)
       window.removeEventListener('popstate', onPopState)
       navResizeObserver.disconnect()
@@ -94,9 +139,29 @@ export default function SectionNav({ onContactNavigate }) {
 
   const handleSectionClick = (event, href) => {
     event.preventDefault()
+    const target = document.querySelector(href)
+    const alreadyAtTarget = target
+      && Math.abs(target.getBoundingClientRect().top - getNavInset()) <= 2
+    const alreadyAtDestination = window.location.hash === href
+    explicitSelectionRef.current = { href, settled: false, scrollY: window.scrollY }
     scrollToSection(href, { focusTarget: true })
     setActiveHref(href)
-    if (href === '#connect') onContactNavigateRef.current?.()
+
+    const settleSelection = () => {
+      const selection = explicitSelectionRef.current
+      if (!selection || selection.href !== href) return
+      explicitSelectionRef.current = { ...selection, settled: true, scrollY: window.scrollY }
+      setActiveHref(href)
+      if (href === '#connect') onContactNavigateRef.current?.()
+    }
+
+    if ('onscrollend' in window) {
+      window.addEventListener('scrollend', settleSelection, { once: true })
+      if (alreadyAtTarget || alreadyAtDestination) window.requestAnimationFrame(settleSelection)
+    } else {
+      window.setTimeout(settleSelection, 1000)
+    }
+
   }
 
   return (

@@ -4,15 +4,15 @@ export const projectGroups = [
     items: [
       {
         title: 'Critterwave',
-        description: 'Want to battle? Defeat waves of vicious critters!',
+        description: 'Want to battle? Defeat waves of critters!',
         url: 'https://bunhouse.itch.io/critterwave',
         label: 'Play',
       },
       {
         title: 'Whimsy Grove',
-        description: 'Feeling whimsical? Create your own grove art!',
-        url: 'https://bunhouse.itch.io/whimsy-grove/',
-        label: 'Play',
+        description: 'Feeling whimsical? Create a grove!',
+        label: 'Soon',
+        comingSoon: true,
       },
       /*
       {
@@ -35,7 +35,7 @@ export const projectGroups = [
       },
       {
         title: 'Affirming Access',
-        description: 'Gotta go? Find safe restrooms near you ASAP!',
+        description: 'Gotta go? Find safe restrooms near you!',
         url: 'https://affirming-access.surge.sh/',
         label: 'Search',
       },
@@ -58,7 +58,7 @@ export const projectGroups = [
     items: [
       {
         title: 'Frankesso',
-        description: 'Need AI when offline? Meet your new agent!',
+        description: 'Need AI when offline? Meet this agent!',
         url: 'https://github.com/hayleyw7/frankesso-ai',
         label: 'Explore',
       },

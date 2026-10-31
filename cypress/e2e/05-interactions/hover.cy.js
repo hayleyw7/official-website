@@ -1,6 +1,9 @@
 const WHITE = 'rgb(255, 255, 255)'
 const SLATE_BUTTON = 'rgb(95, 113, 132)'
 const BLUE_GRAY = 'rgb(109, 127, 146)'
+const DARK_BUTTON_BORDER = 'rgb(157, 177, 192)'
+const DARK_BUTTON_TEXT_NORMAL = 'rgb(197, 211, 222)'
+const DARK_BUTTON_TEXT = 'rgb(51, 60, 68)'
 
 const findRule = (window, matchingSelector) => {
   const visitRules = (rules) => {
@@ -60,33 +63,43 @@ describe('hover states', () => {
     })
   })
 
-  it('defines a high-contrast hover response for recognition actions', () => {
+  it('keeps the button transition stable when hovering', () => {
     cy.window().then((window) => {
-      const rule = findRule(window, '#recognition .content-group .button:hover')
-      expect(rule, 'recognition button hover rule').to.exist
+      const rule = findRule(window, '.button:hover')
+      expect(rule, 'generic button hover rule').to.exist
+      expect(rule.style.transition).to.equal('')
+    })
+  })
+
+  it('defines a high-contrast hover response for recognition actions', () => {
+    cy.get('#recognition .content-group .button').first().should('have.css', 'color', SLATE_BUTTON)
+    cy.window().then((window) => {
+      const rule = findRule(window, '.button:hover')
       expect(rule.style.backgroundColor).to.equal(SLATE_BUTTON)
       expect(rule.style.color).to.equal(WHITE)
     })
-    cy.get('#recognition .content-group .button').first().trigger('mouseover').should('be.visible')
   })
 
   it('defines a high-contrast hover response for project actions', () => {
+    cy.get('#portfolio .content-group .button').first().should('have.css', 'color', SLATE_BUTTON)
     cy.window().then((window) => {
-      const rule = findRule(window, '.content-group .button:hover')
-      expect(rule, 'project button hover rule').to.exist
+      const rule = findRule(window, '.button:hover')
       expect(rule.style.backgroundColor).to.equal(SLATE_BUTTON)
       expect(rule.style.color).to.equal(WHITE)
     })
-    cy.get('#portfolio .content-group .button').first().trigger('mouseover').should('be.visible')
   })
 
   it('defines a high-contrast hover response for recommendation actions', () => {
     cy.window().then((window) => {
       const buttonRule = findRule(window, '.main.style2 .button:hover')
+      const normalButtonRule = findRule(window, '.main.style2 .button')
       const linkRule = findRule(window, '.main.style2 a:hover')
       expect(buttonRule, 'dark-section button hover rule').to.exist
+      expect(normalButtonRule.style.color).to.equal(DARK_BUTTON_TEXT_NORMAL)
+      expect(normalButtonRule.style.boxShadow).to.include('157, 177, 192')
       expect(linkRule, 'dark-section link hover rule').to.exist
-      expect(buttonRule.style.backgroundColor).to.equal(BLUE_GRAY)
+      expect(buttonRule.style.backgroundColor).to.equal(DARK_BUTTON_BORDER)
+      expect(buttonRule.style.color).to.equal(DARK_BUTTON_TEXT)
       expect(linkRule.style.color).to.equal(WHITE)
     })
     cy.get('#reviews .reviews-source .button').trigger('mouseover').should('be.visible')
@@ -113,20 +126,111 @@ describe('hover states', () => {
     cy.get('#contact a').first().trigger('mouseover').should('be.visible')
   })
 
+  it('fills Contact buttons with their white border on hover', () => {
+    cy.window().then((window) => {
+      const rule = findRule(window, '#contact .button:hover')
+      expect(rule, 'contact button hover rule').to.exist
+      expect(rule.style.backgroundColor).to.equal(WHITE)
+      expect(rule.style.color).to.equal(DARK_BUTTON_TEXT)
+    })
+  })
+
   it('defines a visible Connect action hover color', () => {
     cy.window().then((window) => {
-      const rule = findRule(window, '#connect a:hover')
+      const rule = findRule(window, '.button:hover')
       expect(rule, 'Connect action hover rule').to.exist
-      expect(rule.style.color).to.equal('rgb(18, 59, 76)')
+      expect(rule.style.color).to.equal('rgb(255, 255, 255)')
     })
     cy.get('#connect a').trigger('mouseover').should('be.visible')
+  })
+
+  it('keeps the light Connect button on the shared button palette', () => {
+    cy.get('#connect .connect-action .button').should('have.css', 'color', SLATE_BUTTON)
+    cy.window().then((window) => {
+      const hoverRule = findRule(window, '.button:hover')
+      expect(hoverRule.style.backgroundColor).to.equal(SLATE_BUTTON)
+      expect(hoverRule.style.color).to.equal(WHITE)
+    })
+  })
+
+  it('defines the Connect Email diagonal sweep animation', () => {
+    cy.window().then((window) => {
+      const rule = findRule(window, '#connect .connect-action .contact-arrival')
+      expect(rule, 'Connect Email animation rule').to.exist
+      const overlay = findRule(window, '#connect .connect-action .contact-arrival::after')
+      expect(overlay, 'Connect Email sweep overlay').to.exist
+      expect(overlay.style.animation).to.include('connect-email-sweep')
+      expect(overlay.style.animation).to.include('2000ms')
+      expect(overlay.style.background).to.include('linear-gradient')
+      expect(overlay.style.background).to.include('45deg')
+      expect(overlay.style.background).to.include('rgba(197, 211, 222, 0.5)')
+      expect(overlay.style.backgroundPosition).to.equal('100% 0%')
+      expect(overlay.style.inset).to.equal('1px')
+      expect(overlay.style.zIndex).to.equal('0')
+      const textRule = findRule(window, '#connect .connect-action .contact-arrival .email-label')
+      expect(textRule.style.zIndex).to.equal('1')
+    })
+  })
+
+  it('slows the Email sweep only in the full-width action layout', () => {
+    for (const [width, expectedDuration] of [[737, '2s'], [736, '4s']]) {
+      cy.viewport(width, 844)
+      cy.visitHome()
+      cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+      cy.get('#connect .contact-arrival').should(($link) => {
+        expect(getComputedStyle($link[0], '::after').animationDuration).to.equal(expectedDuration)
+      })
+    }
+  })
+
+  it('moves the Connect Email sweep from bottom-left toward top-right', () => {
+    cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+    cy.get('#connect .contact-arrival').then(($link) => {
+      const initialBorder = $link.css('box-shadow')
+      cy.wait(250).then(() => {
+        cy.window().then((window) => {
+          const link = window.document.querySelector('#connect .contact-arrival')
+          const position = window.getComputedStyle(link, '::after').backgroundPosition
+          const [x, y] = position.split(' ').map((value) => Number.parseFloat(value))
+          expect(x).to.be.lessThan(100)
+          expect(y).to.be.greaterThan(0)
+          expect(window.getComputedStyle(link).boxShadow).to.equal(initialBorder)
+        })
+      })
+    })
+  })
+
+  it('starts the Email sweep after Connect navigation settles', () => {
+    cy.visit('/')
+    cy.window().then((window) => window.scrollTo(0, 0))
+    cy.get('#connect .contact-arrival').should('not.exist')
+    cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+    cy.wait(1100)
+    cy.get('#connect .contact-arrival').should('exist')
+  })
+
+  it('replays the Email sweep when Connect is pressed again at the destination', () => {
+    cy.visit('/')
+    cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+    cy.wait(1100)
+    cy.get('#connect .contact-arrival').then(($firstLink) => {
+      cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+      cy.wait(1100)
+      cy.get('#connect .contact-arrival').should(($secondLink) => {
+        expect($secondLink[0]).not.to.equal($firstLink[0])
+      })
+    })
   })
 
   it('defines a visible section nav hover color', () => {
     cy.window().then((window) => {
       const rule = findRule(window, '.section-nav a:hover')
       expect(rule, 'section nav hover rule').to.exist
-      expect(rule.style.color).to.equal(WHITE)
+      expect(rule.style.color).to.equal('rgb(197, 211, 222)')
+      const focusRule = findRule(window, '.section-nav a:focus-visible')
+      expect(focusRule, 'section nav focus rule').to.exist
+      expect(focusRule.style.outline).to.include('2px')
+      expect(focusRule.style.outline).to.include('rgb(197, 211, 222)')
     })
 
     cy.get('#header').then(($header) => {

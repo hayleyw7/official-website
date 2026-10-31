@@ -20,6 +20,23 @@ describe('external links', () => {
       .should('have.attr', 'href', 'https://www.coloradobadgednetwork.com/')
   })
 
+  it('renders the approved community organization descriptions', () => {
+    cy.contains('#organizations article h4', 'Neurodiversity In Tech')
+      .closest('article')
+      .should('contain.text', 'Founder & Executive Director')
+      .and('contain.text', 'Connects neurodivergent tech industry professionals through peer support, career resources, and advocacy.')
+    cy.contains('#organizations article h4', 'Colorado Badged Network')
+      .closest('article')
+      .should('contain.text', 'Co-founder & Marketing Director')
+      .and('contain.text', 'Connected Colorado cannabis industry professionals through job opportunities, resources, and events.')
+    cy.get('#organizations .organization-role').each(($role) => {
+      expect(parseFloat(getComputedStyle($role[0]).marginBottom)).to.be.lessThan(8)
+    })
+    cy.get('#organizations .organization-description').each(($description) => {
+      expect(parseFloat(getComputedStyle($description[0]).marginTop)).to.equal(0)
+    })
+  })
+
   it('uses secure absolute destinations for every project action', () => {
     cy.get('#portfolio .content-group a').should('have.length', 7).each(($link) => {
       cy.wrap($link).assertExternalLinkIsSafe()
@@ -44,6 +61,26 @@ describe('external links', () => {
         'have.attr',
         'href',
         'https://ndhack.org/articles/building-an-inclusive-future',
+      )
+  })
+
+  it('uses the current St. Ursula alumnae article URL', () => {
+    cy.contains('#recognition article h4', 'Arrows Making an Impact')
+      .closest('article').find('a.button')
+      .should(
+        'have.attr',
+        'href',
+        'https://www.toledosua.org/community/alumnae/news/post/~board/alumnae-news/post/making-an-impact-hayley-witherell',
+      )
+  })
+
+  it('uses the archived Rooster article URL', () => {
+    cy.contains('#recognition article h4', 'The Rooster')
+      .closest('article').find('a.button')
+      .should(
+        'have.attr',
+        'href',
+        'https://web.archive.org/web/20260307182938/https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
       )
   })
 
