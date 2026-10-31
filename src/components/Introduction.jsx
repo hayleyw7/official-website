@@ -10,7 +10,7 @@ export default function Introduction() {
               <header className="major main-content">
                 <h2><span className="intro-title-prefix">Usability-Centered</span>{' '}<span className="intro-title-role">Engineering</span></h2>
               </header>
-              <p>Full-stack software engineer with 5+ years building features in Ruby on Rails and JavaScript across frontend and backend systems. Focuses on usability, accessibility, and reliable systems.</p>
+              <p>Full-stack software engineer with 5+ years building features in JavaScript and Ruby on Rails across frontend and backend systems. Focuses on usability, accessibility, and reliable systems.</p>
               <p>Works across feature development, internal tools, and production debugging, including resolving issues that impact real users. Breaks down complex problems into clear, maintainable solutions.</p>
               <p className="last-intro-para">Emphasizes thoughtful, practical UI patterns, documentation, and testing practices. Uses automation and AI tools to improve developer workflows and code quality.</p>
             </div>
