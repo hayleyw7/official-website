@@ -30,4 +30,9 @@ describe('recognition content', () => {
     cy.contains('#recognition article h4', 'Seed to Sound').closest('article')
       .find('p').should('have.text', 'Podcast on running CBN while working')
   })
+
+  it('uses the approved analytical testing description', () => {
+    cy.contains('#recognition article h4', 'GEN & Biotech News').closest('article')
+      .find('p').should('have.text', 'Article quoting my analytical testing insight')
+  })
 })
