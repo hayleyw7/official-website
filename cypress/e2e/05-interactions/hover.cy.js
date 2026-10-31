@@ -129,6 +129,7 @@ describe('hover states', () => {
       const overlay = findRule(window, '#connect .connect-action .contact-arrival::after')
       expect(overlay, 'Connect Email sweep overlay').to.exist
       expect(overlay.style.animation).to.include('connect-email-sweep')
+      expect(overlay.style.animation).to.include('2400ms')
       expect(overlay.style.background).to.include('linear-gradient')
       expect(overlay.style.background).to.include('45deg')
       expect(overlay.style.background).to.include('rgba(70, 134, 160, 0.8)')
