@@ -127,11 +127,21 @@ describe('hover states', () => {
 
   it('defines a visible Connect action hover color', () => {
     cy.window().then((window) => {
-      const rule = findRule(window, '#connect .connect-action .button:hover')
+      const rule = findRule(window, '.button:hover')
       expect(rule, 'Connect action hover rule').to.exist
       expect(rule.style.color).to.equal('rgb(255, 255, 255)')
     })
     cy.get('#connect a').trigger('mouseover').should('be.visible')
+  })
+
+  it('keeps the light Connect button on the shared button palette', () => {
+    cy.window().then((window) => {
+      const normalRule = findRule(window, '.button')
+      const hoverRule = findRule(window, '.button:hover')
+      expect(normalRule.style.color).to.equal(BLUE_GRAY)
+      expect(hoverRule.style.backgroundColor).to.equal(BLUE_GRAY)
+      expect(hoverRule.style.color).to.equal(WHITE)
+    })
   })
 
   it('defines the Connect Email diagonal sweep animation', () => {
