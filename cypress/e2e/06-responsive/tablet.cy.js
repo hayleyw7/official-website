@@ -144,6 +144,18 @@ describe('tablet layout', () => {
     })
   })
 
+  it('renders all desktop action buttons at the shared 136px width', () => {
+    cy.viewport(1024, 900)
+    cy.visitHome()
+    cy.get('#portfolio .content-group .button, #recognition .content-group .button, #organizations .button, #connect .connect-action .button')
+      .each(($button) => {
+        expect($button[0].getBoundingClientRect().width).to.be.closeTo(136, 1)
+      })
+    cy.get('#reviews .reviews-source .button').should(($button) => {
+      expect($button[0].getBoundingClientRect().width).not.to.be.closeTo(136, 1)
+    })
+  })
+
   it('keeps the skills outline compact', () => {
     cy.get('.skill-col').should(($skills) => {
       const style = getComputedStyle($skills[0])
