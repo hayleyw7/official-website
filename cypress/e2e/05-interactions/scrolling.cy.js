@@ -253,7 +253,7 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#portfolio"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'font-weight', '300')
+      .and('have.css', 'font-weight', '600')
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
     cy.get('#section-nav a[href="#about"]').should('not.have.attr', 'aria-current')
 
@@ -264,7 +264,7 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#reviews"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'font-weight', '300')
+      .and('have.css', 'font-weight', '600')
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
     cy.get('#section-nav a[href="#portfolio"]').should('not.have.attr', 'aria-current')
 
@@ -358,8 +358,8 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#portfolio"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'font-weight', '300')
-      .and('have.css', 'font-weight', '300')
+      .and('have.css', 'font-weight', '600')
+      .and('have.css', 'font-weight', '600')
 
     cy.window().then((win) => {
       win.dispatchEvent(new Event('wheel'))
@@ -368,8 +368,8 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#reviews"]')
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
-      .and('have.css', 'font-weight', '300')
-      .and('have.css', 'font-weight', '300')
+      .and('have.css', 'font-weight', '600')
+      .and('have.css', 'font-weight', '600')
     cy.get('#section-nav a[href="#portfolio"]').should('not.have.attr', 'aria-current')
   })
 
