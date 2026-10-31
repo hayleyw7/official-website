@@ -175,6 +175,15 @@ describe('desktop layout', () => {
       })
     })
 
+    it('keeps comfortable section gutters at the 1000px desktop width', () => {
+      cy.viewport(1000, 800)
+      cy.get('#portfolio.main').should(($section) => {
+        expect(parseFloat(getComputedStyle($section[0]).paddingLeft)).to.equal(42)
+        expect(parseFloat(getComputedStyle($section[0]).paddingRight)).to.equal(42)
+      })
+      cy.assertNoHorizontalOverflow()
+    })
+
     it('keeps the section nav usable without horizontal overflow', () => {
       cy.get('#section-nav').should('have.attr', 'hidden')
       cy.window().then((win) => {

@@ -50,7 +50,11 @@
 	}
 }
 
-@media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) and (max-width: v.$breakpoint-desktop) {
+@media screen and (min-width: 990px) and (max-width: v.$breakpoint-desktop) {
+	html {
+		--section-padding-x: 3em;
+	}
+
 	#skills .row > .col-6 {
 		width: 100%;
 	}
