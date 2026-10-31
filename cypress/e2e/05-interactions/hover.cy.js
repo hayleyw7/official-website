@@ -166,7 +166,7 @@ describe('hover states', () => {
       expect(overlay.style.animation).to.include('4800ms')
       expect(overlay.style.background).to.include('linear-gradient')
       expect(overlay.style.background).to.include('45deg')
-      expect(overlay.style.background).to.include('rgb(250, 251, 251)')
+      expect(overlay.style.background).to.include('rgb(197, 211, 222)')
       expect(overlay.style.backgroundPosition).to.equal('100% 0%')
       expect(overlay.style.inset).to.equal('1px')
       expect(overlay.style.zIndex).to.equal('0')
