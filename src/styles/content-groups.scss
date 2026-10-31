@@ -5,7 +5,8 @@
 }
 
 #portfolio .content-group article,
-#recognition .content-group article {
+#recognition .content-group article,
+#organizations article {
   text-align: left;
 }
 
@@ -16,7 +17,8 @@
 }
 
 #portfolio .content-group article .actions.special,
-#recognition .content-group article .actions.special {
+#recognition .content-group article .actions.special,
+#organizations article .actions.special {
   justify-content: flex-start;
   text-align: left;
 }
@@ -24,6 +26,14 @@
 #recognition .content-group .button,
 #portfolio .content-group .button {
   color: v.$color-button;
+}
+
+@media screen and (min-width: 851px) {
+  #portfolio .button,
+  #recognition .button,
+  #organizations .button {
+    width: 155px;
+  }
 }
 
 #portfolio .content-group .button:disabled {
@@ -51,7 +61,8 @@
 @media screen and (min-width: 851px) and (max-width: v.$breakpoint-tablet) {
   #portfolio .content-group article,
   #reviews .content-group article,
-  #recognition .content-group article {
+  #recognition .content-group article,
+  #organizations article {
     width: 50%;
   }
 }

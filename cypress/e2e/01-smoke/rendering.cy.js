@@ -26,6 +26,8 @@ describe('initial rendering', () => {
         'portfolio',
         'reviews',
         'recognition',
+        'organizations',
+        'connect',
       ])
     })
   })

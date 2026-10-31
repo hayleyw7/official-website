@@ -15,10 +15,16 @@ describe('color and typography contracts', () => {
     cy.get('#reviews h2').should('have.css', 'color', 'rgb(157, 177, 192)')
     cy.get('#reviews h3').should('have.css', 'color', 'rgb(197, 211, 222)')
     cy.get('#reviews strong').first().should('have.css', 'color', 'rgb(255, 255, 255)')
-    cy.get('#reviews .button').first().should('have.css', 'color', 'rgb(255, 255, 255)')
+    cy.get('#reviews .button').first()
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
+      .and('have.css', 'box-shadow')
+      .and('match', /rgb\(197, 211, 222\)/)
     cy.get('#recognition').should('have.css', 'background-color', 'rgb(255, 255, 255)')
     cy.get('#recognition h2').should('have.css', 'color', 'rgb(109, 127, 146)')
     cy.get('#recognition h3').should('have.css', 'color', 'rgb(51, 60, 68)')
+    cy.get('#organizations').should('have.css', 'background-color', 'rgb(51, 60, 68)')
+    cy.get('#organizations h2').should('have.css', 'color', 'rgb(157, 177, 192)')
+    cy.get('#connect h2').should('have.css', 'color', 'rgb(109, 127, 146)')
   })
 
   it('uses the intended skill panel palette and monospace type', () => {

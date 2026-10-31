@@ -5,10 +5,7 @@ describe('header and introduction content', () => {
 
   it('identifies the owner and professional roles', () => {
     cy.get('h1').should('have.text', 'Hayley Witherell')
-    cy.get('.tagline').should('contain.text', 'Software Engineer')
-    cy.get('.tagline-detail')
-      .should('contain.text', 'Organization Founder')
-      .and('contain.text', 'Educational Volunteer')
+    cy.get('.tagline').should('have.text', 'Full-Stack Software Engineer')
   })
 
   it('exposes one primary page heading and the expected section headings', () => {
@@ -23,6 +20,10 @@ describe('header and introduction content', () => {
     cy.get('#profile').should('contain.text', '5+ years')
     cy.get('#profile').should('contain.text', 'production debugging')
     cy.get('#profile').should('contain.text', 'automation and AI tools')
+  })
+
+  it('shows the concise professional heading', () => {
+    cy.get('#profile h2').should('have.text', 'Human-Centered Engineering')
   })
 
   it('renders the exact skill set once and in its intended order', () => {

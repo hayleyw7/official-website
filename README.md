@@ -22,13 +22,13 @@ The page is a single scrolling portfolio with alternating light and dark section
 | **Reviews** | `#reviews` | Quotes grouped by company |
 | **Portfolio** | `#portfolio` | Video games and web applications |
 | **Recognition** | `#recognition` | Awards, panels, and media coverage |
-| **Contact** | `#contact` | Invitation text, social links, and email |
+| **Connect** | `#connect` | Email action before the social-link footer |
 
 After scrolling past the hero, a **sticky section nav** appears with links to each major section. Nav items stay aligned to section boundaries (accounting for nav height), update `aria-current="page"` as you scroll, and support direct hash URLs such as `/#portfolio`.
 
-Responsive layouts use explicit boundaries rather than natural wrapping: profile and card columns stack at 850px, the section nav switches from one row of six links to two rows of three at 736px, and impact icons render as either one row of six or two balanced rows of three.
+Responsive layouts use explicit boundaries rather than natural wrapping: profile and card columns stack at 850px, the section nav switches to intentional four-over-three rows at 850px while retaining normal nav text until the phone breakpoint, and impact icons render as either one row of six or two balanced rows of three.
 
-The contact footer plays a short icon animation when you navigate to it from the section nav.
+The social-link footer keeps its short icon animation when you navigate to Connect from the section nav.
 
 ## Project layout
 
@@ -50,13 +50,14 @@ cypress/
 
 | File | What it drives |
 |------|----------------|
-| `skills.js` | Tech stack chips in About |
+| `skills.js` | Technical skills chips in About: JavaScript, Ruby on Rails, AI Automation, and Accessible UX |
 | `impact.js` | Impact section copy |
 | `recommendations.js` | Recommendation cards |
 | `projects.js` | Portfolio groups and project cards |
 | `recognition.js` | Recognition groups |
+| `organizations.js` | Community organization cards |
 | `socialLinks.js` | Footer social and email links |
-| `sectionNav.js` | Sticky nav labels and scroll targets |
+| `sectionNav.js` | Sticky nav labels and scroll targets, including Organizations and Connect |
 
 Components import the data file they need. `cypress/fixtures/contracts.js` mirrors the public content contracts used by tests — update both when changing headings, skills, or section IDs.
 
@@ -67,7 +68,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173).
+Open [http://localhost:3000](http://localhost:3000). `npm start` is an equivalent alias.
 
 To preview the production build locally:
 
@@ -81,10 +82,11 @@ npm run preview
 ```bash
 npm run lint
 npm run build
+npm test
 npm run test:e2e
 ```
 
-`test:e2e` starts the Vite dev server and runs the full Cypress suite. Use `npm run cypress:open` for interactive debugging while the dev server is running.
+`npm test` runs lint, build, and the full Cypress suite. `test:e2e` starts the Vite dev server on port 3000 and runs Cypress. Use `npm run cypress:open` for interactive debugging while the dev server is running.
 
 The Cypress suite has **21 spec files** and **148 tests** covering:
 

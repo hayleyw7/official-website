@@ -1,5 +1,5 @@
 export const sections = [
-  { id: 'about', heading: 'Building Reliable, Usable Systems' },
+  { id: 'about', heading: 'Human-Centered Engineering' },
   { id: 'impact', heading: 'Professional & Community Impact' },
   { id: 'portfolio', heading: 'Project Portfolio' },
   { id: 'reviews', heading: 'Reviews' },
@@ -12,12 +12,13 @@ export const sectionNav = [
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Recognition', href: '#recognition' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Organizations', href: '#organizations' },
+  { label: 'Connect', href: '#connect' },
 ]
 
 export const sectionFragmentHashes = sectionNav.map((item) => item.href)
 
-export const skills = ['JavaScript', 'Ruby on Rails', 'React', 'HTML/CSS']
+export const skills = ['JavaScript', 'Ruby on Rails', 'AI Automation', 'Accessible UX']
 
 export const impactHeadings = [
   'Engineering Complex Workflows',
@@ -72,5 +73,4 @@ export const socialLinks = {
   'Twitter profile': 'https://twitter.com/hayleywitherell',
   'GitHub profile': 'https://github.com/hayleyw7',
   'LinkedIn profile': 'https://www.linkedin.com/in/hayleywitherell',
-  'Send email': 'mailto:hayleywitherell@gmail.com',
 }

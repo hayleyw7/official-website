@@ -21,8 +21,8 @@ describe('mobile and narrow layout', () => {
       })
 
       it('hides secondary tagline details while keeping the primary role', () => {
-        cy.get('.tagline').should('contain.text', 'Software Engineer')
-        cy.get('.tagline-detail').should('not.be.visible')
+        cy.get('.tagline').should('have.text', 'Full-Stack Software Engineer')
+        cy.get('.tagline').should('have.text', 'Full-Stack Software Engineer')
       })
 
       it('keeps the tagline background full width', () => {
@@ -61,14 +61,35 @@ describe('mobile and narrow layout', () => {
         })
       })
 
-      it('lays out section navigation in two rows of three', () => {
+      it('lays out section navigation in four items then three items', () => {
         revealSectionNav()
         cy.get('#section-nav li').then(($items) => {
           const rows = [...$items].map((item) => item.getBoundingClientRect().top)
-          expect(new Set(rows.slice(0, 3)).size).to.eq(1)
-          expect(new Set(rows.slice(3)).size).to.eq(1)
-          expect(rows[3]).to.be.greaterThan(rows[0])
+          expect(new Set(rows.slice(0, 4)).size).to.eq(1)
+          expect(new Set(rows.slice(4)).size).to.eq(1)
+          expect(rows[4]).to.be.greaterThan(rows[0])
         })
+        cy.get('#section-nav ul').should(($nav) => {
+          const styles = getComputedStyle($nav[0])
+          expect(styles.rowGap).to.equal('0px')
+          expect(Number.parseFloat(styles.columnGap)).to.be.greaterThan(0)
+        })
+      })
+
+      it('keeps the second navigation row centered with balanced visible gaps', () => {
+        revealSectionNav()
+        cy.get('#section-nav li:nth-child(5) a, #section-nav li:nth-child(6) a, #section-nav li:nth-child(7) a')
+          .then(($links) => {
+            const bounds = [...$links].map((link) => link.getBoundingClientRect())
+            const firstGap = bounds[1].left - bounds[0].right
+            const secondGap = bounds[2].left - bounds[1].right
+            const groupCenter = (bounds[0].left + bounds[2].right) / 2
+            const viewportCenter = $links[0].ownerDocument.documentElement.clientWidth / 2
+            expect(firstGap).to.be.greaterThan(0)
+            expect(secondGap).to.be.greaterThan(0)
+            expect(Math.abs(firstGap - secondGap)).to.be.lessThan(4)
+            expect(groupCenter).to.be.closeTo(viewportCenter, 8)
+          })
       })
 
       it('subtracts the navbar height from the About minimum height', () => {
@@ -89,6 +110,15 @@ describe('mobile and narrow layout', () => {
           .and('have.css', 'justify-content', 'center')
         cy.get('#about > #profile').should('exist')
         cy.get('#about > #skills').should('exist')
+      })
+
+      it('keeps the skills panel in a compact two-column grid without overflow', () => {
+        cy.get('#skills .skill-col').should(($skills) => {
+          const style = getComputedStyle($skills[0])
+          expect(style.gridTemplateColumns.split(' ').length).to.equal(2)
+          expect($skills[0].getBoundingClientRect().right).to.be.at.most(width)
+        })
+        cy.get('#skills .skill').each(($skill) => cy.wrap($skill).should('be.visible'))
       })
 
       it('keeps the portrait responsive and circular', () => {
@@ -123,18 +153,26 @@ describe('mobile and narrow layout', () => {
         })
       })
 
-      it('breaks the intro heading after reliable on mobile', () => {
-        cy.get('#profile .main-content h2 .heading-phrase')
-          .should('have.css', 'white-space', 'nowrap')
-          .and('contain.text', 'Building Reliable,')
-        cy.get('#profile .main-content h2 .mobile-line-break')
-          .should('have.css', 'display', 'block')
-          .and('have.css', 'white-space', 'nowrap')
-          .and('contain.text', 'Usable Systems')
+      it('keeps the intro heading as one concise role title', () => {
+        cy.get('#profile .main-content h2')
+          .should('have.text', 'Human-Centered Engineering')
+          .and('not.have.descendants', '.mobile-line-break')
         cy.get('#impact h2 .mobile-line-break')
           .should('have.css', 'display', 'block')
           .and('have.css', 'white-space', 'nowrap')
           .and('contain.text', 'Community Impact')
+      })
+
+      it('matches organization card heading size to recognition cards', () => {
+        cy.get('#organizations article h4').first().invoke('css', 'font-size').then((organizationSize) => {
+          cy.get('#recognition article h4').first().should('have.css', 'font-size', organizationSize)
+        })
+      })
+
+      it('keeps organization action spacing aligned with recognition cards', () => {
+        cy.get('#organizations article, #recognition .content-group article').each(($article) => {
+          cy.wrap($article).find('p').should('have.css', 'margin-bottom', '12px')
+        })
       })
 
       it('uses compact spacing between recognition groups', () => {

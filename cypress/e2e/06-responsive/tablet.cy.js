@@ -70,6 +70,66 @@ describe('tablet layout', () => {
     })
   })
 
+  it('keeps tablet impact icons centered inside the content column', () => {
+    cy.viewport(792, 1024)
+    cy.visitHome()
+    cy.get('#impact ul.major-icons').then(($icons) => {
+      const bounds = $icons[0].getBoundingClientRect()
+      const first = $icons[0].querySelector('li').getBoundingClientRect()
+      const last = $icons[0].querySelector('li:last-child').getBoundingClientRect()
+      expect(first.left).to.be.greaterThan(bounds.left)
+      expect(last.right).to.be.lessThan(bounds.right)
+    })
+  })
+
+  it('matches organization card columns to recognition at the breakpoint', () => {
+    cy.viewport(851, 1024)
+    cy.visitHome()
+    cy.get('#organizations article, #recognition .content-group article').then(($cards) => {
+      const widths = [...$cards].map((card) => card.getBoundingClientRect().width)
+      expect(widths[0]).to.be.closeTo(widths.at(-1), 2)
+      expect(widths[0]).to.be.greaterThan(0)
+    })
+    cy.viewport(850, 1024)
+    cy.visitHome()
+    cy.get('#organizations article').then(($cards) => {
+      expect($cards[0].getBoundingClientRect().width)
+        .to.be.closeTo($cards[0].parentElement.getBoundingClientRect().width, 2)
+    })
+  })
+
+  it('keeps organization actions at the shared desktop width', () => {
+    cy.viewport(1024, 900)
+    cy.visitHome()
+    cy.get('#portfolio .button, #recognition .button, #organizations .button').each(($button) => {
+      expect($button[0].getBoundingClientRect().width).to.be.closeTo(155, 1)
+    })
+  })
+
+  it('renders Media and Organization actions at equal fixed widths', () => {
+    cy.viewport(1024, 900)
+    cy.visitHome()
+    cy.get('#portfolio .button').first().then(($portfolioButton) => {
+      cy.get('#organizations .button').first().should(($organizationButton) => {
+        expect($organizationButton[0].getBoundingClientRect().width)
+          .to.equal($portfolioButton[0].getBoundingClientRect().width)
+      })
+    })
+
+    cy.viewport(390, 844)
+    cy.get('#portfolio .button').first().then(($portfolioButton) => {
+      cy.get('#organizations .button').first().should(($organizationButton) => {
+        const portfolioBounds = $portfolioButton[0].getBoundingClientRect()
+        const organizationBounds = $organizationButton[0].getBoundingClientRect()
+        expect(organizationBounds.width).to.be.closeTo(portfolioBounds.width, 1)
+        expect(portfolioBounds.width)
+          .to.be.closeTo($portfolioButton[0].closest('li').getBoundingClientRect().width, 1)
+        expect(organizationBounds.width)
+          .to.be.closeTo($organizationButton[0].closest('li').getBoundingClientRect().width, 1)
+      })
+    })
+  })
+
   it('keeps the skills outline compact', () => {
     cy.get('.skill-col').should(($skills) => {
       const style = getComputedStyle($skills[0])
@@ -143,9 +203,9 @@ describe('tablet layout', () => {
     })
 
     revealSectionNav()
-    cy.get('#section-nav a[href="#contact"]').click({ scrollBehavior: false })
-    cy.get('#contact').should('be.visible')
-    cy.get('#contact .icons').should('have.class', 'contact-arrival')
+    cy.get('#section-nav a[href="#connect"]').click({ scrollBehavior: false })
+    cy.get('#connect').should('be.visible')
+    cy.get('#connect a[href^="mailto:"]').should('be.visible')
     cy.assertNoHorizontalOverflow()
 
     cy.then(() => Cypress.automation('remote:debugger:protocol', {
@@ -156,8 +216,8 @@ describe('tablet layout', () => {
 
   it('has no horizontal page overflow', () => cy.assertNoHorizontalOverflow())
 
-  it('switches directly from six links in one row to two rows of three', () => {
-    cy.viewport(737, 800)
+  it('switches to four links then three links below the mobile breakpoint', () => {
+    cy.viewport(851, 800)
     cy.visitHome()
     revealSectionNav()
     cy.get('#section-nav li').then(($items) => {
@@ -165,23 +225,23 @@ describe('tablet layout', () => {
       expect(new Set(rows).size).to.equal(1)
     })
 
-    cy.viewport(736, 800)
+    cy.viewport(850, 800)
     cy.get('#section-nav li').then(($items) => {
       const rows = [...$items].map((item) => item.getBoundingClientRect().top)
-      expect(new Set(rows.slice(0, 3)).size).to.equal(1)
-      expect(new Set(rows.slice(3)).size).to.equal(1)
-      expect(rows[3]).to.be.greaterThan(rows[0])
+      expect(new Set(rows.slice(0, 4)).size).to.equal(1)
+      expect(new Set(rows.slice(4)).size).to.equal(1)
+      expect(rows[4]).to.be.greaterThan(rows[0])
     })
     cy.assertNoHorizontalOverflow()
   })
 
-  it('keeps the footer invitation visible around 500px', () => {
+  it('keeps the footer visible around 500px', () => {
     cy.viewport(501, 800)
-    cy.get('#contact .footer-text').should('be.visible').and('contain.text', 'Reach out to connect.')
+    cy.get('#contact').should('be.visible')
     cy.assertNoHorizontalOverflow()
 
     cy.viewport(500, 800)
-    cy.get('#contact .footer-text').should('be.visible').and('contain.text', 'Reach out to connect.')
+    cy.get('#contact').should('be.visible')
     cy.assertNoHorizontalOverflow()
   })
 })

@@ -149,13 +149,39 @@ describe('scroll behavior', () => {
     })
   })
 
-  it('navigates to contact and cues the footer icons on arrival', () => {
+  it('keeps a refreshed Impact fragment aligned beneath the navbar', () => {
+    cy.visit('/#impact')
+    cy.reload()
+    cy.get('#section-nav').should('be.visible')
+    cy.get('#impact').should(($impact) => {
+      const nav = $impact[0].ownerDocument.querySelector('#section-nav')
+      const difference = $impact[0].getBoundingClientRect().top
+        - nav.getBoundingClientRect().bottom
+      expect(Math.abs(difference)).to.be.lessThan(12)
+    })
+  })
+
+  it('updates the highlighted section while manually scrolling in both directions', () => {
+    cy.get('#header').then(($header) => {
+      cy.window().then((win) => win.scrollTo(0, $header.outerHeight()))
+    })
+    cy.get('#section-nav').should('be.visible')
+    cy.window().then((win) => {
+      win.scrollTo(0, win.document.querySelector('#portfolio').offsetTop)
+    })
+    cy.get('#section-nav a[href="#portfolio"]').should('have.attr', 'aria-current', 'page')
+    cy.get('#section-nav a[href="#about"]').should('not.have.attr', 'aria-current')
+    cy.window().then((win) => win.scrollTo(0, win.document.querySelector('#about').offsetTop))
+    cy.get('#section-nav a[href="#about"]').should('have.attr', 'aria-current', 'page')
+  })
+
+  it('navigates to Connect and reveals the email action', () => {
     cy.window().then((win) => {
       win.scrollTo(0, win.innerHeight)
     })
-    cy.get('#section-nav a[href="#contact"]').click({ scrollBehavior: false })
-    cy.location('hash').should('eq', '#contact')
-    cy.get('#contact .icons').should('have.class', 'contact-arrival')
+    cy.get('#section-nav a[href="#connect"]').click({ scrollBehavior: false })
+    cy.location('hash').should('eq', '#connect')
+    cy.get('#connect a[href^="mailto:"]').should('be.visible')
   })
 
   it('aligns each section color boundary with the navbar bottom', () => {
@@ -241,9 +267,9 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#portfolio"]').click({ scrollBehavior: false })
     cy.location('hash').should('eq', '#portfolio')
 
-    cy.get('#section-nav a[href="#contact"]').click({ scrollBehavior: false })
-    cy.location('hash').should('eq', '#contact')
-    cy.get('#contact .icons').should('have.class', 'contact-arrival')
+    cy.get('#section-nav a[href="#connect"]').click({ scrollBehavior: false })
+    cy.location('hash').should('eq', '#connect')
+    cy.get('#connect a[href^="mailto:"]').should('be.visible')
 
     cy.viewport(390, 844)
     cy.go('back')

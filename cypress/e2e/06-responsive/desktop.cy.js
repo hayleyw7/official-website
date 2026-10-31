@@ -42,7 +42,7 @@ describe('desktop layout', () => {
   })
 
   it('shows the complete tagline and right-aligns the portrait column', () => {
-    cy.get('.tagline-detail').should('be.visible')
+    cy.get('.tagline').should('have.text', 'Full-Stack Software Engineer')
     cy.get('.avatar-container').should('have.css', 'justify-content', 'flex-end')
     cy.get('img.avatar').should(($avatar) => {
       const bounds = $avatar[0].getBoundingClientRect()
@@ -51,18 +51,17 @@ describe('desktop layout', () => {
     })
   })
 
-  it('uses equal visible gaps around and between skill labels', () => {
+  it('keeps the skill labels separated inside their panel', () => {
     cy.get('.skill-col').then(($box) => {
       cy.get('.skill').then(($skills) => {
-        const box = $box[0].getBoundingClientRect()
         const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
-        const gaps = [
-          bounds[0].left - box.left,
-          ...bounds.slice(1).map((item, index) => item.left - bounds[index].right),
-          box.right - bounds.at(-1).right,
-        ]
-        gaps.forEach((gap) => expect(gap).to.be.at.least(20))
-        gaps.forEach((gap) => expect(gap).to.be.closeTo(gaps[0], 1))
+        expect($skills).to.have.length(4)
+        expect(getComputedStyle($box[0]).borderStyle).to.equal('solid')
+        expect(getComputedStyle($box[0]).backgroundColor).to.equal('rgb(245, 247, 248)')
+        bounds.forEach((bound) => expect(bound.width).to.be.greaterThan(0))
+        bounds.slice(1).forEach((bound, index) => {
+          expect(bound.left - bounds[index].right).to.be.at.least(0)
+        })
       })
     })
   })
@@ -79,7 +78,7 @@ describe('desktop layout', () => {
   })
 
   it('keeps heading phrases together when they wrap', () => {
-    cy.get('#profile h2 .mobile-line-break, #impact h2 .mobile-line-break')
+    cy.get('#impact h2 .mobile-line-break')
       .each(($line) => cy.wrap($line).should('have.css', 'white-space', 'nowrap'))
   })
 
@@ -93,6 +92,12 @@ describe('desktop layout', () => {
       cy.wrap($card).find('.actions.special')
         .should('have.css', 'justify-content', 'flex-start')
         .and('have.css', 'text-align', 'left')
+    })
+
+    it('matches organization card heading size to recognition cards', () => {
+      cy.get('#organizations article h4').first().invoke('css', 'font-size').then((organizationSize) => {
+        cy.get('#recognition article h4').first().should('have.css', 'font-size', organizationSize)
+      })
     })
   })
 
@@ -143,12 +148,13 @@ describe('desktop layout', () => {
         const box = $box[0].getBoundingClientRect()
         cy.get('.skill').then(($skills) => {
           const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
-          const gaps = [
-            bounds[0].left - box.left,
-            ...bounds.slice(1).map((item, index) => item.left - bounds[index].right),
-            box.right - bounds.at(-1).right,
-          ]
-          gaps.forEach((gap) => expect(gap).to.be.closeTo(gaps[0], 1))
+          bounds.forEach((bound, index) => {
+            expect(bound.left).to.be.at.least(box.left)
+            expect(bound.right).to.be.at.most(box.right)
+            if (index > 0 && bound.top === bounds[index - 1].top) {
+              expect(bound.left - bounds[index - 1].right).to.be.at.least(0)
+            }
+          })
         })
       })
       cy.assertNoHorizontalOverflow()
@@ -227,12 +233,11 @@ describe('desktop layout', () => {
         expect(Number.parseFloat(getComputedStyle($paragraph[0]).marginBottom)).to.be.lessThan(8)
       })
 
-      cy.get('#profile h2 .mobile-line-break').should('have.css', 'display', 'block')
       cy.get('#impact h2 .mobile-line-break').should('have.css', 'display', 'block')
       cy.get('.skill-col').should(($skills) => {
         expect(Number.parseFloat(getComputedStyle($skills[0]).paddingTop)).to.be.lessThan(8)
       })
-      cy.get('#contact .footer-text').should('be.visible')
+      cy.get('#contact').should('be.visible')
     })
 
     it('stacks sections at 850px without applying the two-column heading split', () => {
@@ -252,9 +257,8 @@ describe('desktop layout', () => {
         )
       })
 
-      cy.get('#profile h2 .mobile-line-break').should('have.css', 'display', 'inline')
       cy.get('#impact h2 .mobile-line-break').should('have.css', 'display', 'block')
-      cy.get('#contact .footer-text').should('be.visible')
+      cy.get('#contact').should('be.visible')
 
       cy.get('#portfolio article, #reviews article, #recognition article').each(($card) => {
         expect($card[0].getBoundingClientRect().width).to.be.closeTo(

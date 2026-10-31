@@ -12,9 +12,22 @@ html {
   margin-top: 1.75rem;
 }
 
-#profile h2 .heading-phrase,
-#profile h2 .mobile-line-break,
 #impact h2 .mobile-line-break {
+  white-space: nowrap;
+}
+
+.tagline-prefix,
+.tagline-role {
+  white-space: nowrap;
+}
+
+.tagline {
+  white-space: nowrap;
+}
+
+.intro-title-prefix,
+.intro-title-role {
+  display: inline-block;
   white-space: nowrap;
 }
 
@@ -22,4 +35,12 @@ html {
   .tagline-detail {
     display: none;
   }
+
 }
+
+@media screen and (max-width: v.$breakpoint-mobile) {
+  .tagline {
+    font-size: 100%;
+  }
+}
+

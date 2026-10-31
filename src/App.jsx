@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
+import Connect from './components/Connect.jsx'
 import Footer from './components/Footer.jsx'
 import Header from './components/Header.jsx'
 import Impact from './components/Impact.jsx'
 import Introduction from './components/Introduction.jsx'
+import Organizations from './components/Organizations.jsx'
 import Portfolio from './components/Portfolio.jsx'
 import Recognition from './components/Recognition.jsx'
 import Recommendations from './components/Recommendations.jsx'
@@ -26,6 +28,8 @@ export default function App() {
         <Portfolio />
         <Recommendations />
         <Recognition />
+        <Organizations />
+        <Connect />
       </main>
       <Footer contactNavigation={contactNavigation} />
     </>

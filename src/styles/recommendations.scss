@@ -10,6 +10,22 @@
   margin: 0.35em 0 0.5em 0;
 }
 
+#connect .connect-action {
+  margin: 0.35em 0 0.5em 0;
+}
+
+#connect .connect-action .button {
+  color: #24566b;
+}
+
+#connect a:hover {
+  color: #123b4c;
+}
+
+#connect header.major:after {
+  display: none;
+}
+
 #reviews .content-group:first-of-type .media-title {
   margin-top: 0.25em;
 }

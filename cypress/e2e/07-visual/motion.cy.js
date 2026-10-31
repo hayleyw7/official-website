@@ -20,7 +20,7 @@ describe('motion preferences', () => {
     })
   })
 
-  it('suppresses the contact arrival animation for reduced motion', () => {
+  it('keeps the Connect action transition reduced-motion safe', () => {
     cy.then(() => Cypress.automation('remote:debugger:protocol', {
       command: 'Emulation.setEmulatedMedia',
       params: { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] },
@@ -33,11 +33,10 @@ describe('motion preferences', () => {
       })
     })
     cy.get('#section-nav').should('be.visible')
-      .find('a[href="#contact"]').click({ scrollBehavior: false })
-    cy.get('#contact .icons').should('have.class', 'contact-arrival')
-    cy.get('#contact .icons li').first().should(($icon) => {
-      const { animationDuration } = getComputedStyle($icon[0])
-      expect(Number.parseFloat(animationDuration)).to.be.at.most(0.00001)
+      .find('a[href="#connect"]').click({ scrollBehavior: false })
+    cy.get('#connect a').should(($link) => {
+      const { transitionDuration } = getComputedStyle($link[0])
+      expect(transitionDuration.split(',').every((duration) => Number.parseFloat(duration) <= 0.00001)).to.equal(true)
     })
   })
 
