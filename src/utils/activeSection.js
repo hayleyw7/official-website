@@ -4,10 +4,12 @@ import { getNavInset } from './scrollToSection.js'
 export function getActiveSectionHref() {
   const activationLine = getNavInset() + 8
   const organizations = document.querySelector('#organizations')
+  const isMobileViewport = window.matchMedia('(max-width: 736px)').matches
   const atPageBottom = window.scrollY + window.innerHeight
     >= document.documentElement.scrollHeight - 2
   const organizationsBottomReached = organizations
-    && organizations.getBoundingClientRect().bottom <= window.innerHeight
+    && organizations.getBoundingClientRect().bottom
+      <= window.innerHeight - (isMobileViewport ? activationLine : 0)
 
   if (atPageBottom) return '#connect'
   if (organizationsBottomReached) return '#connect'

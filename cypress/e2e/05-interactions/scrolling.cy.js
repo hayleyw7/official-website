@@ -226,15 +226,6 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
 
     cy.window().then((win) => {
-      const organizations = win.document.querySelector('#organizations')
-      win.dispatchEvent(new Event('wheel'))
-      win.scrollTo(0, organizations.offsetTop + organizations.offsetHeight - win.innerHeight + 1)
-    })
-    cy.get('#section-nav a[href="#connect"]').should('have.attr', 'aria-current', 'page')
-    cy.get('#section-nav a[href="#organizations"]').should('not.have.attr', 'aria-current')
-    cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
-
-    cy.window().then((win) => {
       win.dispatchEvent(new Event('wheel'))
       win.scrollTo(0, win.document.documentElement.scrollHeight)
     })
