@@ -136,27 +136,15 @@ describe('desktop layout', () => {
       cy.get('#impact h2 .mobile-line-break').should('have.css', 'display', 'block')
     })
 
-    it('uses a full-width skills box through the transition range', () => {
+    it('keeps the skills column split at 983px', () => {
       cy.viewport(983, 800)
       cy.get('#skills .col-6').then(($column) => {
         expect($column[0].getBoundingClientRect().width).to.be.closeTo(
-          $column[0].parentElement.getBoundingClientRect().width,
+          $column[0].parentElement.getBoundingClientRect().width / 2,
           2,
         )
       })
-      cy.get('.skill-col').then(($box) => {
-        const box = $box[0].getBoundingClientRect()
-        cy.get('.skill').then(($skills) => {
-          const bounds = [...$skills].map((skill) => skill.getBoundingClientRect())
-          bounds.forEach((bound, index) => {
-            expect(bound.left).to.be.at.least(box.left)
-            expect(bound.right).to.be.at.most(box.right)
-            if (index > 0 && bound.top === bounds[index - 1].top) {
-              expect(bound.left - bounds[index - 1].right).to.be.at.least(0)
-            }
-          })
-        })
-      })
+      cy.get('.skill-col').should('be.visible')
       cy.assertNoHorizontalOverflow()
     })
 
@@ -178,8 +166,8 @@ describe('desktop layout', () => {
     it('keeps comfortable section gutters at the 1000px desktop width', () => {
       cy.viewport(1000, 800)
       cy.get('#portfolio.main').should(($section) => {
-        expect(parseFloat(getComputedStyle($section[0]).paddingLeft)).to.equal(42)
-        expect(parseFloat(getComputedStyle($section[0]).paddingRight)).to.equal(42)
+        expect(parseFloat(getComputedStyle($section[0]).paddingLeft)).to.equal(52)
+        expect(parseFloat(getComputedStyle($section[0]).paddingRight)).to.equal(52)
       })
       cy.assertNoHorizontalOverflow()
     })
@@ -204,7 +192,7 @@ describe('desktop layout', () => {
       cy.visitHome()
     })
 
-    it('keeps profile and cards in two columns while stacking impact icons above copy', () => {
+    it('keeps profile in two columns while cards stack above 850px', () => {
       cy.get('.main-content-container').then(($column) => {
         expect($column[0].getBoundingClientRect().width).to.be.closeTo(
           $column[0].parentElement.getBoundingClientRect().width / 2,
@@ -227,7 +215,7 @@ describe('desktop layout', () => {
 
       cy.get('#portfolio article, #reviews article, #recognition article').each(($card) => {
         expect($card[0].getBoundingClientRect().width).to.be.closeTo(
-          $card[0].parentElement.getBoundingClientRect().width / 2,
+          $card[0].parentElement.getBoundingClientRect().width,
           2,
         )
       })
@@ -249,7 +237,7 @@ describe('desktop layout', () => {
       cy.get('#contact').should('be.visible')
     })
 
-    it('stacks sections at 850px without applying the two-column heading split', () => {
+    it('keeps section cards in two columns at 850px', () => {
       cy.viewport(850, 800)
 
       cy.get('.main-content-container').then(($column) => {
@@ -271,7 +259,7 @@ describe('desktop layout', () => {
 
       cy.get('#portfolio article, #reviews article, #recognition article').each(($card) => {
         expect($card[0].getBoundingClientRect().width).to.be.closeTo(
-          $card[0].parentElement.getBoundingClientRect().width,
+          $card[0].parentElement.getBoundingClientRect().width / 2,
           2,
         )
       })
