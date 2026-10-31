@@ -62,6 +62,14 @@ describe('hover states', () => {
     })
   })
 
+  it('keeps the button transition stable when hovering', () => {
+    cy.window().then((window) => {
+      const rule = findRule(window, '.button:hover')
+      expect(rule, 'generic button hover rule').to.exist
+      expect(rule.style.transition).to.equal('')
+    })
+  })
+
   it('defines a high-contrast hover response for recognition actions', () => {
     cy.window().then((window) => {
       const rule = findRule(window, '#recognition .content-group .button:hover')

@@ -42,7 +42,6 @@ input[type="button"]:hover,
 button:hover,
 .button:hover {
 	background-color: v.$color-blue-gray;
-	transition: background v.$duration-medium ease, color v.$duration-medium ease;
 	will-change: color;
 	color: v.$color-white;
 }
