@@ -88,7 +88,7 @@ describe('hover states', () => {
       const normalButtonRule = findRule(window, '.main.style2 .button')
       const linkRule = findRule(window, '.main.style2 a:hover')
       expect(buttonRule, 'dark-section button hover rule').to.exist
-      expect(normalButtonRule.style.color).to.equal(WHITE)
+      expect(normalButtonRule.style.color).to.equal(DARK_BUTTON_BORDER)
       expect(normalButtonRule.style.boxShadow).to.include('197, 211, 222')
       expect(linkRule, 'dark-section link hover rule').to.exist
       expect(buttonRule.style.backgroundColor).to.equal(DARK_BUTTON_BORDER)
@@ -157,7 +157,7 @@ describe('hover states', () => {
       expect(overlay.style.animation).to.include('2400ms')
       expect(overlay.style.background).to.include('linear-gradient')
       expect(overlay.style.background).to.include('45deg')
-      expect(overlay.style.background).to.include('rgba(255, 255, 255, 0.8)')
+      expect(overlay.style.background).to.include('rgb(109, 127, 146)')
       expect(overlay.style.backgroundPosition).to.equal('100% 0%')
     })
   })
