@@ -51,9 +51,14 @@
   white-space: nowrap;
 }
 
-.section-nav a:hover,
+.section-nav a:hover {
+  color: v.$color-teal;
+}
+
 .section-nav a:focus-visible {
-  color: v.$color-white;
+  color: v.$color-nav-text;
+  outline: 2px solid v.$color-teal;
+  outline-offset: 3px;
 }
 
 .section-nav a[aria-current="page"] {

@@ -126,7 +126,10 @@ describe('hover states', () => {
     cy.window().then((window) => {
       const rule = findRule(window, '.section-nav a:hover')
       expect(rule, 'section nav hover rule').to.exist
-      expect(rule.style.color).to.equal(WHITE)
+      expect(rule.style.color).to.equal('rgb(107, 212, 200)')
+      const focusRule = findRule(window, '.section-nav a:focus-visible')
+      expect(focusRule, 'section nav focus rule').to.exist
+      expect(focusRule.style.outline).to.include('2px')
     })
 
     cy.get('#header').then(($header) => {

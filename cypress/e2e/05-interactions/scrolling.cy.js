@@ -188,6 +188,7 @@ describe('scroll behavior', () => {
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
       .and('have.css', 'font-weight', '300')
+    cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
     cy.get('#section-nav a[href="#about"]').should('not.have.attr', 'aria-current')
 
     cy.window().then((win) => win.scrollTo(0, win.document.querySelector('#reviews').offsetTop))
@@ -195,6 +196,7 @@ describe('scroll behavior', () => {
       .should('have.attr', 'aria-current', 'page')
       .and('have.css', 'color', 'rgb(255, 255, 255)')
       .and('have.css', 'font-weight', '300')
+    cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
     cy.get('#section-nav a[href="#portfolio"]').should('not.have.attr', 'aria-current')
 
     cy.window().then((win) => win.scrollTo(0, win.document.querySelector('#about').offsetTop))
@@ -212,8 +214,10 @@ describe('scroll behavior', () => {
 
     cy.get('#section-nav a[href="#organizations"]').click({ scrollBehavior: false })
     cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
+    cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
     cy.get('#section-nav a[href="#connect"]').click({ scrollBehavior: false })
     cy.get('#section-nav a[href="#connect"]').should('have.attr', 'aria-current', 'page')
+    cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
 
     cy.window().then((win) => {
       const footer = win.document.querySelector('#contact')
@@ -221,9 +225,11 @@ describe('scroll behavior', () => {
     })
     cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
     cy.get('#section-nav a[href="#connect"]').should('not.have.attr', 'aria-current')
+    cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
 
     cy.window().then((win) => win.scrollTo(0, win.document.documentElement.scrollHeight))
     cy.get('#section-nav a[href="#connect"]').should('have.attr', 'aria-current', 'page')
+    cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
 
     cy.window().then((win) => {
       const footer = win.document.querySelector('#contact')
