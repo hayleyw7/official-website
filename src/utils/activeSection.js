@@ -26,7 +26,9 @@ export function getActiveSectionHref(scrollDirection = 'down', justLeftPageBotto
     && recognitionRect.bottom > window.innerHeight / 4
 
   if (atPageBottom) return '#connect'
-  if (!isMobileViewport && organizationsRect && scrollDirection) {
+  if (!isMobileViewport && organizationsRect && scrollDirection
+    && (organizationsRect.top < window.innerHeight
+      || (scrollDirection === 'up' && justLeftPageBottom))) {
     const desktopHref = getDesktopReverseScrollHref({
       atPageBottom,
       scrollingUp: scrollDirection === 'up',
@@ -34,7 +36,7 @@ export function getActiveSectionHref(scrollDirection = 'down', justLeftPageBotto
       organizationsBottom: organizationsRect.bottom,
       viewportBottom: window.innerHeight,
     })
-    if (desktopHref === '#recognition' || desktopHref === '#connect') return desktopHref
+    return desktopHref
   }
   if (organizationsBottomReached) {
     if (!isMobileViewport && scrollDirection === 'up') return '#recognition'
