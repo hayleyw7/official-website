@@ -49,7 +49,7 @@
 .main.style2 input[type="button"],
 .main.style2 button,
 .main.style2 .button {
-	box-shadow: inset 0 0 0 1px #ffffff;
+	box-shadow: inset 0 0 0 1px #c5d3de;
 	color: #ffffff;
 }
 
@@ -58,8 +58,8 @@
 .main.style2 input[type="button"]:hover,
 .main.style2 button:hover,
 .main.style2 .button:hover {
-	background-color: #ffffff;
-	color: v.$color-slate;
+	background-color: v.$color-blue-gray;
+	color: #ffffff;
 }
 
 .main.style2 input[type="submit"]:active,
