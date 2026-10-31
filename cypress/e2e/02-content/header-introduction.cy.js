@@ -17,7 +17,7 @@ describe('header and introduction content', () => {
 
   it('renders all introduction paragraphs without truncating their core claims', () => {
     cy.get('#profile p').should('have.length', 3)
-    cy.get('#profile').should('contain.text', '5+ years')
+    cy.get('#profile').should('contain.text', 'Full-stack software engineer building features in JavaScript and Ruby on Rails across frontend and backend systems.')
     cy.get('#profile').should('contain.text', 'production debugging')
     cy.get('#profile').should('contain.text', 'automation and AI tools')
   })
