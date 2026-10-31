@@ -10,14 +10,14 @@ export function getActiveSectionHref() {
   const organizationsBottomReached = organizations
     && organizations.getBoundingClientRect().bottom
       <= window.innerHeight - (isMobileViewport ? activationLine : 0)
+  const organizationsRect = organizations?.getBoundingClientRect()
 
   if (atPageBottom) return '#connect'
   if (organizationsBottomReached) return '#connect'
 
-  if (
-    organizations
-    && organizations.getBoundingClientRect().top <= activationLine
-  ) {
+  if (organizationsRect
+    && organizationsRect.top < window.innerHeight
+    && organizationsRect.bottom > window.innerHeight - (isMobileViewport ? activationLine : 0)) {
     return '#organizations'
   }
 

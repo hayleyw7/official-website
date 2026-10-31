@@ -175,6 +175,26 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#about"]').should('have.attr', 'aria-current', 'page')
   })
 
+  it('highlights Organizations when scrolling upward into it from Connect on desktop', () => {
+    cy.viewport(1280, 844)
+    cy.visit('/')
+    cy.get('#header').then(($header) => {
+      cy.window().then((win) => win.scrollTo(0, $header.outerHeight()))
+    })
+    cy.get('#section-nav').should('be.visible')
+    cy.window().then((win) => {
+      win.scrollTo(0, win.document.documentElement.scrollHeight)
+    })
+    cy.get('#section-nav a[href="#connect"]').should('have.attr', 'aria-current', 'page')
+    cy.window().then((win) => {
+      const organizations = win.document.querySelector('#organizations')
+      win.dispatchEvent(new Event('wheel'))
+      win.scrollTo(0, organizations.offsetTop - win.innerHeight / 2)
+    })
+    cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
+    cy.get('#section-nav a[href="#connect"]').should('not.have.attr', 'aria-current')
+  })
+
   it('updates the highlighted mobile link after click navigation and manual scrolling', () => {
     cy.viewport(390, 844)
     cy.visit('/')
