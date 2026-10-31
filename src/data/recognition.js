@@ -74,7 +74,7 @@ export const recognitionGroups = [
       },
       {
         title: 'The Rooster',
-        description: "Article on CBN's impact on industry workers",
+        description: "Article on CBN's impact on industry",
         url: 'https://web.archive.org/web/20260307182938/https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
         label: 'Article',
       },

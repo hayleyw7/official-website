@@ -40,4 +40,9 @@ describe('recognition content', () => {
     cy.contains('#recognition article h4', 'GEN & Biotech News').closest('article')
       .find('p').should('have.text', 'Article quoting my analytical testing insight')
   })
+
+  it('uses the approved CBN article description', () => {
+    cy.contains('#recognition article h4', 'The Rooster').closest('article')
+      .find('p').should('have.text', "Article on CBN's impact on industry")
+  })
 })
