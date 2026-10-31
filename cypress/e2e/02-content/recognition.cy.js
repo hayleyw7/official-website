@@ -31,6 +31,11 @@ describe('recognition content', () => {
       .find('p').should('have.text', 'Podcast on running CBN while working')
   })
 
+  it('uses the approved representation panel description', () => {
+    cy.contains('#recognition article h4', 'Code The Dream').closest('article')
+      .find('p').should('have.text', 'Panel discussion on representation')
+  })
+
   it('uses the approved analytical testing description', () => {
     cy.contains('#recognition article h4', 'GEN & Biotech News').closest('article')
       .find('p').should('have.text', 'Article quoting my analytical testing insight')

@@ -21,7 +21,7 @@ export const recognitionGroups = [
     items: [
       {
         title: 'Code The Dream',
-        description: 'Panel discussion on mentoring and teaching',
+        description: 'Panel discussion on representation',
         url: 'https://www.linkedin.com/feed/update/urn:li:activity:7080232254467149824/',
         label: 'Post',
       },
