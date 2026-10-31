@@ -115,9 +115,9 @@ describe('hover states', () => {
 
   it('defines a visible Connect action hover color', () => {
     cy.window().then((window) => {
-      const rule = findRule(window, '#connect a:hover')
+      const rule = findRule(window, '#connect .connect-action .button:hover')
       expect(rule, 'Connect action hover rule').to.exist
-      expect(rule.style.color).to.equal('rgb(18, 59, 76)')
+      expect(rule.style.color).to.equal('rgb(255, 255, 255)')
     })
     cy.get('#connect a').trigger('mouseover').should('be.visible')
   })
