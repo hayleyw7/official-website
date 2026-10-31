@@ -166,6 +166,15 @@ describe('hover states', () => {
     })
   })
 
+  it('starts the Email sweep after Connect navigation settles', () => {
+    cy.visit('/')
+    cy.window().then((window) => window.scrollTo(0, 0))
+    cy.get('#connect .contact-arrival').should('not.exist')
+    cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+    cy.wait(1100)
+    cy.get('#connect .contact-arrival').should('exist')
+  })
+
   it('defines a visible section nav hover color', () => {
     cy.window().then((window) => {
       const rule = findRule(window, '.section-nav a:hover')

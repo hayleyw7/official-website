@@ -143,6 +143,7 @@ export default function SectionNav({ onContactNavigate }) {
       if (!selection || selection.href !== href) return
       explicitSelectionRef.current = { ...selection, settled: true, scrollY: window.scrollY }
       setActiveHref(href)
+      if (href === '#connect') onContactNavigateRef.current?.()
     }
 
     if ('onscrollend' in window) {
@@ -151,7 +152,6 @@ export default function SectionNav({ onContactNavigate }) {
       window.setTimeout(settleSelection, 1000)
     }
 
-    if (href === '#connect') onContactNavigateRef.current?.()
   }
 
   return (
