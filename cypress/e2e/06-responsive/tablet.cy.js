@@ -98,6 +98,14 @@ describe('tablet layout', () => {
     })
   })
 
+  it('keeps organization actions at the shared desktop width', () => {
+    cy.viewport(1024, 900)
+    cy.visitHome()
+    cy.get('#organizations .button, #portfolio .button, #recognition .button').each(($button) => {
+      expect($button[0].getBoundingClientRect().width).to.be.closeTo(155, 1)
+    })
+  })
+
   it('keeps the skills outline compact', () => {
     cy.get('.skill-col').should(($skills) => {
       const style = getComputedStyle($skills[0])
