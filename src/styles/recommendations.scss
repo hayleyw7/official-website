@@ -23,6 +23,12 @@
   color: #ffffff;
 }
 
+@media screen and (min-width: 851px) {
+  #connect .connect-action .button {
+    width: 136px;
+  }
+}
+
 #connect header.major:after {
   display: none;
 }

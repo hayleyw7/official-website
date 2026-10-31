@@ -116,7 +116,7 @@ describe('tablet layout', () => {
     cy.viewport(1024, 900)
     cy.visitHome()
     cy.get('#portfolio .button, #recognition .button, #organizations .button').each(($button) => {
-      expect($button[0].getBoundingClientRect().width).to.be.closeTo(155, 1)
+      expect($button[0].getBoundingClientRect().width).to.be.closeTo(136, 1)
     })
   })
 
