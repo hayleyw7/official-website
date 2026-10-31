@@ -62,7 +62,7 @@ export const recognitionGroups = [
       },
       {
         title: 'GEN & Biotech News',
-        description: 'Article quoting my analytical testing insight',
+        description: 'Article quoting my testing expertise',
         url: 'https://www.genengnews.com/insights/medical-cannabi-poses-unique-testing-challenges/',
         label: 'Article',
       },
