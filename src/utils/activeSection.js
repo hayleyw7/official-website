@@ -1,7 +1,8 @@
 import { sectionNavItems } from '../data/sectionNav.js'
 import { getNavInset } from './scrollToSection.js'
+import { getDesktopReverseScrollHref } from './desktopScrollState.js'
 
-export function getActiveSectionHref(scrollDirection = 'down') {
+export function getActiveSectionHref(scrollDirection = 'down', justLeftPageBottom = false) {
   const activationLine = getNavInset() + 8
   const organizations = document.querySelector('#organizations')
   const isMobileViewport = window.matchMedia('(max-width: 736px)').matches
@@ -25,6 +26,16 @@ export function getActiveSectionHref(scrollDirection = 'down') {
     && recognitionRect.bottom > window.innerHeight / 4
 
   if (atPageBottom) return '#connect'
+  if (!isMobileViewport && organizationsRect && scrollDirection) {
+    const desktopHref = getDesktopReverseScrollHref({
+      atPageBottom,
+      scrollingUp: scrollDirection === 'up',
+      justLeftPageBottom,
+      organizationsBottom: organizationsRect.bottom,
+      viewportBottom: window.innerHeight,
+    })
+    if (desktopHref === '#recognition' || desktopHref === '#connect') return desktopHref
+  }
   if (organizationsBottomReached) {
     if (!isMobileViewport && scrollDirection === 'up') return '#recognition'
     return '#connect'

@@ -10,6 +10,7 @@ export default function SectionNav({ onContactNavigate }) {
   const explicitSelectionRef = useRef(null)
   const scrollDirectionRef = useRef('down')
   const previousScrollYRef = useRef(0)
+  const wasAtPageBottomRef = useRef(false)
 
   useEffect(() => {
     onContactNavigateRef.current = onContactNavigate
@@ -31,8 +32,8 @@ export default function SectionNav({ onContactNavigate }) {
       setVisible(bottom <= Math.ceil(navHeight) + 1)
     }
 
-    const updateActiveSection = () => {
-      setActiveHref(getActiveSectionHref())
+    const updateActiveSection = (scrollDirection = 'down', justLeftPageBottom = false) => {
+      setActiveHref(getActiveSectionHref(scrollDirection, justLeftPageBottom))
     }
 
     const updateNavHeight = () => {
@@ -49,10 +50,14 @@ export default function SectionNav({ onContactNavigate }) {
       updateVisibility()
 
       const currentScrollY = window.scrollY
+      const atPageBottom = currentScrollY + window.innerHeight
+        >= document.documentElement.scrollHeight - 2
+      const justLeftPageBottom = wasAtPageBottomRef.current && !atPageBottom
       if (currentScrollY !== previousScrollYRef.current) {
         scrollDirectionRef.current = currentScrollY < previousScrollYRef.current ? 'up' : 'down'
         previousScrollYRef.current = currentScrollY
       }
+      wasAtPageBottomRef.current = atPageBottom
 
       const explicitSelection = explicitSelectionRef.current
       if (explicitSelection) {
@@ -64,7 +69,7 @@ export default function SectionNav({ onContactNavigate }) {
         }
       }
 
-      updateActiveSection(scrollDirectionRef.current)
+      updateActiveSection(scrollDirectionRef.current, justLeftPageBottom)
     }
 
     const onManualScrollIntent = (event) => {
