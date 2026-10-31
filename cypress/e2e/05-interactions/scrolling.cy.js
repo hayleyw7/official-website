@@ -184,7 +184,7 @@ describe('scroll behavior', () => {
     cy.get('#section-nav').should('be.visible')
     cy.window().then((win) => {
       const recognition = win.document.querySelector('#recognition')
-      win.dispatchEvent(new Event('wheel'))
+      win.dispatchEvent(new WheelEvent('wheel', { deltaY: 100 }))
       win.scrollTo(0, recognition.offsetTop + recognition.offsetHeight - win.innerHeight / 4)
     })
     cy.get('#section-nav a[href="#recognition"]').should('have.attr', 'aria-current', 'page')
@@ -199,7 +199,7 @@ describe('scroll behavior', () => {
     cy.get('#section-nav').should('be.visible')
     cy.window().then((win) => {
       const organizations = win.document.querySelector('#organizations')
-      win.dispatchEvent(new Event('wheel'))
+      win.dispatchEvent(new WheelEvent('wheel', { deltaY: -100 }))
       win.scrollTo(0, organizations.offsetTop - win.innerHeight / 2)
     })
     cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
@@ -223,7 +223,7 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#about"]').should('not.have.attr', 'aria-current')
 
     cy.window().then((win) => {
-      win.dispatchEvent(new Event('wheel'))
+      win.dispatchEvent(new WheelEvent('wheel', { deltaY: 100 }))
       win.scrollTo(0, win.document.querySelector('#reviews').offsetTop)
     })
     cy.get('#section-nav a[href="#reviews"]')

@@ -8,6 +8,8 @@ export default function SectionNav({ onContactNavigate }) {
   const [activeHref, setActiveHref] = useState('#about')
   const onContactNavigateRef = useRef(onContactNavigate)
   const explicitSelectionRef = useRef(null)
+  const scrollDirectionRef = useRef('down')
+  const previousScrollYRef = useRef(0)
 
   useEffect(() => {
     onContactNavigateRef.current = onContactNavigate
@@ -46,6 +48,12 @@ export default function SectionNav({ onContactNavigate }) {
     const onScroll = () => {
       updateVisibility()
 
+      const currentScrollY = window.scrollY
+      if (currentScrollY !== previousScrollYRef.current) {
+        scrollDirectionRef.current = currentScrollY < previousScrollYRef.current ? 'up' : 'down'
+        previousScrollYRef.current = currentScrollY
+      }
+
       const explicitSelection = explicitSelectionRef.current
       if (explicitSelection) {
         if (!explicitSelection.settled) return
@@ -56,10 +64,13 @@ export default function SectionNav({ onContactNavigate }) {
         }
       }
 
-      updateActiveSection()
+      updateActiveSection(scrollDirectionRef.current)
     }
 
-    const onManualScrollIntent = () => {
+    const onManualScrollIntent = (event) => {
+      if (event.type === 'wheel' && event.deltaY) {
+        scrollDirectionRef.current = event.deltaY < 0 ? 'up' : 'down'
+      }
       explicitSelectionRef.current = null
     }
 

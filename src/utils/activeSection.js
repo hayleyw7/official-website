@@ -1,7 +1,7 @@
 import { sectionNavItems } from '../data/sectionNav.js'
 import { getNavInset } from './scrollToSection.js'
 
-export function getActiveSectionHref() {
+export function getActiveSectionHref(scrollDirection = 'down') {
   const activationLine = getNavInset() + 8
   const organizations = document.querySelector('#organizations')
   const isMobileViewport = window.matchMedia('(max-width: 736px)').matches
@@ -25,7 +25,10 @@ export function getActiveSectionHref() {
     && recognitionRect.bottom > window.innerHeight / 4
 
   if (atPageBottom) return '#connect'
-  if (organizationsBottomReached) return '#connect'
+  if (organizationsBottomReached) {
+    if (!isMobileViewport && scrollDirection === 'up') return '#recognition'
+    return '#connect'
+  }
   if (recognitionDominatesMobile || (recognitionDominatesDesktop && !organizationsVisible)) {
     return '#recognition'
   }
