@@ -132,7 +132,7 @@ describe('hover states', () => {
       expect(overlay.style.animation).to.include('9600ms')
       expect(overlay.style.background).to.include('linear-gradient')
       expect(overlay.style.background).to.include('45deg')
-      expect(overlay.style.background).to.include('rgba(70, 134, 160, 0.8)')
+      expect(overlay.style.background).to.include('rgba(255, 255, 255, 0.8)')
       expect(overlay.style.backgroundPosition).to.equal('0% 100%')
     })
   })
