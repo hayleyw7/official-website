@@ -20,6 +20,17 @@ describe('external links', () => {
       .should('have.attr', 'href', 'https://www.coloradobadgednetwork.com/')
   })
 
+  it('renders the approved community organization descriptions', () => {
+    cy.contains('#organizations article h4', 'Neurodiversity In Tech')
+      .closest('article')
+      .should('contain.text', 'Founder & Executive Director')
+      .and('contain.text', 'Connecting neurodivergent tech industry professionals through peer support, career resources, and advocacy.')
+    cy.contains('#organizations article h4', 'Colorado Badged Network')
+      .closest('article')
+      .should('contain.text', 'Co-founder')
+      .and('contain.text', 'Connecting Colorado cannabis industry professionals through job opportunities, resources, and events.')
+  })
+
   it('uses secure absolute destinations for every project action', () => {
     cy.get('#portfolio .content-group a').should('have.length', 6).each(($link) => {
       cy.wrap($link).assertExternalLinkIsSafe()
