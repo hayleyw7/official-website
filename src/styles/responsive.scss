@@ -364,8 +364,12 @@
 	}
 
 	#impact .major-icons-container {
-		padding-top: 1.5rem;
+		padding-top: 0;
 		box-sizing: border-box;
+	}
+
+	#impact ul.major-icons {
+		margin-top: 0.9rem;
 	}
 
 	ul.major-icons li {
