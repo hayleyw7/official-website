@@ -29,6 +29,9 @@ describe('external links', () => {
       .closest('article')
       .should('contain.text', 'Co-founder')
       .and('contain.text', 'Connecting Colorado cannabis industry professionals through job opportunities, resources, and events.')
+      .find('.organization-role').should(($role) => {
+        expect(parseFloat(getComputedStyle($role[0]).marginBottom)).to.be.lessThan(8)
+      })
   })
 
   it('uses secure absolute destinations for every project action', () => {

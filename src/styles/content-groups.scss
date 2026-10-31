@@ -23,6 +23,14 @@
   text-align: left;
 }
 
+#organizations article .organization-role {
+  margin-bottom: 0.25em;
+}
+
+#organizations article .organization-description {
+  margin-top: 0;
+}
+
 @media screen and (min-width: calc(v.$breakpoint-small + 1px)) {
   #portfolio .button,
   #recognition .button,

@@ -4,8 +4,8 @@ export default function RecognitionCard({ item }) {
   return (
     <article className="col-6 col-12-medium">
       <h4>{item.title}</h4>
-      <p>{item.role || item.description}</p>
-      {item.role && <p>{item.description}</p>}
+      <p className={item.role ? 'organization-role' : undefined}>{item.role || item.description}</p>
+      {item.role && <p className="organization-description">{item.description}</p>}
       <ul className="actions special">
         <li>
           {item.comingSoon ? (
