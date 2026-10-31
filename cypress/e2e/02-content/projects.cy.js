@@ -34,13 +34,20 @@ describe('projects content', () => {
       .find('p').should('have.text', 'Need AI when offline? Meet this agent!')
   })
 
+  it('uses the approved Critterwave and Whimsy Grove taglines', () => {
+    cy.contains('#portfolio article h4', 'Critterwave').closest('article')
+      .find('p').should('have.text', 'Want to battle? Defeat waves of critters!')
+    cy.contains('#portfolio article h4', 'Whimsy Grove').closest('article')
+      .find('p').should('have.text', 'Feeling whimsical? Create a grove!')
+  })
+
   it('keeps Flickmoji commented out of the rendered portfolio', () => {
     cy.contains('#portfolio article h4', 'Flickmoji').should('not.exist')
   })
 
   it('shows Whimsy Grove as coming soon with a disabled action', () => {
     cy.contains('#portfolio article h4', 'Whimsy Grove').closest('article').within(() => {
-      cy.get('p').should('contain.text', 'Feeling whimsical? Create your own grove!')
+      cy.get('p').should('contain.text', 'Feeling whimsical? Create a grove!')
       cy.get('button.button').should('be.disabled').and('have.text', 'Soon')
     })
   })

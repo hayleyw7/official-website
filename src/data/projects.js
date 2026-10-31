@@ -4,13 +4,13 @@ export const projectGroups = [
     items: [
       {
         title: 'Critterwave',
-        description: 'Want to battle? Defeat waves of vicious critters!',
+        description: 'Want to battle? Defeat waves of critters!',
         url: 'https://bunhouse.itch.io/critterwave',
         label: 'Play',
       },
       {
         title: 'Whimsy Grove',
-        description: 'Feeling whimsical? Create your own grove!',
+        description: 'Feeling whimsical? Create a grove!',
         label: 'Soon',
         comingSoon: true,
       },
