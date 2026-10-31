@@ -28,7 +28,7 @@
   color: v.$color-button;
 }
 
-@media screen and (min-width: 851px) {
+@media screen and (min-width: calc(v.$breakpoint-small + 1px)) {
   #portfolio .button,
   #recognition .button,
   #organizations .button {
