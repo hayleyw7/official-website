@@ -1,6 +1,8 @@
 const WHITE = 'rgb(255, 255, 255)'
 const SLATE_BUTTON = 'rgb(95, 113, 132)'
 const BLUE_GRAY = 'rgb(109, 127, 146)'
+const DARK_BUTTON_BORDER = 'rgb(197, 211, 222)'
+const DARK_BUTTON_TEXT = 'rgb(51, 60, 68)'
 
 const findRule = (window, matchingSelector) => {
   const visitRules = (rules) => {
@@ -86,7 +88,8 @@ describe('hover states', () => {
       const linkRule = findRule(window, '.main.style2 a:hover')
       expect(buttonRule, 'dark-section button hover rule').to.exist
       expect(linkRule, 'dark-section link hover rule').to.exist
-      expect(buttonRule.style.backgroundColor).to.equal(BLUE_GRAY)
+      expect(buttonRule.style.backgroundColor).to.equal(DARK_BUTTON_BORDER)
+      expect(buttonRule.style.color).to.equal(DARK_BUTTON_TEXT)
       expect(linkRule.style.color).to.equal(WHITE)
     })
     cy.get('#reviews .reviews-source .button').trigger('mouseover').should('be.visible')
@@ -111,6 +114,15 @@ describe('hover states', () => {
       expect(rule.style.color).to.equal(WHITE)
     })
     cy.get('#contact a').first().trigger('mouseover').should('be.visible')
+  })
+
+  it('fills Contact buttons with their white border on hover', () => {
+    cy.window().then((window) => {
+      const rule = findRule(window, '#contact .button:hover')
+      expect(rule, 'contact button hover rule').to.exist
+      expect(rule.style.backgroundColor).to.equal(WHITE)
+      expect(rule.style.color).to.equal(DARK_BUTTON_TEXT)
+    })
   })
 
   it('defines a visible Connect action hover color', () => {

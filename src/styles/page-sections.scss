@@ -58,7 +58,8 @@
 .main.style2 input[type="button"]:hover,
 .main.style2 button:hover,
 .main.style2 .button:hover {
-	background-color: v.$color-blue-gray;
+	background-color: #c5d3de;
+	color: v.$color-slate;
 }
 
 .main.style2 input[type="submit"]:active,
@@ -384,7 +385,8 @@ body.is-preload #header:after {
 #contact input[type="button"]:hover,
 #contact button:hover,
 #contact .button:hover {
-	background-color: v.$color-white-12;
+	background-color: #ffffff;
+	color: v.$color-slate;
 }
 
 #contact input[type="submit"]:active,
