@@ -140,7 +140,7 @@ describe('hover states', () => {
   it('keeps the light Connect button on the shared button palette', () => {
     cy.window().then((window) => {
       const normalRule = findRule(window, '#connect .connect-action .button')
-      const hoverRule = findRule(window, '.button:hover')
+      const hoverRule = findRule(window, '#connect .connect-action .button:hover')
       expect(normalRule.style.color).to.equal(SLATE_BUTTON)
       expect(hoverRule.style.backgroundColor).to.equal(BLUE_GRAY)
       expect(hoverRule.style.color).to.equal(WHITE)
