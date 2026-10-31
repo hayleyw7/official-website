@@ -150,7 +150,7 @@ describe('hover states', () => {
     cy.window().then((window) => {
       const normalRule = findRule(window, '#connect .connect-action .button')
       const hoverRule = findRule(window, '#connect .connect-action .button:hover')
-      expect(normalRule.style.color).to.equal(BLUE_GRAY)
+      expect(normalRule.style.color).to.equal(SLATE_BUTTON)
       expect(hoverRule.style.backgroundColor).to.equal(BLUE_GRAY)
       expect(hoverRule.style.color).to.equal(WHITE)
     })
@@ -173,6 +173,17 @@ describe('hover states', () => {
       const textRule = findRule(window, '#connect .connect-action .contact-arrival .email-label')
       expect(textRule.style.zIndex).to.equal('1')
     })
+  })
+
+  it('slows the Email sweep only in the full-width action layout', () => {
+    for (const [width, expectedDuration] of [[737, '2s'], [736, '4s']]) {
+      cy.viewport(width, 844)
+      cy.visitHome()
+      cy.get('#section-nav a[href="#connect"]').click({ force: true, scrollBehavior: false })
+      cy.get('#connect .contact-arrival').should(($link) => {
+        expect(getComputedStyle($link[0], '::after').animationDuration).to.equal(expectedDuration)
+      })
+    }
   })
 
   it('moves the Connect Email sweep from bottom-left toward top-right', () => {

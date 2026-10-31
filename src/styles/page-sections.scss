@@ -519,6 +519,12 @@ body.is-preload #header:after {
 	z-index: 0;
 }
 
+@media screen and (max-width: v.$breakpoint-small) {
+	#connect .connect-action .contact-arrival::after {
+		animation-duration: 4000ms;
+	}
+}
+
 #connect .connect-action .contact-arrival .email-label {
 	position: relative;
 	z-index: 1;
