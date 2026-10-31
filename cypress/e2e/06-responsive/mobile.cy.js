@@ -140,6 +140,29 @@ describe('mobile and narrow layout', () => {
         })
       })
 
+      it('keeps mobile Impact diamonds intact while reducing their glyphs', () => {
+        cy.get('#impact ul.major-icons li .icon').first().then(($icon) => {
+          const bounds = $icon[0].getBoundingClientRect()
+          const glyph = getComputedStyle($icon[0], '::before')
+      expect(bounds.width).to.be.closeTo(90.5, 1)
+      expect(bounds.height).to.be.closeTo(90.5, 1)
+          expect(glyph.fontSize).to.equal('30px')
+        })
+      })
+
+      it('keeps Impact icons grouped at the 506px layout transition', () => {
+        cy.viewport(506, 844)
+        cy.visitHome()
+        cy.get('#impact ul.major-icons').should(($icons) => {
+          expect(getComputedStyle($icons[0]).justifyContent).to.equal('center')
+          const bounds = $icons[0].getBoundingClientRect()
+          const first = $icons[0].querySelector('li').getBoundingClientRect()
+          const last = $icons[0].querySelector('li:last-child').getBoundingClientRect()
+          expect(first.left).to.be.greaterThan(bounds.left)
+          expect(last.right).to.be.lessThan(bounds.right)
+        })
+      })
+
       it('left-aligns recognition titles with their descriptions', () => {
         cy.get('#recognition .content-group article').each(($article) => {
           cy.wrap($article).find('h4').should('have.css', 'text-align', 'left')
@@ -155,7 +178,7 @@ describe('mobile and narrow layout', () => {
 
       it('keeps the intro heading as one concise role title', () => {
         cy.get('#profile .main-content h2')
-          .should('have.text', 'Human-Centered Engineering')
+          .should('have.text', 'Usability-Centered Engineering')
           .and('not.have.descendants', '.mobile-line-break')
         cy.get('#impact h2 .mobile-line-break')
           .should('have.css', 'display', 'block')
@@ -170,8 +193,11 @@ describe('mobile and narrow layout', () => {
       })
 
       it('keeps organization action spacing aligned with recognition cards', () => {
-        cy.get('#organizations article, #recognition .content-group article').each(($article) => {
+        cy.get('#recognition .content-group article').each(($article) => {
           cy.wrap($article).find('p').should('have.css', 'margin-bottom', '12px')
+        })
+        cy.get('#organizations .organization-role').each(($role) => {
+          expect(parseFloat(getComputedStyle($role[0]).marginBottom)).to.be.lessThan(8)
         })
       })
 

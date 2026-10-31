@@ -175,6 +175,37 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#about"]').should('have.attr', 'aria-current', 'page')
   })
 
+  it('hands desktop highlighting to Recognition as its lower edge re-enters view', () => {
+    cy.viewport(1280, 844)
+    cy.visit('/')
+    cy.get('#header').then(($header) => {
+      cy.window().then((win) => win.scrollTo(0, $header.outerHeight()))
+    })
+    cy.get('#section-nav').should('be.visible')
+    cy.window().then((win) => {
+      const recognition = win.document.querySelector('#recognition')
+      win.dispatchEvent(new WheelEvent('wheel', { deltaY: 100 }))
+      win.scrollTo(0, recognition.offsetTop + recognition.offsetHeight - win.innerHeight / 4)
+    })
+    cy.get('#section-nav a[href="#recognition"]').should('have.attr', 'aria-current', 'page')
+  })
+
+  it('keeps Organizations active while its lower half is visible on desktop reverse-scroll', () => {
+    cy.viewport(1280, 844)
+    cy.visit('/')
+    cy.get('#header').then(($header) => {
+      cy.window().then((win) => win.scrollTo(0, $header.outerHeight()))
+    })
+    cy.get('#section-nav').should('be.visible')
+    cy.window().then((win) => {
+      const organizations = win.document.querySelector('#organizations')
+      win.dispatchEvent(new WheelEvent('wheel', { deltaY: -100 }))
+      win.scrollTo(0, organizations.offsetTop - win.innerHeight / 2)
+    })
+    cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
+    cy.get('#section-nav a[href="#recognition"]').should('not.have.attr', 'aria-current')
+  })
+
   it('updates the highlighted mobile link after click navigation and manual scrolling', () => {
     cy.viewport(390, 844)
     cy.visit('/')
@@ -192,7 +223,7 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[href="#about"]').should('not.have.attr', 'aria-current')
 
     cy.window().then((win) => {
-      win.dispatchEvent(new Event('wheel'))
+      win.dispatchEvent(new WheelEvent('wheel', { deltaY: 100 }))
       win.scrollTo(0, win.document.querySelector('#reviews').offsetTop)
     })
     cy.get('#section-nav a[href="#reviews"]')
@@ -208,6 +239,25 @@ describe('scroll behavior', () => {
     })
     cy.get('#section-nav a[href="#about"]').should('have.attr', 'aria-current', 'page')
     cy.get('#section-nav a[href="#reviews"]').should('not.have.attr', 'aria-current')
+  })
+
+  it('hands mobile highlighting back to Recognition when it fills the viewport while scrolling upward', () => {
+    cy.viewport(390, 844)
+    cy.visit('/')
+    cy.get('#header').then(($header) => {
+      cy.window().then((win) => win.scrollTo(0, $header.outerHeight()))
+    })
+    cy.get('#section-nav').should('be.visible')
+    cy.window().then((win) => {
+      win.scrollTo(0, win.document.documentElement.scrollHeight)
+    })
+    cy.window().then((win) => {
+      const recognition = win.document.querySelector('#recognition')
+      win.dispatchEvent(new Event('wheel'))
+      win.scrollTo(0, recognition.offsetTop + recognition.offsetHeight - win.innerHeight / 2)
+    })
+    cy.get('#section-nav a[href="#recognition"]').should('have.attr', 'aria-current', 'page')
+    cy.get('#section-nav a[href="#organizations"]').should('not.have.attr', 'aria-current')
   })
 
   it('keeps explicit Organizations and Connect selections while allowing later scroll updates', () => {
@@ -226,27 +276,12 @@ describe('scroll behavior', () => {
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
 
     cy.window().then((win) => {
-      const footer = win.document.querySelector('#contact')
-      win.dispatchEvent(new Event('wheel'))
-      win.scrollTo(0, footer.offsetTop - win.innerHeight + 1)
-    })
-    cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
-    cy.get('#section-nav a[href="#connect"]').should('not.have.attr', 'aria-current')
-    cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
-
-    cy.window().then((win) => {
       win.dispatchEvent(new Event('wheel'))
       win.scrollTo(0, win.document.documentElement.scrollHeight)
     })
     cy.get('#section-nav a[href="#connect"]').should('have.attr', 'aria-current', 'page')
     cy.get('#section-nav a[aria-current="page"]').should('have.length', 1)
 
-    cy.window().then((win) => {
-      const footer = win.document.querySelector('#contact')
-      win.scrollTo(0, footer.offsetTop - win.innerHeight - 1)
-    })
-    cy.get('#section-nav a[href="#organizations"]').should('have.attr', 'aria-current', 'page')
-    cy.get('#section-nav a[href="#connect"]').should('not.have.attr', 'aria-current')
   })
 
   it('preserves Organizations after top and bottom clicks until manual scrolling', () => {

@@ -55,7 +55,7 @@ cypress/
 | `recommendations.js` | Recommendation cards |
 | `projects.js` | Portfolio groups and project cards |
 | `recognition.js` | Recognition groups |
-| `organizations.js` | Community organization cards |
+| `organizations.js` | Organization cards |
 | `socialLinks.js` | Footer social and email links |
 | `sectionNav.js` | Sticky nav labels and scroll targets, including Organizations and Connect |
 

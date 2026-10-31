@@ -29,9 +29,9 @@ export default function App() {
         <Recommendations />
         <Recognition />
         <Organizations />
-        <Connect />
+        <Connect contactNavigation={contactNavigation} />
       </main>
-      <Footer contactNavigation={contactNavigation} />
+      <Footer />
     </>
   )
 }

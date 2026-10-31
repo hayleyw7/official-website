@@ -82,15 +82,26 @@ describe('tablet layout', () => {
     })
   })
 
+  it('centers the Impact icon grid at the 855px transition', () => {
+    cy.viewport(855, 800)
+    cy.get('#impact .major-icons-container').then(($container) => {
+      const container = $container[0].getBoundingClientRect()
+      cy.wrap($container).find('ul.major-icons').should(($icons) => {
+        const grid = $icons[0].getBoundingClientRect()
+        expect(Math.abs((grid.left + grid.right) / 2 - (container.left + container.right) / 2)).to.be.lessThan(1)
+      })
+    })
+  })
+
   it('matches organization card columns to recognition at the breakpoint', () => {
-    cy.viewport(851, 1024)
+    cy.viewport(751, 1024)
     cy.visitHome()
     cy.get('#organizations article, #recognition .content-group article').then(($cards) => {
       const widths = [...$cards].map((card) => card.getBoundingClientRect().width)
       expect(widths[0]).to.be.closeTo(widths.at(-1), 2)
       expect(widths[0]).to.be.greaterThan(0)
     })
-    cy.viewport(850, 1024)
+    cy.viewport(750, 1024)
     cy.visitHome()
     cy.get('#organizations article').then(($cards) => {
       expect($cards[0].getBoundingClientRect().width)
@@ -98,11 +109,25 @@ describe('tablet layout', () => {
     })
   })
 
+  it('centers medium-width second-row navigation links between top-row centers', () => {
+    cy.viewport(600, 900)
+    cy.visitHome()
+    cy.get('#section-nav li a').then(($links) => {
+      const centers = [...$links].map((link) => {
+        const bounds = link.getBoundingClientRect()
+        return (bounds.left + bounds.right) / 2
+      })
+      expect(centers[4]).to.be.closeTo((centers[0] + centers[1]) / 2, 2)
+      expect(centers[5]).to.be.closeTo((centers[1] + centers[2]) / 2, 2)
+      expect(centers[6]).to.be.closeTo((centers[2] + centers[3]) / 2, 2)
+    })
+  })
+
   it('keeps organization actions at the shared desktop width', () => {
     cy.viewport(1024, 900)
     cy.visitHome()
     cy.get('#portfolio .button, #recognition .button, #organizations .button').each(($button) => {
-      expect($button[0].getBoundingClientRect().width).to.be.closeTo(155, 1)
+      expect($button[0].getBoundingClientRect().width).to.be.closeTo(136, 1)
     })
   })
 
@@ -127,6 +152,23 @@ describe('tablet layout', () => {
         expect(organizationBounds.width)
           .to.be.closeTo($organizationButton[0].closest('li').getBoundingClientRect().width, 1)
       })
+    })
+  })
+
+  it('renders all desktop action buttons at the shared 136px width', () => {
+    cy.viewport(1024, 900)
+    cy.visitHome()
+    const actionSelector = '#portfolio .content-group .button, #recognition .content-group .button, #organizations .button, #connect .connect-action .button'
+    cy.get(actionSelector).each(($button) => {
+      expect($button[0].getBoundingClientRect().width).to.be.closeTo(136, 1)
+    })
+    cy.get('#reviews .reviews-source .button').should(($button) => {
+      expect($button[0].getBoundingClientRect().width).not.to.be.closeTo(136, 1)
+    })
+    cy.viewport(802, 900)
+    cy.visitHome()
+    cy.get(actionSelector).each(($button) => {
+      expect($button[0].getBoundingClientRect().width).to.be.closeTo(136, 1)
     })
   })
 

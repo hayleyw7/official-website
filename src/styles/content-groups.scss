@@ -23,16 +23,19 @@
   text-align: left;
 }
 
-#recognition .content-group .button,
-#portfolio .content-group .button {
-  color: v.$color-button;
+#organizations article .organization-role {
+  margin-bottom: 0.25em;
 }
 
-@media screen and (min-width: 851px) {
+#organizations article .organization-description {
+  margin-top: 0;
+}
+
+@media screen and (min-width: calc(v.$breakpoint-small + 1px)) {
   #portfolio .button,
   #recognition .button,
   #organizations .button {
-    width: 155px;
+    width: 136px;
   }
 }
 
@@ -47,20 +50,8 @@
   color: v.$color-blue-gray;
 }
 
-.content-group .button:hover {
-  background-color: v.$color-button;
-  color: v.$color-white;
-}
-
-#recognition .content-group .button:hover,
-#portfolio .content-group .button:hover {
-  background-color: v.$color-button;
-  color: v.$color-white;
-}
-
-@media screen and (min-width: 851px) and (max-width: v.$breakpoint-tablet) {
+@media screen and (min-width: 751px) and (max-width: v.$breakpoint-tablet) {
   #portfolio .content-group article,
-  #reviews .content-group article,
   #recognition .content-group article,
   #organizations article {
     width: 50%;
