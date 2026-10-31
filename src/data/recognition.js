@@ -11,7 +11,7 @@ export const recognitionGroups = [
       {
         title: 'Arrows Making an Impact',
         description: 'Recognition for founding ND In Tech',
-        url: 'https://www.toledosua.org/alumnae/news/post/~board/alumnae-news/post/making-an-impact-hayley-witherell',
+        url: 'https://www.toledosua.org/community/alumnae/news/post/~board/alumnae-news/post/making-an-impact-hayley-witherell',
         label: 'Article',
       },
     ],
@@ -75,7 +75,7 @@ export const recognitionGroups = [
       {
         title: 'The Rooster',
         description: "Article on CBN's impact on industry workers",
-        url: 'https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
+        url: 'https://web.archive.org/web/20260307182938/https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
         label: 'Article',
       },
     ],

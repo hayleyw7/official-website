@@ -47,6 +47,26 @@ describe('external links', () => {
       )
   })
 
+  it('uses the current St. Ursula alumnae article URL', () => {
+    cy.contains('#recognition article h4', 'Arrows Making an Impact')
+      .closest('article').find('a.button')
+      .should(
+        'have.attr',
+        'href',
+        'https://www.toledosua.org/community/alumnae/news/post/~board/alumnae-news/post/making-an-impact-hayley-witherell',
+      )
+  })
+
+  it('uses the archived Rooster article URL', () => {
+    cy.contains('#recognition article h4', 'The Rooster')
+      .closest('article').find('a.button')
+      .should(
+        'have.attr',
+        'href',
+        'https://web.archive.org/web/20260307182938/https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
+      )
+  })
+
   it('does not create blank, fragment-only, JavaScript, or insecure HTTP external links', () => {
     cy.get('a').each(($link) => {
       const href = $link.attr('href')
