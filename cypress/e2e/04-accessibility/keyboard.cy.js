@@ -34,8 +34,6 @@ describe('keyboard accessibility', () => {
       'Recognition',
       'Connect',
       ...projectTitles,
-      'Neurodiversity In Tech',
-      'Colorado Badged Network',
       'View reviews on LinkedIn (opens in new tab)',
       ...recognitionTitles.slice(0, 11),
       'Email',
