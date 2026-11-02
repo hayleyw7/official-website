@@ -13,7 +13,6 @@ describe('keyboard accessibility', () => {
     const recognitionTitles = [
       'Volunteer of the Month',
       'Arrows Making an Impact',
-      'Code The Dream',
       'Turing Alumni Showcase',
       'The Cognitive Edge',
       'Neurodiverse Hackers',
@@ -22,8 +21,8 @@ describe('keyboard accessibility', () => {
       'GEN & Biotech News',
       'Seed to Sound',
       'The Rooster',
-      'Neurodiversity In Tech (ND In Tech)',
-      'Colorado Badged Network (CBN)',
+      'Neurodiversity In Tech',
+      'Colorado Badged Network',
     ]
     const expectedOrder = [
       'Embark',
@@ -35,8 +34,8 @@ describe('keyboard accessibility', () => {
       'Recognition',
       'Connect',
       ...projectTitles,
-      'Neurodiversity In Tech (ND In Tech)',
-      'Colorado Badged Network (CBN)',
+      'Neurodiversity In Tech',
+      'Colorado Badged Network',
       'View reviews on LinkedIn (opens in new tab)',
       ...recognitionTitles.slice(0, 11),
       'Email',
@@ -48,7 +47,7 @@ describe('keyboard accessibility', () => {
     cy.get('a[href]').then(($links) => {
       const actualOrder = [...$links].map((link) => (
         link.getAttribute('aria-label')
-        || link.closest('article')?.querySelector('h4')?.textContent
+        || link.closest('article')?.querySelector('h4')?.innerText
         || link.textContent.trim()
       ))
       expect(actualOrder).to.deep.equal(expectedOrder)
