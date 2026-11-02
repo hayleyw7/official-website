@@ -1,5 +1,5 @@
 export const sections = [
-  { id: 'about', heading: 'Usability-Centered Engineering' },
+  { id: 'about', heading: 'Usability-Focused Engineering' },
   { id: 'impact', heading: 'Professional & Community Impact' },
   { id: 'portfolio', heading: 'Project Portfolio' },
   { id: 'reviews', heading: 'Reviews' },
@@ -22,17 +22,17 @@ export const skills = ['JavaScript', 'Ruby on Rails', 'AI Automation', 'Accessib
 
 export const impactHeadings = [
   'Engineering Complex Workflows',
-  'Leading Operations at Scale',
-  'Mentorship Through Advocacy',
+  'Operations & Automation',
+  'Community Leadership & Mentorship',
 ]
 
 export const recommendations = {
   Autotroph: [
     'Engineering Manager',
-    'Director of Design',
     'Director of Marketing',
-    'Senior Customer Success Manager',
     'Cofounder & Managing Director',
+    'Senior Customer Success Manager',
+    'Director of Design',
     'Software Developer',
   ],
   'ID Business Solutions': [
@@ -43,8 +43,8 @@ export const recommendations = {
 
 export const recognition = {
   'Awards & Honors': ['Volunteer of the Month', 'Arrows Making an Impact'],
-  'Panels & Interviews': ['Code The Dream', 'Turing Alumni Showcase'],
   'Media & Publications': [
+    'Turing Alumni Showcase',
     'The Cognitive Edge',
     'Neurodiverse Hackers',
     'Sound Bytes',

@@ -10,6 +10,11 @@ export const recommendationGroups = [
         title: 'Engineering Manager',
       },
       {
+        quote: 'Hayley cared about the people using what we built, their coworkers, and doing great work.',
+        title: 'Senior Customer Success Manager',
+        featured: true,
+      },
+      {
         quote: 'Hayley is one of those engineers that you have faith and confidence in bringing a design concept to life.',
         title: 'Director of Design',
       },
@@ -18,12 +23,9 @@ export const recommendationGroups = [
         title: 'Director of Marketing',
       },
       {
-        quote: 'Hayley cared about the people using what we built, their coworkers, and doing great work.',
-        title: 'Senior Customer Success Manager',
-      },
-      {
         quote: 'That kind of steadiness is easy to overlook and hard to replace.',
         title: 'Cofounder & Managing Director',
+        featured: true,
       },
       {
         quote: 'They never limit themself to one area of software development and are always looking for ways to contribute more broadly.',

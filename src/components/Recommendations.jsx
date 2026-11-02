@@ -23,10 +23,17 @@ export default function Recommendations() {
         {recommendationGroups.map((group) => (
           <section className="content-group" key={group.title}>
             <h3 className="media-title">{group.title}</h3>
-            <div className={`row gtr-150 gtr-uniform${group.items.length === 1 ? ' aln-center' : ''}`}>
-              {group.items.map((item) => (
-                <RecommendationCard item={item} key={item.title} />
-              ))}
+            <div className={`reviews-layout${group.items.length === 1 ? ' aln-center' : ''}`}>
+              <div className="reviews-column reviews-column-left">
+                {group.items.filter((_, index) => group.items.length > 4 ? [0, 3, 4].includes(index) : index % 2 === 0).map((item) => (
+                  <RecommendationCard item={item} index={group.items.indexOf(item)} key={item.title} />
+                ))}
+              </div>
+              <div className="reviews-column reviews-column-right">
+                {group.items.filter((_, index) => group.items.length > 4 ? [1, 2, 5].includes(index) : index % 2 === 1).map((item) => (
+                  <RecommendationCard item={item} index={group.items.indexOf(item)} key={item.title} />
+                ))}
+              </div>
             </div>
           </section>
         ))}

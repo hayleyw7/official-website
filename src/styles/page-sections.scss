@@ -125,6 +125,11 @@
 	align-content: center;
 }
 
+// Cover the fractional-pixel edge between the fixed nav and full-height sections.
+#organizations {
+	min-height: calc(100vh - var(--section-nav-height, 3.25rem) + 1px);
+}
+
 #about {
 	display: flex;
 	flex-direction: column;

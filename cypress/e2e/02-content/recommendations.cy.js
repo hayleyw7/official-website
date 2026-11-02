@@ -22,7 +22,7 @@ describe('reviews content', () => {
 
   it('wraps each quote in quotation marks without blockquote styling', () => {
     cy.get('#reviews .review-quote').should('have.length', recommendationCount).each(($quote) => {
-      cy.wrap($quote).invoke('text').should('match', /^".+" — .+$/)
+      cy.wrap($quote).invoke('text').should('match', /^(?:"|“).+(?:"|”) — .+$/)
       cy.wrap($quote).should('have.prop', 'tagName', 'P')
     })
     cy.get('#reviews blockquote').should('not.exist')

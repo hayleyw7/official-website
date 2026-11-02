@@ -17,7 +17,7 @@ describe('recognition content', () => {
   })
 
   it('pairs every card with descriptive copy and one action', () => {
-    cy.get('#recognition .content-group article').should('have.length', 11).each(($article) => {
+    cy.get('#recognition .content-group article').should('have.length', 10).each(($article) => {
       cy.wrap($article).within(() => {
         cy.get('h4').invoke('text').should('not.be.empty')
         cy.get('p').invoke('text').should('have.length.greaterThan', 20)
@@ -29,11 +29,6 @@ describe('recognition content', () => {
   it('uses the approved podcast description', () => {
     cy.contains('#recognition article h4', 'Seed to Sound').closest('article')
       .find('p').should('have.text', 'Podcast on running CBN while working')
-  })
-
-  it('uses the approved representation panel description', () => {
-    cy.contains('#recognition article h4', 'Code The Dream').closest('article')
-      .find('p').should('have.text', 'Panel discussion on representation')
   })
 
   it('uses the approved analytical testing description', () => {
