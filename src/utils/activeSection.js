@@ -10,6 +10,14 @@ export function getActiveSectionHref(scrollDirection = 'down', justLeftPageBotto
 
   if (atPageBottom) return '#connect'
 
+  const organizations = document.querySelector('#organizations')?.getBoundingClientRect()
+  const isDesktopViewport = window.matchMedia('(min-width: 737px)').matches
+  if (isDesktopViewport && organizations
+    && organizations.top < window.innerHeight
+    && organizations.bottom > window.innerHeight / 2) {
+    return '#organizations'
+  }
+
   let activeHref = sectionNavItems[0].href
 
   for (const item of sectionNavItems) {
