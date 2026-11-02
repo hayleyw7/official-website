@@ -7,7 +7,7 @@ export const recognitionGroups = [
         title: 'Volunteer of the Month',
         description: 'Recognition for educational service',
         url: 'https://codethedream.org/meet-hayley-witherell-ctds-volunteer-of-the-month/',
-        iconUrl: '/images/code-the-dream-mark-reference-tight.png',
+        iconUrl: '/images/code-the-dream-mark-tight.png',
         label: 'Article',
       },
       {
@@ -42,7 +42,7 @@ export const recognitionGroups = [
         title: 'Neurodiverse Hackers',
         description: 'Article highlighting my ND In Tech work',
         url: 'https://ndhack.org/articles/building-an-inclusive-future',
-        iconUrl: '/images/nd-hack-cat-reference-tight.png',
+        iconUrl: '/images/nd-hack-cat-tight.png',
         label: 'Article',
       },
       {
@@ -50,8 +50,6 @@ export const recognitionGroups = [
         description: 'Radio recommendation for Limerickster',
         iconUrl: '/images/sound-bytes.jpg',
         url: 'https://www.youtube.com/watch?v=dBemPSROip8&t=2196s',
-        iconUrl: 'https://scontent-den2-1.xx.fbcdn.net/v/t39.30808-6/307993239_482155990610689_182380215247881558_n.jpg?stp=dst-jpg_tt6&cstp=mx158x140&ctp=s158x140&_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=-_j8lwVaFVcQ7kNvwF8SK8m&_nc_oc=Adpk0XQbkyY36rPU0FStoxhlt_rDTpkri9nzQXDAx2iHUGFBg1LTNEKxKhhYR_fZcM0c&_nc_zt=23&_nc_ht=scontent-den2-1.xx&_nc_gid=0z9rdWhjt7DoVeTp4ytECg&_nc_ss=7b2a8&oh=00_AQTDxrFVcQ7kNvwF8SK8m&oe=6AEE913F',
-        iconUrl: '/images/sound-bytes.jpg',
         label: 'Episode',
       },
       {
