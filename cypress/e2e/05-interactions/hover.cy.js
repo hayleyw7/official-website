@@ -72,7 +72,8 @@ describe('hover states', () => {
   })
 
   it('defines a high-contrast hover response for recognition actions', () => {
-    cy.get('#recognition .content-group .button').first().should('have.css', DARK_BUTTON_TEXT_NORMAL)
+    cy.get('#recognition .content-group .button').first()
+      .should('have.css', 'color', DARK_BUTTON_TEXT_NORMAL)
     cy.window().then((window) => {
       const rule = findRule(window, '.main.style2 .button:hover')
       expect(rule.style.backgroundColor).to.equal(DARK_BUTTON_BORDER)
