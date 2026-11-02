@@ -352,3 +352,60 @@ input[type="radio"] + label:before {
 	font-size: 4em;
 	line-height: 1em;
 }
+.card-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.entity-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  object-fit: contain;
+  flex: 0 0 1.35rem;
+  border-radius: 0.2rem;
+}
+
+.entity-icon-fallback {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: 0 0 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.2rem;
+  color: v.$color-blue-gray;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.entity-icon-round {
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 0;
+}
+
+.entity-icon-dark {
+  background: #fff;
+  border-radius: 0.15rem;
+  box-sizing: border-box;
+  padding: 0.12rem;
+  filter: invert(1);
+}
+
+.entity-icon-fallback[hidden] {
+  display: none !important;
+}
+
+.category-icon,
+.heading-icon {
+  color: v.$color-blue-gray;
+  display: inline-block;
+  margin-right: 0.55rem;
+  font-size: 0.8em;
+}
+
+.heading-icon { font-size: 0.75em; }
+
+.connect-heading-icon { color: #9db1c0; }

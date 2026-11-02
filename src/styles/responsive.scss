@@ -79,6 +79,10 @@
 }
 
 @media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) {
+	#about {
+		--section-padding-y: 2em;
+	}
+
 	#skills .row > .col-6 {
 		width: 100%;
 	}
@@ -156,12 +160,13 @@
 	}
 
 	#impact ul.major-icons {
-		grid-template-columns: repeat(6, minmax(0, 1fr));
+		grid-template-columns: repeat(6, 4.5em);
+		justify-content: center;
 		row-gap: 0;
 	}
 
 	#impact ul.major-icons li {
-		padding: 0.75em;
+		padding: 0.75em 0;
 	}
 
 	#impact ul.major-icons li .icon {
@@ -212,7 +217,7 @@
 	/* List */
 
 	.major-icons-container {
-		margin-bottom: 2em;
+		margin-bottom: 2.25em;
 		width: 100%;
 		justify-content: stretch;
 		align-items: stretch;
@@ -355,6 +360,39 @@
 		--section-padding-y: 2.5em;
 		--section-padding-x: 1.5em;
 	}
+}
+
+@media screen and (max-width: 736px) {
+	#impact,
+	#portfolio,
+	#reviews,
+	#recognition {
+		padding-top: calc(var(--section-padding-y) + 0.75em);
+		padding-bottom: calc(var(--section-padding-y) + 0.75em);
+	}
+
+	#skills {
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+	}
+
+	#profile .avatar-container.image.fit {
+		padding-top: 0.5em;
+	}
+
+}
+
+@media screen and (min-width: 737px) {
+	#skills {
+		margin-top: 0.75em;
+	}
+}
+
+@media screen and (min-width: v.$breakpoint-wide) {
+	#profile .avatar-container {
+		transform: translateY(0.75em);
+	}
+
 }
 
 /* XSmall */

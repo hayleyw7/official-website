@@ -17,13 +17,13 @@ describe('header and introduction content', () => {
 
   it('renders all introduction paragraphs without truncating their core claims', () => {
     cy.get('#profile p').should('have.length', 3)
-    cy.get('#profile').should('contain.text', 'Full-stack software engineer building features in JavaScript and Ruby on Rails across frontend and backend systems.')
-    cy.get('#profile').should('contain.text', 'production debugging')
-    cy.get('#profile').should('contain.text', 'automation and AI tools')
+    cy.get('#profile').should('contain.text', 'Full-stack software engineer turning complex problems into thoughtful, easy-to-use experiences.')
+    cy.get('#profile').should('contain.text', 'untangles production bugs')
+    cy.get('#profile').should('contain.text', 'multi-agent workflows')
   })
 
   it('shows the concise professional heading', () => {
-    cy.get('#profile h2').should('have.text', 'Usability-Centered Engineering')
+    cy.get('#profile h2').should('have.text', 'Usability-Focused Engineering')
   })
 
   it('renders the exact skill set once and in its intended order', () => {

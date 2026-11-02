@@ -97,7 +97,8 @@ export function scrollToSection(
   const target = getScrollTarget(href)
   if (!target) return
 
-  const top = Math.ceil(getSectionTop(target) - getNavInset())
+  const anchorCorrection = href === '#impact' || href === '#organizations' ? 1 : 0
+  const top = Math.ceil(getSectionTop(target) - getNavInset() + anchorCorrection)
   const complete = () => {
     if (focusTarget) focusSectionTarget(target)
   }
