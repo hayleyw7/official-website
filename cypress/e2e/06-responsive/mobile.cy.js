@@ -208,7 +208,7 @@ describe('mobile and narrow layout', () => {
 
       it('keeps the intro heading as one concise role title', () => {
         cy.get('#profile .main-content h2')
-          .should('have.text', 'Usability-Centered Engineering')
+          .should('have.text', 'Usability-Focused Engineering')
           .and('not.have.descendants', '.mobile-line-break')
         cy.get('#impact h2 .mobile-line-break')
           .should('have.css', 'display', 'block')
@@ -235,7 +235,7 @@ describe('mobile and narrow layout', () => {
         cy.get('#recognition .content-group:first-of-type')
           .should('have.css', 'margin-top', '0px')
         cy.get('#recognition .content-group:not(:first-of-type)')
-          .should('have.length', 2)
+          .should('have.length', 1)
           .each(($group) => {
             cy.wrap($group).should('have.css', 'margin-top', '12px')
           })
