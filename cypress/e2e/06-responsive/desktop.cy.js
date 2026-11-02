@@ -72,7 +72,8 @@ describe('desktop layout', () => {
         const textBounds = $textColumn[0].getBoundingClientRect()
         const skillBounds = $skills[0].getBoundingClientRect()
         expect(skillBounds.left).to.be.closeTo(textBounds.left, 1)
-        expect(skillBounds.width).to.be.closeTo(textBounds.width, 1)
+        const skillsContainer = $skills[0].closest('.container').getBoundingClientRect()
+        expect(skillBounds.width).to.be.closeTo(skillsContainer.width, 1)
       })
     })
   })
@@ -140,7 +141,7 @@ describe('desktop layout', () => {
       cy.viewport(983, 800)
       cy.get('#skills .col-6').then(($column) => {
         expect($column[0].getBoundingClientRect().width).to.be.closeTo(
-          $column[0].parentElement.getBoundingClientRect().width / 2,
+          $column[0].parentElement.getBoundingClientRect().width,
           2,
         )
       })

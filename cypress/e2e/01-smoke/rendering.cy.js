@@ -24,9 +24,9 @@ describe('initial rendering', () => {
         'about',
         'impact',
         'portfolio',
+        'organizations',
         'reviews',
         'recognition',
-        'organizations',
         'connect',
       ])
     })

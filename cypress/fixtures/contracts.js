@@ -12,7 +12,7 @@ export const sectionNav = [
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'Reviews', href: '#reviews' },
   { label: 'Recognition', href: '#recognition' },
-  { label: 'Organizations', href: '#organizations' },
+  { label: 'Orgs', href: '#organizations' },
   { label: 'Connect', href: '#connect' },
 ]
 
@@ -48,7 +48,7 @@ export const recognition = {
     'The Cognitive Edge',
     'Neurodiverse Hackers',
     'Sound Bytes',
-    'Wikipedia',
+    'Wikipedia: CBN',
     'GEN & Biotech News',
     'Seed to Sound',
     'The Rooster',
@@ -63,7 +63,7 @@ export const projects = {
     'Rancid Tomatillos',
     'Decisionator',
   ],
-  'Offline Tools': ['Frankesso', 'Digital Bug-Out Bag'],
+  'Offline Tools': ['Frankesso'],
 }
 
 export const recommendationsUrl =

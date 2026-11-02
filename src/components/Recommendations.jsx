@@ -4,7 +4,7 @@ import RecommendationCard from './RecommendationCard.jsx'
 
 export default function Recommendations() {
   return (
-    <section id="reviews" className="main style2 special">
+    <section id="reviews" className="main style1 special">
       <div className="container">
         <header className="major">
           <h2>Reviews</h2>

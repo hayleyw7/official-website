@@ -3,7 +3,7 @@ import RecognitionCard from './RecognitionCard.jsx'
 
 export default function Recognition() {
   return (
-    <section id="recognition" className="main style1 special">
+    <section id="recognition" className="main style2 special">
       <div className="container">
         <header className="major"><h2>Public Recognition</h2></header>
         {recognitionGroups.map((group) => (

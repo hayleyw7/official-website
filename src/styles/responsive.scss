@@ -36,8 +36,8 @@
 	.skill-col {
 		box-sizing: border-box;
 		display: flex;
-		column-gap: 0;
-		justify-content: space-evenly;
+		column-gap: 0.75rem;
+		justify-content: space-between;
 		margin-left: 0;
 		margin-right: 0;
 		padding-left: 0;
@@ -46,7 +46,25 @@
 	}
 
 	.skill {
-		flex: 0 0 auto;
+		flex: 1 1 0;
+		min-width: 0;
+		overflow-wrap: anywhere;
+		text-align: center;
+	}
+}
+
+@media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) and (max-width: v.$breakpoint-desktop) {
+	#profile .main-content-container {
+		width: 54%;
+	}
+
+	#profile .imp-medium {
+		width: 46%;
+	}
+
+	#profile img.avatar {
+		max-height: 20rem;
+		max-width: 20rem;
 	}
 }
 
@@ -61,6 +79,10 @@
 }
 
 @media screen and (min-width: calc(v.$breakpoint-tablet + 1px)) {
+	#skills .row > .col-6 {
+		width: 100%;
+	}
+
 	.avatar-container.image.fit {
 		display: flex;
 		justify-content: flex-end;

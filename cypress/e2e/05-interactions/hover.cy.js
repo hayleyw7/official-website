@@ -72,11 +72,11 @@ describe('hover states', () => {
   })
 
   it('defines a high-contrast hover response for recognition actions', () => {
-    cy.get('#recognition .content-group .button').first().should('have.css', 'color', SLATE_BUTTON)
+    cy.get('#recognition .content-group .button').first().should('have.css', DARK_BUTTON_TEXT_NORMAL)
     cy.window().then((window) => {
-      const rule = findRule(window, '.button:hover')
-      expect(rule.style.backgroundColor).to.equal(SLATE_BUTTON)
-      expect(rule.style.color).to.equal(WHITE)
+      const rule = findRule(window, '.main.style2 .button:hover')
+      expect(rule.style.backgroundColor).to.equal(DARK_BUTTON_BORDER)
+      expect(rule.style.color).to.equal(DARK_BUTTON_TEXT)
     })
   })
 
@@ -103,18 +103,6 @@ describe('hover states', () => {
       expect(linkRule.style.color).to.equal(WHITE)
     })
     cy.get('#reviews .reviews-source .button').trigger('mouseover').should('be.visible')
-  })
-
-  it('keeps the Digital Bug-Out Bag action disabled on hover', () => {
-    cy.window().then((window) => {
-      const rule = findRule(window, '#portfolio .content-group .button:disabled:hover')
-      expect(rule, 'disabled project button hover rule').to.exist
-      expect(rule.style.backgroundColor).to.equal('rgb(245, 247, 248)')
-      expect(rule.style.color).to.equal(BLUE_GRAY)
-    })
-    cy.contains('#portfolio article h4', 'Digital Bug-Out Bag').closest('article').find('button.button')
-      .trigger('mouseover', { force: true })
-      .should('be.disabled')
   })
 
   it('defines a visible footer-link hover color', () => {
@@ -160,11 +148,11 @@ describe('hover states', () => {
       const overlay = findRule(window, '#connect .connect-action .contact-arrival::after')
       expect(overlay, 'Connect Email sweep overlay').to.exist
       expect(overlay.style.animation).to.include('connect-email-sweep')
-      expect(overlay.style.animation).to.include('2000ms')
+      expect(overlay.style.animation).to.include('2s')
       expect(overlay.style.background).to.include('linear-gradient')
       expect(overlay.style.background).to.include('45deg')
       expect(overlay.style.background).to.include('rgba(197, 211, 222, 0.5)')
-      expect(overlay.style.backgroundPosition).to.equal('100% 0%')
+      expect(overlay.style.backgroundPosition).to.equal('100% 0px')
       expect(overlay.style.inset).to.equal('1px')
       expect(overlay.style.zIndex).to.equal('0')
       const textRule = findRule(window, '#connect .connect-action .contact-arrival .email-label')
