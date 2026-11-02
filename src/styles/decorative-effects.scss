@@ -193,19 +193,36 @@ body.is-preload #header .embark-btn::after {
 }
 
 #impact h2,
-#reviews h2,
 #organizations h2 {
 	color: v.$color-nav-border;
 }
 
-#portfolio h3,
-#recognition h3 {
+#reviews h2 {
+	color: v.$color-blue-gray;
+}
+
+#portfolio h3 {
 	color: v.$color-slate;
 }
 
-#impact h3,
-#reviews h3 {
+#recognition h2 {
+	color: v.$color-nav-border;
+}
+
+#recognition h3 {
 	color: v.$color-nav-text;
+}
+
+#organizations h3 {
+	color: #ffffff;
+}
+
+#impact h3 {
+	color: v.$color-nav-text;
+}
+
+#reviews h3 {
+	color: v.$color-slate;
 }
 
 @media screen and (max-width: v.$breakpoint-tablet) {

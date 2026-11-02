@@ -55,7 +55,7 @@ export const recognitionGroups = [
         label: 'Listen',
       },
       {
-        title: 'Wikipedia',
+        title: 'Wikipedia: CBN',
         description: 'Article noting my role as a CBN cofounder',
         url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
         label: 'Article',

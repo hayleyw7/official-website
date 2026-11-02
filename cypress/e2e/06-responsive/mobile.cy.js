@@ -113,13 +113,13 @@ describe('mobile and narrow layout', () => {
           })
       })
 
-      it('subtracts the navbar height from the About minimum height', () => {
+      it('subtracts the navbar height from every full-height content section', () => {
         revealSectionNav()
         cy.get('#section-nav').then(($nav) => {
-          cy.get('#about').should(($intro) => {
-            const expected = height - $nav[0].getBoundingClientRect().height
-            const actual = Number.parseFloat(getComputedStyle($intro[0]).minHeight)
-            expect(actual).to.be.closeTo(expected, 1)
+          const expected = height - $nav[0].getBoundingClientRect().height
+          cy.get('#about, #impact, #portfolio, #reviews, #recognition, #organizations').each(($section) => {
+            const actual = Number.parseFloat(getComputedStyle($section[0]).minHeight)
+            expect(actual, `${$section[0].id} minimum height`).to.be.closeTo(expected, 1)
           })
         })
       })

@@ -26,9 +26,9 @@ export default function App() {
         <Introduction />
         <Impact />
         <Portfolio />
+        <Organizations />
         <Recommendations />
         <Recognition />
-        <Organizations />
         <Connect contactNavigation={contactNavigation} />
       </main>
       <Footer />

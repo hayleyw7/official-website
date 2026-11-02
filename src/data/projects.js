@@ -62,12 +62,14 @@ export const projectGroups = [
         url: 'https://github.com/hayleyw7/frankesso-ai',
         label: 'Explore',
       },
+      /* Temporarily hidden; restore when the project is ready to show.
       {
         title: 'Digital Bug-Out Bag',
         description: 'Outage ahead? Pack your essentials!',
         label: 'Soon',
         comingSoon: true,
       },
+      */
     ],
   },
 ]

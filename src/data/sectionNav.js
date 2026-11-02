@@ -2,9 +2,9 @@ export const sectionNavItems = [
   { label: 'About', href: '#about', target: '#about' },
   { label: 'Impact', href: '#impact', target: '#impact' },
   { label: 'Portfolio', href: '#portfolio', target: '#portfolio' },
+  { label: 'Orgs', href: '#organizations', target: '#organizations' },
   { label: 'Reviews', href: '#reviews', target: '#reviews' },
   { label: 'Recognition', href: '#recognition', target: '#recognition' },
-  { label: 'Organizations', href: '#organizations', target: '#organizations' },
   { label: 'Connect', href: '#connect', target: '#connect' },
 ]
 
