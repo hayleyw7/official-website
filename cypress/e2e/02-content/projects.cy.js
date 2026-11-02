@@ -11,7 +11,7 @@ describe('projects content', () => {
       cy.contains('#portfolio .content-group', group).within(() => {
         cy.get('article').should('have.length', cards.length)
         cy.get('h4').then(($headings) => {
-          expect([...$headings].map((heading) => heading.textContent)).to.deep.equal(cards)
+          expect([...$headings].map((heading) => heading.innerText.trim())).to.deep.equal(cards)
         })
       })
     })
