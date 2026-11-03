@@ -55,7 +55,7 @@ describe('recognition content', () => {
 
   it('renders the Autistic Techie organization mention accurately', () => {
     cy.contains('#recognition article h4', 'Autistic Techie').closest('article')
-      .find('p').should('have.text', 'Podcast mention and recommendation of ND In Tech')
+      .find('p').should('have.text', 'Podcast recommendation of ND In Tech')
     cy.contains('#recognition article h4', 'Autistic Techie').closest('article')
       .find('a.button').should('have.text', 'Episode (opens in new tab)')
       .and('have.attr', 'href', 'https://www.autistic-techie.com/coding-interviews-adhd-and-staying-focused-with-mihai-todor')
