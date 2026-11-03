@@ -31,6 +31,13 @@ describe('recognition content', () => {
       .find('p').should('have.text', 'Podcast on building and running CBN')
   })
 
+  it('gives the Code the Dream mark a tight light backing', () => {
+    cy.contains('#recognition article h4', 'Volunteer of the Month')
+      .find('img.entity-icon')
+      .should('have.class', 'entity-icon-light-background')
+      .and('have.css', 'background-color', 'rgb(255, 255, 255)')
+  })
+
   it('uses the approved analytical testing description', () => {
     cy.contains('#recognition article h4', 'GEN Biotech News').closest('article')
       .find('p').should('have.text', 'Article quoting my industry insight')
