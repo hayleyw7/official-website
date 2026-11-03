@@ -49,7 +49,7 @@ export const recognition = {
     'Neurodiverse Hackers',
     'Sound Bytes',
     'Wikipedia: CBN',
-    'GEN & Biotech News',
+    'GEN Biotech News',
     'Seed to Sound',
     'The Rooster',
   ],

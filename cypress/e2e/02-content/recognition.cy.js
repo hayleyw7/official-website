@@ -32,7 +32,7 @@ describe('recognition content', () => {
   })
 
   it('uses the approved analytical testing description', () => {
-    cy.contains('#recognition article h4', 'GEN & Biotech News').closest('article')
+    cy.contains('#recognition article h4', 'GEN Biotech News').closest('article')
       .find('p').should('have.text', 'Article quoting my industry insight')
   })
 
