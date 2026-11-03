@@ -68,7 +68,7 @@ export const recognitionGroups = [
       },
       {
         title: 'Seed to Sound',
-        description: 'Podcast on running CBN while working',
+        description: 'Podcast on building and running CBN',
         url: 'https://www.listennotes.com/podcasts/seed-to-sound/episode-2-colorado-badged-R6JEiGH-2SQ/',
         iconUrl: 'https://cdn-images-3.listennotes.com/podcasts/seed-to-sound-vangst-Bj1uIE3qZdl-kKM7-xs9f1I.1400x1400.jpg',
         roundLogo: true,
