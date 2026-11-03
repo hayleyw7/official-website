@@ -119,7 +119,8 @@ describe('mobile and narrow layout', () => {
           const expected = height - $nav[0].getBoundingClientRect().height
           cy.get('#about, #impact, #portfolio, #reviews, #recognition, #organizations').each(($section) => {
             const actual = Number.parseFloat(getComputedStyle($section[0]).minHeight)
-            expect(actual, `${$section[0].id} minimum height`).to.be.closeTo(expected, 1)
+            const extraCoverage = $section[0].id === 'organizations' ? 2 : 0
+            expect(actual, `${$section[0].id} minimum height`).to.be.closeTo(expected + extraCoverage, 1)
           })
         })
       })

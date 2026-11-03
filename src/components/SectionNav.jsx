@@ -98,6 +98,20 @@ export default function SectionNav({ onContactNavigate }) {
     }
 
     const restoreInitialHash = () => {
+      const navigation = window.performance.getEntriesByType('navigation')[0]
+      if (navigation?.type === 'reload') {
+        if (window.location.hash) {
+          window.history.replaceState(
+            null,
+            '',
+            `${window.location.pathname}${window.location.search}`,
+          )
+        }
+        window.scrollTo({ top: 0, behavior: 'auto' })
+        updateActiveSection()
+        return
+      }
+
       const { hash } = window.location
       if (!hash) return
 

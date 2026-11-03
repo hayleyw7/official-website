@@ -363,6 +363,14 @@
 }
 
 @media screen and (max-width: 736px) {
+	#organizations {
+		min-height: calc(100vh - var(--section-nav-height, 3.25rem) + 2px);
+	}
+
+	#contact {
+		background-attachment: scroll;
+	}
+
 	#impact,
 	#portfolio,
 	#reviews,

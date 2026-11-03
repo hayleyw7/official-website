@@ -60,7 +60,7 @@ export const recognitionGroups = [
         label: 'Article',
       },
       {
-        title: 'GEN & Biotech News',
+        title: 'GEN Biotech News',
         description: 'Article quoting my industry insight',
         url: 'https://www.genengnews.com/insights/medical-cannabi-poses-unique-testing-challenges/',
         iconUrl: 'https://genengnews.com/wp-content/uploads/2018/10/cropped-GEN_App_Icon_1024x1024-1.png',
@@ -68,7 +68,7 @@ export const recognitionGroups = [
       },
       {
         title: 'Seed to Sound',
-        description: 'Podcast on running CBN while working',
+        description: 'Podcast on building and running CBN',
         url: 'https://www.listennotes.com/podcasts/seed-to-sound/episode-2-colorado-badged-R6JEiGH-2SQ/',
         iconUrl: 'https://cdn-images-3.listennotes.com/podcasts/seed-to-sound-vangst-Bj1uIE3qZdl-kKM7-xs9f1I.1400x1400.jpg',
         roundLogo: true,

@@ -57,6 +57,15 @@ describe('scroll behavior', () => {
     cy.get('#recognition').should('be.visible')
   })
 
+  it('returns to the top and clears the fragment on refresh', () => {
+    cy.visit('/#recognition')
+    cy.get('#recognition').should('be.visible')
+    cy.reload()
+    cy.location('hash').should('eq', '')
+    cy.window().its('scrollY').should('eq', 0)
+    cy.get('#header').should('be.visible')
+  })
+
   it('reveals section navigation on mobile only after passing the hero', () => {
     cy.viewport(390, 844)
     cy.visit('/')
@@ -184,16 +193,12 @@ describe('scroll behavior', () => {
     })
   })
 
-  it('keeps a refreshed Impact fragment aligned beneath the navbar', () => {
+  it('clears a refreshed Impact fragment and returns to the top', () => {
     cy.visit('/#impact')
     cy.reload()
-    cy.get('#section-nav').should('be.visible')
-    cy.get('#impact').should(($impact) => {
-      const nav = $impact[0].ownerDocument.querySelector('#section-nav')
-      const difference = $impact[0].getBoundingClientRect().top
-        - nav.getBoundingClientRect().bottom
-      expect(Math.abs(difference)).to.be.lessThan(12)
-    })
+    cy.location('hash').should('eq', '')
+    cy.window().its('scrollY').should('eq', 0)
+    cy.get('#header').should('be.visible')
   })
 
   it('updates the highlighted section while manually scrolling in both directions', () => {
