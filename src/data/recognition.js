@@ -8,6 +8,7 @@ export const recognitionGroups = [
         description: 'Recognition for educational service',
         url: 'https://codethedream.org/meet-hayley-witherell-ctds-volunteer-of-the-month/',
         iconUrl: '/images/code-the-dream-mark-tight.png',
+        lightBackground: true,
         label: 'Article',
       },
       {

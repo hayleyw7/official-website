@@ -394,6 +394,12 @@ input[type="radio"] + label:before {
   filter: invert(1);
 }
 
+.entity-icon-light-background {
+  background: #fff;
+  box-sizing: border-box;
+  padding: 0.08rem;
+}
+
 .entity-icon-fallback[hidden] {
   display: none !important;
 }
