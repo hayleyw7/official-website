@@ -34,7 +34,7 @@ export const recognitionGroups = [
       },
       {
         title: 'The Cognitive Edge',
-        description: 'Book featuring ND In Tech as a resource',
+        description: 'Features ND In Tech as a resource',
         url: 'https://www.amazon.com/dp/B0H8PL7BCT',
         iconUrl: 'https://www.amazon.com/favicon.ico',
         label: 'Book',
@@ -76,7 +76,7 @@ export const recognitionGroups = [
       },
       {
         title: 'Seed to Sound',
-        description: 'Podcast on building and running CBN',
+        description: 'Building and running CBN',
         url: 'https://www.listennotes.com/podcasts/seed-to-sound/episode-2-colorado-badged-R6JEiGH-2SQ/',
         iconUrl: 'https://cdn-images-3.listennotes.com/podcasts/seed-to-sound-vangst-Bj1uIE3qZdl-kKM7-xs9f1I.1400x1400.jpg',
         roundLogo: true,
@@ -92,7 +92,7 @@ export const recognitionGroups = [
       },
       {
         title: 'Autistic Techie',
-        description: 'Podcast recommendation of ND In Tech',
+        description: 'Recommendation of ND In Tech',
         url: 'https://www.autistic-techie.com/coding-interviews-adhd-and-staying-focused-with-mihai-todor',
         iconFallback: 'AT',
         label: 'Episode',

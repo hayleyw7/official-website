@@ -48,9 +48,18 @@ describe('recognition content', () => {
       .find('p').should('have.text', 'Notes my role as co-founder')
   })
 
+  it('uses the approved book description and action', () => {
+    cy.contains('#recognition article h4', 'The Cognitive Edge').closest('article').within(() => {
+      cy.get('p').should('have.text', 'Features ND In Tech as a resource')
+      cy.get('a.button').should('have.text', 'Book (opens in new tab)')
+    })
+  })
+
   it('uses the approved podcast description', () => {
     cy.contains('#recognition article h4', 'Seed to Sound').closest('article')
-      .find('p').should('have.text', 'Podcast on building and running CBN')
+      .find('p').should('have.text', 'Building and running CBN')
+    cy.contains('#recognition article h4', 'Seed to Sound').closest('article')
+      .find('a.button').should('have.text', 'Episode (opens in new tab)')
   })
 
   it('gives the Code the Dream mark a tight light backing', () => {
@@ -72,7 +81,7 @@ describe('recognition content', () => {
 
   it('renders the Autistic Techie organization mention accurately', () => {
     cy.contains('#recognition article h4', 'Autistic Techie').closest('article')
-      .find('p').should('have.text', 'Podcast recommendation of ND In Tech')
+      .find('p').should('have.text', 'Recommendation of ND In Tech')
     cy.contains('#recognition article h4', 'Autistic Techie').closest('article')
       .find('a.button').should('have.text', 'Episode (opens in new tab)')
       .and('have.attr', 'href', 'https://www.autistic-techie.com/coding-interviews-adhd-and-staying-focused-with-mihai-todor')
