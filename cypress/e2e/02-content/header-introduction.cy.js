@@ -17,7 +17,7 @@ describe('header and introduction content', () => {
 
   it('renders all introduction paragraphs without truncating their core claims', () => {
     cy.get('#profile p').should('have.length', 3)
-    cy.get('#profile').should('contain.text', 'Full-stack software engineer turning complex problems into thoughtful, easy-to-use experiences.')
+    cy.get('#profile').should('contain.text', 'Full-stack software engineer turning complex problems into thoughtful, intuitive experiences.')
     cy.get('#profile').should('contain.text', 'untangles production bugs')
     cy.get('#profile').should('contain.text', 'multi-agent workflows')
   })

@@ -12,6 +12,6 @@ export const impactAreas = [
   {
     title: 'Community Leadership & Mentorship',
     description:
-      'Founded Neurodiversity In Tech (ND In Tech) and co-founded Colorado Badged Network (CBN), building professional communities around shared experiences and support. Instructs and mentors adults from underrepresented backgrounds at a nonprofit code school. Shares industry experience and perspectives through panels, interviews, and discussions.',
+      'Founded Neurodiversity In Tech (ND In Tech) and co-founded Colorado Badged Network (CBN), building professional communities centered on connection and support. Instructs and mentors adults from underrepresented backgrounds at a nonprofit code school. Shares industry experience and perspectives through panels, interviews, and discussions.',
   },
 ]

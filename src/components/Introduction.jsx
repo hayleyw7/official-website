@@ -10,9 +10,9 @@ export default function Introduction() {
               <header className="major main-content">
                 <h2><span className="intro-title-prefix">Usability-Focused</span>{' '}<span className="intro-title-role">Engineering</span></h2>
               </header>
-              <p>Full-stack software engineer turning complex problems into thoughtful, easy-to-use experiences.</p>
-              <p>Builds features and internal tools, untangles production bugs, and makes workflows smoother for the people using them. Cares about accessible interfaces, reliable code, and the details that make software feel good to use.</p>
-              <p className="last-intro-para">Always diving into new AI models and tools, building multi-agent workflows, automations, and AI-powered apps that keep working while the world sleeps. Conjures up side projects, from practical problem-solvers to playful experiments, and turns ideas into little realities. Exhibited artist, published writer, and community builder.</p>
+              <p>Full-stack software engineer turning complex problems into thoughtful, intuitive experiences.</p>
+              <p>Develops features and internal tools, untangles production bugs, and smooths out everyday tasks. Cares about accessible interfaces, reliable code, and the details that make technology feel good to use.</p>
+              <p className="last-intro-para">Always diving into new models, creating multi-agent workflows, automations, and AI-powered apps that keep working while the world sleeps. Conjures up side projects, from practical problem-solvers to playful experiments, and turns ideas into little realities. Exhibited artist, published writer, and community builder.</p>
             </div>
             <div className="col-6 col-12-medium imp-medium">
               <span className="image fit avatar-container">
