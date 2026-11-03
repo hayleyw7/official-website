@@ -41,7 +41,7 @@ export const recognitionGroups = [
       },
       {
         title: 'Neurodiverse Hackers',
-        description: 'Article highlighting my ND In Tech work',
+        description: 'Highlights my ND In Tech work',
         url: 'https://ndhack.org/articles/building-an-inclusive-future',
         iconUrl: '/images/nd-hack-cat-tight.png',
         label: 'Article',
@@ -55,7 +55,7 @@ export const recognitionGroups = [
       },
       {
         title: 'Wikipedia: CBN',
-        description: 'Article noting my role as a CBN co-founder',
+        description: 'Notes my role as a CBN co-founder',
         url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
         iconUrl: 'https://en.wikipedia.org/static/favicon/wikipedia.ico',
         label: 'Article',

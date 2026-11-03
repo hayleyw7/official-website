@@ -31,6 +31,13 @@ describe('recognition content', () => {
     })
   })
 
+  it('uses the approved concise media descriptions', () => {
+    cy.contains('#recognition article h4', 'Neurodiverse Hackers').closest('article')
+      .find('p').should('have.text', 'Highlights my ND In Tech work')
+    cy.contains('#recognition article h4', 'Wikipedia: CBN').closest('article')
+      .find('p').should('have.text', 'Notes my role as a CBN co-founder')
+  })
+
   it('uses the approved podcast description', () => {
     cy.contains('#recognition article h4', 'Seed to Sound').closest('article')
       .find('p').should('have.text', 'Podcast on building and running CBN')
