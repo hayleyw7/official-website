@@ -34,7 +34,7 @@ describe('recognition content', () => {
   it('presents the pending NDIT Wikipedia article alongside CBN in media', () => {
     cy.contains('#recognition .content-group', 'Media & Publications').within(() => {
       cy.contains('article h4', 'Wikipedia: ND In Tech').closest('article').within(() => {
-        cy.get('p').should('have.text', 'Overview of ND In Tech')
+        cy.get('p').should('have.text', 'Notes my role as founder')
         cy.get('img.entity-icon').should('have.attr', 'src', 'https://en.wikipedia.org/static/favicon/wikipedia.ico')
         cy.get('a.button').should('have.length', 1).and('contain.text', 'Article')
       })
@@ -45,7 +45,7 @@ describe('recognition content', () => {
     cy.contains('#recognition article h4', 'Neurodiverse Hackers').closest('article')
       .find('p').should('have.text', 'Highlights my ND In Tech work')
     cy.contains('#recognition article h4', 'Wikipedia: CBN').closest('article')
-      .find('p').should('have.text', 'Notes my role as a CBN co-founder')
+      .find('p').should('have.text', 'Notes my role as co-founder')
   })
 
   it('uses the approved podcast description', () => {
@@ -62,12 +62,12 @@ describe('recognition content', () => {
 
   it('uses the approved analytical testing description', () => {
     cy.contains('#recognition article h4', 'GEN Biotech News').closest('article')
-      .find('p').should('have.text', 'Article quoting my industry insight')
+      .find('p').should('have.text', 'Quotes my industry insight')
   })
 
   it('uses the approved CBN article description', () => {
     cy.contains('#recognition article h4', 'The Rooster').closest('article')
-      .find('p').should('have.text', "Article on CBN's impact on industry")
+      .find('p').should('have.text', "CBN's impact on the industry")
   })
 
   it('renders the Autistic Techie organization mention accurately', () => {

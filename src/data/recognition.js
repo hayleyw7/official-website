@@ -55,21 +55,21 @@ export const recognitionGroups = [
       },
       {
         title: 'Wikipedia: ND In Tech',
-        description: 'Overview of ND In Tech',
+        description: 'Notes my role as founder',
         url: 'https://en.wikipedia.org/wiki/Neurodiversity_In_Tech',
         iconUrl: 'https://en.wikipedia.org/static/favicon/wikipedia.ico',
         label: 'Article',
       },
       {
         title: 'Wikipedia: CBN',
-        description: 'Notes my role as a CBN co-founder',
+        description: 'Notes my role as co-founder',
         url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
         iconUrl: 'https://en.wikipedia.org/static/favicon/wikipedia.ico',
         label: 'Article',
       },
       {
         title: 'GEN Biotech News',
-        description: 'Article quoting my industry insight',
+        description: 'Quotes my industry insight',
         url: 'https://www.genengnews.com/insights/medical-cannabi-poses-unique-testing-challenges/',
         iconUrl: 'https://genengnews.com/wp-content/uploads/2018/10/cropped-GEN_App_Icon_1024x1024-1.png',
         label: 'Article',
@@ -84,7 +84,7 @@ export const recognitionGroups = [
       },
       {
         title: 'The Rooster',
-        description: "Article on CBN's impact on industry",
+        description: "CBN's impact on the industry",
         url: 'https://web.archive.org/web/20260307182938/https://therooster.com/articles/despite-the-rules-one-cannabis-industry-group-still-thrives-on-facebook/',
         iconUrl: 'https://therooster.com/wp-content/uploads/2026/07/logo.svg',
         darkLogo: true,
