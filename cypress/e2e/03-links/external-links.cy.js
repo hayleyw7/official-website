@@ -20,6 +20,16 @@ describe('external links', () => {
       .should('have.attr', 'href', 'https://www.coloradobadgednetwork.com/')
   })
 
+  it('stages the pending Neurodiversity In Tech Wikipedia action', () => {
+    cy.contains('#organizations article h4', 'Neurodiversity In Tech')
+      .closest('article').find('a.button')
+      .should('have.length', 2)
+      .eq(1)
+      .should('contain.text', 'Wikipedia')
+      .and('have.attr', 'href', 'https://en.wikipedia.org/wiki/Neurodiversity_In_Tech')
+      .assertExternalLinkIsSafe()
+  })
+
   it('renders the approved community organization descriptions', () => {
     cy.contains('#organizations article h4', 'Neurodiversity In Tech')
       .closest('article')

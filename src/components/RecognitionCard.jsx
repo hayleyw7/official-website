@@ -16,6 +16,7 @@ export default function RecognitionCard({ item }) {
             <ExternalLink url={item.url} className="button">{item.label}</ExternalLink>
           )}
         </li>
+        {item.wikipediaUrl && <li><ExternalLink url={item.wikipediaUrl} className="button">{item.wikipediaLabel || 'Wikipedia'}</ExternalLink></li>}
       </ul>
     </article>
   )
