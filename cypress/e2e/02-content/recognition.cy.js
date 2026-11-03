@@ -22,11 +22,21 @@ describe('recognition content', () => {
   })
 
   it('pairs every card with descriptive copy and one action', () => {
-    cy.get('#recognition .content-group article').should('have.length', 11).each(($article) => {
+    cy.get('#recognition .content-group article').should('have.length', 12).each(($article) => {
       cy.wrap($article).within(() => {
         cy.get('h4').invoke('text').should('not.be.empty')
         cy.get('p').invoke('text').should('have.length.greaterThan', 20)
         cy.get('a.button').should('have.length', 1).and('not.have.text', '')
+      })
+    })
+  })
+
+  it('presents the pending NDIT Wikipedia article alongside CBN in media', () => {
+    cy.contains('#recognition .content-group', 'Media & Publications').within(() => {
+      cy.contains('article h4', 'Wikipedia: ND In Tech').closest('article').within(() => {
+        cy.get('p').should('have.text', 'Overview of ND In Tech')
+        cy.get('img.entity-icon').should('have.attr', 'src', 'https://en.wikipedia.org/static/favicon/wikipedia.ico')
+        cy.get('a.button').should('have.length', 1).and('contain.text', 'Article')
       })
     })
   })

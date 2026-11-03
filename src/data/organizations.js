@@ -7,8 +7,6 @@ export const organizations = [
     iconUrl: 'https://nd-in-tech.org/favicon.ico',
     iconFallback: 'ND',
     label: 'Visit',
-    wikipediaUrl: 'https://en.wikipedia.org/wiki/Neurodiversity_In_Tech',
-    wikipediaLabel: 'Wikipedia',
   },
   {
     title: 'Colorado Badged Network',

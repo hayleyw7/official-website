@@ -54,6 +54,13 @@ export const recognitionGroups = [
         label: 'Episode',
       },
       {
+        title: 'Wikipedia: ND In Tech',
+        description: 'Overview of ND In Tech',
+        url: 'https://en.wikipedia.org/wiki/Neurodiversity_In_Tech',
+        iconUrl: 'https://en.wikipedia.org/static/favicon/wikipedia.ico',
+        label: 'Article',
+      },
+      {
         title: 'Wikipedia: CBN',
         description: 'Notes my role as a CBN co-founder',
         url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
