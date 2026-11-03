@@ -48,7 +48,7 @@ export const recognitionGroups = [
       },
       {
         title: 'Sound Bytes',
-        description: 'Radio recommendation for Limerickster',
+        description: 'Recommended my app Limerickster',
         iconUrl: '/images/sound-bytes.jpg',
         url: 'https://www.youtube.com/watch?v=dBemPSROip8&t=2196s',
         label: 'Episode',

@@ -48,6 +48,13 @@ describe('recognition content', () => {
       .find('p').should('have.text', 'Notes my role as co-founder')
   })
 
+  it('uses the approved Sound Bytes description and Episode action', () => {
+    cy.contains('#recognition article h4', 'Sound Bytes').closest('article').within(() => {
+      cy.get('p').should('have.text', 'Recommended my app Limerickster')
+      cy.get('a.button').should('have.text', 'Episode (opens in new tab)')
+    })
+  })
+
   it('uses the approved book description and action', () => {
     cy.contains('#recognition article h4', 'The Cognitive Edge').closest('article').within(() => {
       cy.get('p').should('have.text', 'Features ND In Tech as a resource')
