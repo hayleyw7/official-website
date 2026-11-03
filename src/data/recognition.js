@@ -83,6 +83,13 @@ export const recognitionGroups = [
         darkLogo: true,
         label: 'Article',
       },
+      {
+        title: 'Autistic Techie',
+        description: 'Podcast mention and recommendation of ND In Tech',
+        url: 'https://www.autistic-techie.com/coding-interviews-adhd-and-staying-focused-with-mihai-todor',
+        iconFallback: 'AT',
+        label: 'Episode',
+      },
     ],
   },
 ]

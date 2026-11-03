@@ -52,6 +52,7 @@ export const recognition = {
     'GEN Biotech News',
     'Seed to Sound',
     'The Rooster',
+    'Autistic Techie',
   ],
 }
 
