@@ -112,34 +112,30 @@ describe('recognition content', () => {
   it('loads the supplied brain-only Autistic Techie logo', () => {
     cy.contains('#recognition article h4', 'Autistic Techie').within(() => {
       cy.get('img.entity-icon')
-        .should('have.attr', 'src', '/images/autistic-techie-brain.svg')
+        .should('have.attr', 'src', '/images/autistic-techie-brain.png')
         .and('have.attr', 'alt', '')
         .and('have.attr', 'aria-hidden', 'true')
         .and('be.visible')
         .should(($image) => {
-          expect($image[0].naturalWidth).to.equal(416)
-          expect($image[0].naturalHeight).to.equal(352)
+          expect($image[0].naturalWidth).to.equal(512)
+          expect($image[0].naturalHeight).to.equal(512)
         })
       cy.get('.entity-icon-fallback').should('not.be.visible')
     })
   })
 
-  it('keeps the logo artwork intact and crops out its lettering', () => {
-    cy.request('/images/autistic-techie-brain.svg').then(({ body }) => {
-      const document = new DOMParser().parseFromString(body, 'image/svg+xml')
-      const svg = document.documentElement
-      const image = svg.querySelector('image')
-      expect(document.querySelector('parsererror')).to.equal(null)
-      expect(svg.getAttribute('viewBox')).to.equal('108 40 416 352')
-      expect(image.getAttribute('width')).to.equal('640')
-      expect(image.getAttribute('height')).to.equal('640')
-      expect(image.getAttribute('href')).to.match(/^data:image\/png;base64,/)
-      expect(svg.querySelectorAll('text, script, foreignObject')).to.have.length(0)
+  it('uses the approved square logo without changing the image', () => {
+    cy.request({ url: '/images/autistic-techie-brain.png', encoding: 'binary' }).then(({ body }) => {
+      const bytes = Uint8Array.from(body, (character) => character.charCodeAt(0))
+      return crypto.subtle.digest('SHA-256', bytes).then((digest) => {
+        const hash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, '0')).join('')
+        expect(hash).to.equal('0c35f92c9f58ca379ac5928f85519cc10646b6d69c5f5038fdc52e374f5dfe64')
+      })
     })
   })
 
   it('keeps the Autistic Techie fallback if its logo cannot load', () => {
-    cy.intercept('GET', '/images/autistic-techie-brain.svg', { statusCode: 404 }).as('missingTechieLogo')
+    cy.intercept('GET', '/images/autistic-techie-brain.png', { statusCode: 404 }).as('missingTechieLogo')
     cy.visitHome()
     cy.wait('@missingTechieLogo')
     cy.contains('#recognition article h4', 'Autistic Techie').within(() => {

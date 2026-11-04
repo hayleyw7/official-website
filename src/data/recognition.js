@@ -94,7 +94,7 @@ export const recognitionGroups = [
         title: 'Autistic Techie',
         description: 'Recommendation of ND In Tech',
         url: 'https://www.autistic-techie.com/coding-interviews-adhd-and-staying-focused-with-mihai-todor',
-        iconUrl: '/images/autistic-techie-brain.svg',
+        iconUrl: '/images/autistic-techie-brain.png',
         iconFallback: 'AT',
         label: 'Episode',
       },
