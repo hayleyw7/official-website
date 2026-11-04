@@ -22,7 +22,7 @@ describe('keyboard accessibility', () => {
       'GEN Biotech News',
       'Seed to Sound',
       'The Rooster',
-      'AT\nAutistic Techie',
+      'Autistic Techie',
       'Neurodiversity In Tech',
       'Colorado Badged Network',
     ]
