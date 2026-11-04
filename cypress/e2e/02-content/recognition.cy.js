@@ -22,10 +22,25 @@ describe('recognition content', () => {
   })
 
   it('pairs every card with descriptive copy and one action', () => {
-    cy.get('#recognition .content-group article').should('have.length', 12).each(($article) => {
+    const descriptions = [
+      'Recognition for educational service',
+      'Recognition for founding ND In Tech',
+      'Interview about founding ND In Tech',
+      'ND In Tech as a resource',
+      'Coverage of my ND In Tech work',
+      'Recommendation of my app Limerickster',
+      'My role as founder',
+      'My role as co-founder',
+      'My quoted industry insight',
+      'Building and running CBN',
+      "CBN's impact on the industry",
+      'Recommendation of ND In Tech',
+    ]
+
+    cy.get('#recognition .content-group article').should('have.length', descriptions.length).each(($article, index) => {
       cy.wrap($article).within(() => {
         cy.get('h4').invoke('text').should('not.be.empty')
-        cy.get('p').invoke('text').should('have.length.greaterThan', 20)
+        cy.get('p').should('have.text', descriptions[index])
         cy.get('a.button').should('have.length', 1).and('not.have.text', '')
       })
     })
@@ -34,7 +49,7 @@ describe('recognition content', () => {
   it('presents the pending NDIT Wikipedia article alongside CBN in media', () => {
     cy.contains('#recognition .content-group', 'Media & Publications').within(() => {
       cy.contains('article h4', 'Wikipedia: ND In Tech').closest('article').within(() => {
-        cy.get('p').should('have.text', 'Notes my role as founder')
+        cy.get('p').should('have.text', 'My role as founder')
         cy.get('img.entity-icon').should('have.attr', 'src', 'https://en.wikipedia.org/static/favicon/wikipedia.ico')
         cy.get('a.button').should('have.length', 1).and('contain.text', 'Article')
       })
@@ -43,21 +58,21 @@ describe('recognition content', () => {
 
   it('uses the approved concise media descriptions', () => {
     cy.contains('#recognition article h4', 'Neurodiverse Hackers').closest('article')
-      .find('p').should('have.text', 'Highlights my ND In Tech work')
+      .find('p').should('have.text', 'Coverage of my ND In Tech work')
     cy.contains('#recognition article h4', 'Wikipedia: CBN').closest('article')
-      .find('p').should('have.text', 'Notes my role as co-founder')
+      .find('p').should('have.text', 'My role as co-founder')
   })
 
   it('uses the approved Sound Bytes description and Episode action', () => {
     cy.contains('#recognition article h4', 'Sound Bytes').closest('article').within(() => {
-      cy.get('p').should('have.text', 'Recommended my app Limerickster')
+      cy.get('p').should('have.text', 'Recommendation of my app Limerickster')
       cy.get('a.button').should('have.text', 'Episode (opens in new tab)')
     })
   })
 
   it('uses the approved book description and action', () => {
     cy.contains('#recognition article h4', 'The Cognitive Edge').closest('article').within(() => {
-      cy.get('p').should('have.text', 'Features ND In Tech as a resource')
+      cy.get('p').should('have.text', 'ND In Tech as a resource')
       cy.get('a.button').should('have.text', 'Book (opens in new tab)')
     })
   })
@@ -78,7 +93,7 @@ describe('recognition content', () => {
 
   it('uses the approved analytical testing description', () => {
     cy.contains('#recognition article h4', 'GEN Biotech News').closest('article')
-      .find('p').should('have.text', 'Quotes my industry insight')
+      .find('p').should('have.text', 'My quoted industry insight')
   })
 
   it('uses the approved CBN article description', () => {
