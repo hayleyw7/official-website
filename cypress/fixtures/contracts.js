@@ -48,10 +48,12 @@ export const recognition = {
     'The Cognitive Edge',
     'Neurodiverse Hackers',
     'Sound Bytes',
+    'Wikipedia: ND In Tech',
     'Wikipedia: CBN',
     'GEN Biotech News',
     'Seed to Sound',
     'The Rooster',
+    'Autistic Techie',
   ],
 }
 

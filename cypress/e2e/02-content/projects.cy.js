@@ -38,7 +38,7 @@ describe('projects content', () => {
     cy.contains('#portfolio article h4', 'Critterwave').closest('article')
       .find('p').should('have.text', 'Want to battle? Defeat waves of critters!')
     cy.contains('#portfolio article h4', 'Whimsy Grove').closest('article')
-      .find('p').should('have.text', 'Feeling whimsical? Create a grove!')
+      .find('p').should('have.text', 'Feeling whimsical? Create a dreamscape!')
   })
 
   it('keeps Flickmoji commented out of the rendered portfolio', () => {
@@ -47,12 +47,38 @@ describe('projects content', () => {
 
   it('shows Whimsy Grove as coming soon with a disabled action', () => {
     cy.contains('#portfolio article h4', 'Whimsy Grove').closest('article').within(() => {
-      cy.get('p').should('contain.text', 'Feeling whimsical? Create a grove!')
+      cy.get('p').should('contain.text', 'Feeling whimsical? Create a dreamscape!')
       cy.get('button.button').should('be.disabled').and('have.text', 'Soon')
     })
   })
 
   it('temporarily hides Digital Bug-Out Bag', () => {
     cy.contains('#portfolio article h4', 'Digital Bug-Out Bag').should('not.exist')
+  })
+
+  it('uses the approved centered Decisionator favicon', () => {
+    cy.contains('#portfolio article h4', 'Decisionator').find('img.entity-icon')
+      .should('be.visible')
+      .and(($img) => {
+        expect($img[0].complete).to.equal(true)
+        expect($img[0].naturalWidth).to.be.greaterThan(0)
+      })
+      .should('have.attr', 'src', '/images/decisionator-favicon.svg')
+
+    cy.request('/images/decisionator-favicon.svg').then(({ body }) => {
+      const doc = new DOMParser().parseFromString(body, 'image/svg+xml')
+      expect(doc.querySelector('parsererror')).to.equal(null)
+      expect(doc.documentElement.getAttribute('viewBox')).to.equal('0 0 32 32')
+
+      const face = doc.querySelectorAll('rect')[1]
+      expect(Number(face.getAttribute('x')) + Number(face.getAttribute('width')) / 2).to.equal(16)
+      expect(Number(face.getAttribute('y')) + Number(face.getAttribute('height')) / 2).to.equal(16)
+
+      const centers = [...doc.querySelectorAll('circle')].map((circle) => [
+        Number(circle.getAttribute('cx')),
+        Number(circle.getAttribute('cy')),
+      ])
+      expect(centers).to.deep.equal([[11, 11], [21, 21], [16, 16], [21, 11], [11, 21]])
+    })
   })
 })

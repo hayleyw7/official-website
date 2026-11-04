@@ -17,10 +17,12 @@ describe('keyboard accessibility', () => {
       'The Cognitive Edge',
       'Neurodiverse Hackers',
       'Sound Bytes',
+      'Wikipedia: ND In Tech',
       'Wikipedia: CBN',
       'GEN Biotech News',
       'Seed to Sound',
       'The Rooster',
+      'Autistic Techie',
       'Neurodiversity In Tech',
       'Colorado Badged Network',
     ]
@@ -37,7 +39,7 @@ describe('keyboard accessibility', () => {
       'Neurodiversity In Tech',
       'Colorado Badged Network',
       'View reviews on LinkedIn (opens in new tab)',
-      ...recognitionTitles.slice(0, 10),
+      ...recognitionTitles.slice(0, 12),
       
       'Email',
       'Twitter profile (opens in new tab)',

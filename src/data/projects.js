@@ -12,7 +12,7 @@ export const projectGroups = [
       },
       {
         title: 'Whimsy Grove',
-        description: 'Feeling whimsical? Create a grove!',
+        description: 'Feeling whimsical? Create a dreamscape!',
         iconUrl: '/images/whimsy-grove-mushroom.svg',
         label: 'Soon',
         comingSoon: true,
@@ -59,7 +59,7 @@ export const projectGroups = [
         description: 'Can’t make a decision? Get an answer!',
         url: 'https://decisionator.surge.sh/',
         iconFallback: 'D',
-        iconUrl: 'https://raw.githubusercontent.com/hayleyw7/decisionator/main/public/favicon.ico',
+        iconUrl: '/images/decisionator-favicon.svg',
         label: 'Choose',
       },
     ],

@@ -4,7 +4,7 @@ describe('external links', () => {
   beforeEach(() => cy.visitHome())
 
   it('uses secure absolute destinations for every recognition action', () => {
-    cy.get('#recognition .content-group a').should('have.length', 10).each(($link) => {
+    cy.get('#recognition .content-group a').should('have.length', 12).each(($link) => {
       cy.wrap($link).assertExternalLinkIsSafe()
     })
   })
@@ -18,6 +18,22 @@ describe('external links', () => {
       .closest('article').find('a.button')
       .should('contain.text', 'Visit')
       .should('have.attr', 'href', 'https://www.coloradobadgednetwork.com/')
+  })
+
+  it('stages the pending NDIT Wikipedia action only in Media & Publications', () => {
+    cy.contains('#recognition .content-group', 'Media & Publications')
+      .contains('article h4', 'Wikipedia: ND In Tech')
+      .closest('article').find('a.button')
+      .should('have.length', 1)
+      .and('contain.text', 'Article')
+      .and('have.attr', 'href', 'https://en.wikipedia.org/wiki/Neurodiversity_In_Tech')
+      .assertExternalLinkIsSafe()
+    cy.get('a[href="https://en.wikipedia.org/wiki/Neurodiversity_In_Tech"]').should('have.length', 1)
+    cy.contains('#organizations article h4', 'Neurodiversity In Tech')
+      .closest('article').find('a.button')
+      .should('have.length', 1)
+      .and('contain.text', 'Visit')
+      .and('have.attr', 'href', 'https://nd-in-tech.org/')
   })
 
   it('renders the approved community organization descriptions', () => {

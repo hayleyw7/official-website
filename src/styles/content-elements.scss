@@ -363,7 +363,7 @@ input[type="radio"] + label:before {
   height: 1.35rem;
   object-fit: contain;
   flex: 0 0 1.35rem;
-  border-radius: 0.2rem;
+  border-radius: v.$radius-small;
 }
 
 .entity-icon-fallback {
@@ -373,8 +373,8 @@ input[type="radio"] + label:before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0.2rem;
-  color: v.$color-blue-gray;
+  border-radius: v.$radius-small;
+  color: v.$color-ink;
   font-size: 0.56rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -388,7 +388,6 @@ input[type="radio"] + label:before {
 
 .entity-icon-dark {
   background: #fff;
-  border-radius: 0.15rem;
   box-sizing: border-box;
   padding: 0.12rem;
   filter: invert(1);
