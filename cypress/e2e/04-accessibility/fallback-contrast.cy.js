@@ -90,8 +90,15 @@ const fallbacks = [
     fallbacks.forEach(({ section, title, initials, image, color }) => {
       it(`keeps ${title} initials readable in ${section}`, () => {
         cy.viewport(width, height)
-        cy.intercept('GET', image, { statusCode: 404 }).as('missingLogo')
+        const failedImage = `${image}?fallback-contrast=${name}`
+        cy.intercept('GET', failedImage, {
+          statusCode: 404,
+          headers: { 'cache-control': 'no-store' },
+        }).as('missingLogo')
         cy.visitHome()
+        cy.contains(`#${section} article h4`, title).find('img.entity-icon')
+          .should('have.attr', 'src', image)
+          .invoke('attr', 'src', failedImage)
         cy.wait('@missingLogo')
         cy.contains(`#${section} article h4`, title).within(() => {
           cy.get('img.entity-icon').should('not.be.visible')
