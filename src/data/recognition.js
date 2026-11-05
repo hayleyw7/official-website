@@ -57,14 +57,14 @@ export const recognitionGroups = [
         title: 'Wikipedia: ND In Tech',
         description: 'My role as founder',
         url: 'https://en.wikipedia.org/wiki/Neurodiversity_In_Tech',
-        iconUrl: 'https://en.wikipedia.org/static/favicon/wikipedia.ico',
+        iconUrl: '/images/icons/wikipedia.ico',
         label: 'Article',
       },
       {
         title: 'Wikipedia: CBN',
         description: 'My role as co-founder',
         url: 'https://en.wikipedia.org/wiki/Colorado_Badged_Network',
-        iconUrl: 'https://en.wikipedia.org/static/favicon/wikipedia.ico',
+        iconUrl: '/images/icons/wikipedia.ico',
         label: 'Article',
       },
       {
