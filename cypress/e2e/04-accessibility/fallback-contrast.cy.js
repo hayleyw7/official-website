@@ -42,7 +42,7 @@ const fallbacks = [
     section: 'portfolio',
     title: 'Affirming Access',
     initials: 'AA',
-    image: 'https://raw.githubusercontent.com/hayleyw7/affirming-access/main/public/logo192.png',
+    image: '/images/icons/affirming-access.png',
     color: 'rgb(43, 43, 43)',
   },
   {
@@ -70,7 +70,7 @@ const fallbacks = [
     section: 'organizations',
     title: 'Neurodiversity In Tech',
     initials: 'ND',
-    image: 'https://nd-in-tech.org/favicon.ico',
+    image: '/images/icons/nd-in-tech.ico',
     color: 'rgb(255, 255, 255)',
   },
   {

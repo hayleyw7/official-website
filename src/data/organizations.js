@@ -4,7 +4,7 @@ export const organizations = [
     role: 'Founder & Executive Director',
     description: 'Connects neurodivergent tech industry professionals through peer support, career resources, and advocacy.',
     url: 'https://nd-in-tech.org/',
-    iconUrl: 'https://nd-in-tech.org/favicon.ico',
+    iconUrl: '/images/icons/nd-in-tech.ico',
     iconFallback: 'ND',
     label: 'Visit',
   },

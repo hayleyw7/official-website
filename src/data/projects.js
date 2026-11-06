@@ -35,7 +35,7 @@ export const projectGroups = [
         title: 'Limerickster',
         description: 'Need to create a limerick? Have AI do it!',
         url: 'https://hayleyw7-limerickster.hf.space/',
-        iconUrl: 'https://raw.githubusercontent.com/hayleyw7/limerickster/main/static/favicon.ico',
+        iconUrl: '/images/icons/limerickster.ico',
         label: 'Write',
       },
       {
@@ -43,7 +43,7 @@ export const projectGroups = [
         description: 'Gotta go? Find safe restrooms near you!',
         url: 'https://affirming-access.surge.sh/',
         iconFallback: 'AA',
-        iconUrl: 'https://raw.githubusercontent.com/hayleyw7/affirming-access/main/public/logo192.png',
+        iconUrl: '/images/icons/affirming-access.png',
         label: 'Search',
       },
       {

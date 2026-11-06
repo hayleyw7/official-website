@@ -59,6 +59,8 @@ cypress/
 | `socialLinks.js` | Footer social and email links |
 | `sectionNav.js` | Sticky nav labels and scroll targets, including Organizations and Connect |
 
+Card images are served from `public/images/`, including unmodified local copies of external icons in `public/images/icons/`. Original source URLs are recorded in `public/images/icons/SOURCES.md`.
+
 Components import the data file they need. `cypress/fixtures/contracts.js` mirrors the public content contracts used by tests — update both when changing headings, skills, or section IDs.
 
 ## Local development
