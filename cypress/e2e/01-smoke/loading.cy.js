@@ -30,4 +30,18 @@ describe('loading behavior', () => {
         expect($image[0].naturalHeight).to.be.greaterThan(0)
       })
   })
+
+  it('loads every card image from a local file', () => {
+    cy.visitHome()
+
+    cy.get('img.entity-icon').should('have.length.greaterThan', 0).each(($image) => {
+      cy.wrap($image)
+        .should('have.attr', 'src').and('match', /^\/images\//)
+      cy.wrap($image).should(($loadedImage) => {
+        expect($loadedImage[0].complete, $loadedImage[0].src).to.equal(true)
+        expect($loadedImage[0].naturalWidth, $loadedImage[0].src).to.be.greaterThan(0)
+        expect($loadedImage[0].naturalHeight, $loadedImage[0].src).to.be.greaterThan(0)
+      })
+    })
+  })
 })

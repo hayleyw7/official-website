@@ -50,7 +50,7 @@ describe('recognition content', () => {
     cy.contains('#recognition .content-group', 'Media & Publications').within(() => {
       cy.contains('article h4', 'Wikipedia: ND In Tech').closest('article').within(() => {
         cy.get('p').should('have.text', 'My role as founder')
-        cy.get('img.entity-icon').should('have.attr', 'src', 'https://en.wikipedia.org/static/favicon/wikipedia.ico')
+        cy.get('img.entity-icon').should('have.attr', 'src', '/images/icons/wikipedia.ico')
         cy.get('a.button').should('have.length', 1).and('contain.text', 'Article')
       })
     })
