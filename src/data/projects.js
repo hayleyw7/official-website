@@ -48,7 +48,7 @@ export const projectGroups = [
       },
       {
         title: 'Rancid Tomatillos',
-        description: 'Movie night? Find your next favorite!',
+        description: 'Movie night? Discover your next favorite!',
         url: 'https://hayleyw7.github.io/rancid-tomatillos/',
         iconUrl: '/images/rancid-logo-tight.png',
         roundLogo: true,

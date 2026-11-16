@@ -34,6 +34,13 @@ describe('projects content', () => {
       .find('p').should('have.text', 'Need AI when offline? Meet this agent!')
   })
 
+  it('uses distinct verbs for movie and restroom discovery', () => {
+    cy.contains('#portfolio article h4', 'Rancid Tomatillos').closest('article')
+      .find('p').should('have.text', 'Movie night? Discover your next favorite!')
+    cy.contains('#portfolio article h4', 'Affirming Access').closest('article')
+      .find('p').should('have.text', 'Gotta go? Find safe restrooms near you!')
+  })
+
   it('uses the approved Critterwave and Whimsy Grove taglines', () => {
     cy.contains('#portfolio article h4', 'Critterwave').closest('article')
       .find('p').should('have.text', 'Want to battle? Defeat waves of critters!')
